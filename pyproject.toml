@@ -1,0 +1,11 @@
+[project]
+name = "praman"
+version = "0.1.0"
+description = "Citation-backed regulatory reporting and risk-signal copilot for banks and NBFCs, built on Snowflake CoCo CLI"
+requires-python = ">=3.11"
+dependencies = [
+    "ipykernel>=7.3.0",
+    "numpy>=2.4.6",
+    "pandas>=3.0.5",
+    "requests>=2.34.2",
+]

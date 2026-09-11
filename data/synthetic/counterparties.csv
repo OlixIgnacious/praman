@@ -1,0 +1,606 @@
+COUNTERPARTY_ID,NAME,SECTOR,JURISDICTION,RISK_RATING,CONCENTRATION_GROUP,CREATED_AT
+CP-00001,Agriculture Holdings Ltd 1,Agriculture - Allied,IN,B,,2026-06-30
+CP-00002,Agriculture & Co 2,Agriculture - Allied,IN,B,,2026-06-30
+CP-00003,Agriculture Enterprises 3,Agriculture - Allied,IN,BB,,2026-06-30
+CP-00004,Agriculture Holdings Ltd 4,Agriculture - Allied,IN,B,,2026-06-30
+CP-00005,Agriculture Enterprises 5,Agriculture - Allied,IN,BB,,2026-06-30
+CP-00006,Agriculture Industries Ltd 6,Agriculture - Allied,IN,BBB,,2026-06-30
+CP-00007,Agriculture Holdings Ltd 7,Agriculture - Allied,IN,BBB,,2026-06-30
+CP-00008,Agriculture Enterprises 8,Agriculture - Allied,IN,B,,2026-06-30
+CP-00009,Agriculture Pvt Ltd 9,Agriculture - Allied,IN,B,,2026-06-30
+CP-00010,Agriculture Enterprises 10,Agriculture - Allied,IN,BB,,2026-06-30
+CP-00011,Agriculture & Co 11,Agriculture - Allied,IN,BBB,,2026-06-30
+CP-00012,Agriculture Industries Ltd 12,Agriculture - Allied,IN,BB,,2026-06-30
+CP-00013,Agriculture Enterprises 13,Agriculture - Allied,IN,B,,2026-06-30
+CP-00014,Agriculture Pvt Ltd 14,Agriculture - Allied,IN,BB,,2026-06-30
+CP-00015,Agriculture & Co 15,Agriculture - Allied,IN,BB,,2026-06-30
+CP-00016,Agriculture Produce Enterprises 1,Agriculture Produce - Trade,IN,BB,,2026-06-30
+CP-00017,Agriculture Produce Corp 2,Agriculture Produce - Trade,IN,BBB,,2026-06-30
+CP-00018,Agriculture Produce Enterprises 3,Agriculture Produce - Trade,IN,A,,2026-06-30
+CP-00019,Agriculture Produce Holdings Ltd 4,Agriculture Produce - Trade,IN,BBB,,2026-06-30
+CP-00020,Agriculture Produce Pvt Ltd 5,Agriculture Produce - Trade,IN,BBB,,2026-06-30
+CP-00021,Agriculture Produce Enterprises 6,Agriculture Produce - Trade,IN,A,,2026-06-30
+CP-00022,Agriculture Produce Pvt Ltd 7,Agriculture Produce - Trade,IN,BB,,2026-06-30
+CP-00023,Agriculture Produce Enterprises 8,Agriculture Produce - Trade,IN,BBB,,2026-06-30
+CP-00024,Agriculture Produce Holdings Ltd 9,Agriculture Produce - Trade,IN,BBB,,2026-06-30
+CP-00025,Agriculture Produce Enterprises 10,Agriculture Produce - Trade,IN,A,,2026-06-30
+CP-00026,Agriculture Produce Holdings Ltd 11,Agriculture Produce - Trade,IN,A,,2026-06-30
+CP-00027,Agriculture Produce Enterprises 12,Agriculture Produce - Trade,IN,BBB,,2026-06-30
+CP-00028,Agriculture Produce & Co 13,Agriculture Produce - Trade,IN,A,,2026-06-30
+CP-00029,Agriculture Produce Enterprises 14,Agriculture Produce - Trade,IN,A,,2026-06-30
+CP-00030,Agriculture Production Industries Ltd 1,Agriculture Production - Food,IN,B,,2026-06-30
+CP-00031,Agriculture Production Holdings Ltd 2,Agriculture Production - Food,IN,B,,2026-06-30
+CP-00032,Agriculture Production & Co 3,Agriculture Production - Food,IN,BB,,2026-06-30
+CP-00033,Agriculture Production Industries Ltd 4,Agriculture Production - Food,IN,B,,2026-06-30
+CP-00034,Agriculture Production Pvt Ltd 5,Agriculture Production - Food,IN,BBB,,2026-06-30
+CP-00035,Agriculture Production Corp 6,Agriculture Production - Food,IN,B,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00036,Agriculture Production Holdings Ltd 7,Agriculture Production - Food,IN,B,,2026-06-30
+CP-00037,Agriculture Production Holdings Ltd 8,Agriculture Production - Food,IN,B,,2026-06-30
+CP-00038,Agriculture Production Industries Ltd 9,Agriculture Production - Food,IN,BB,,2026-06-30
+CP-00039,Agriculture Production Industries Ltd 10,Agriculture Production - Food,IN,B,,2026-06-30
+CP-00040,Agriculture Production Pvt Ltd 11,Agriculture Production - Food,IN,BBB,,2026-06-30
+CP-00041,Agriculture Production Pvt Ltd 12,Agriculture Production - Food,IN,BB,,2026-06-30
+CP-00042,Agriculture Production Corp 13,Agriculture Production - Food,IN,BB,,2026-06-30
+CP-00043,Agriculture Production Corp 14,Agriculture Production - Food,IN,B,,2026-06-30
+CP-00044,Agriculture Production Enterprises 1,Agriculture Production - Non food,IN,BBB,,2026-06-30
+CP-00045,Agriculture Production Corp 2,Agriculture Production - Non food,IN,B,,2026-06-30
+CP-00046,Agriculture Production Corp 3,Agriculture Production - Non food,IN,B,,2026-06-30
+CP-00047,Agriculture Production Industries Ltd 4,Agriculture Production - Non food,IN,BB,,2026-06-30
+CP-00048,Agriculture Production Holdings Ltd 5,Agriculture Production - Non food,IN,BBB,,2026-06-30
+CP-00049,Agriculture Production Corp 6,Agriculture Production - Non food,IN,B,,2026-06-30
+CP-00050,Agriculture Production Industries Ltd 7,Agriculture Production - Non food,IN,BB,,2026-06-30
+CP-00051,Agriculture Production Holdings Ltd 8,Agriculture Production - Non food,IN,B,,2026-06-30
+CP-00052,Agriculture Production Holdings Ltd 9,Agriculture Production - Non food,IN,B,,2026-06-30
+CP-00053,Agriculture Production Enterprises 10,Agriculture Production - Non food,IN,BB,,2026-06-30
+CP-00054,Agriculture Production Pvt Ltd 11,Agriculture Production - Non food,IN,B,,2026-06-30
+CP-00055,Agriculture Production Corp 12,Agriculture Production - Non food,IN,BB,,2026-06-30
+CP-00056,Agriculture Production Corp 13,Agriculture Production - Non food,IN,BB,,2026-06-30
+CP-00057,Agriculture Production Pvt Ltd 14,Agriculture Production - Non food,IN,B,,2026-06-30
+CP-00058,Animal Husbandry Corp 1,Animal Husbandry,IN,BBB,,2026-06-30
+CP-00059,Animal Husbandry Corp 2,Animal Husbandry,IN,BBB,,2026-06-30
+CP-00060,Animal Husbandry Corp 3,Animal Husbandry,IN,B,,2026-06-30
+CP-00061,Animal Husbandry Holdings Ltd 4,Animal Husbandry,IN,B,,2026-06-30
+CP-00062,Animal Husbandry Enterprises 5,Animal Husbandry,IN,B,,2026-06-30
+CP-00063,Animal Husbandry Industries Ltd 6,Animal Husbandry,IN,BBB,,2026-06-30
+CP-00064,Animal Husbandry Pvt Ltd 7,Animal Husbandry,IN,BB,,2026-06-30
+CP-00065,Animal Husbandry Pvt Ltd 8,Animal Husbandry,IN,BB,,2026-06-30
+CP-00066,Animal Husbandry Enterprises 9,Animal Husbandry,IN,B,,2026-06-30
+CP-00067,Animal Husbandry Holdings Ltd 10,Animal Husbandry,IN,BBB,,2026-06-30
+CP-00068,Animal Husbandry Corp 11,Animal Husbandry,IN,BB,,2026-06-30
+CP-00069,Animal Husbandry Holdings Ltd 12,Animal Husbandry,IN,BB,,2026-06-30
+CP-00070,Animal Husbandry Pvt Ltd 13,Animal Husbandry,IN,BB,,2026-06-30
+CP-00071,Automobile Holdings Ltd 1,Automobile & Auto Ancillary,IN,A,,2026-06-30
+CP-00072,Automobile Holdings Ltd 2,Automobile & Auto Ancillary,IN,BBB,,2026-06-30
+CP-00073,Automobile Pvt Ltd 3,Automobile & Auto Ancillary,IN,A,,2026-06-30
+CP-00074,Automobile Industries Ltd 4,Automobile & Auto Ancillary,IN,AA,,2026-06-30
+CP-00075,Automobile & Co 5,Automobile & Auto Ancillary,IN,AA,,2026-06-30
+CP-00076,Automobile Corp 6,Automobile & Auto Ancillary,IN,A,,2026-06-30
+CP-00077,Automobile Pvt Ltd 7,Automobile & Auto Ancillary,IN,A,,2026-06-30
+CP-00078,Automobile Pvt Ltd 8,Automobile & Auto Ancillary,IN,BBB,,2026-06-30
+CP-00079,Automobile Corp 9,Automobile & Auto Ancillary,IN,AA,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00080,Automobile Corp 10,Automobile & Auto Ancillary,IN,A,,2026-06-30
+CP-00081,Automobile Industries Ltd 11,Automobile & Auto Ancillary,IN,AA,,2026-06-30
+CP-00082,Automobile Industries Ltd 12,Automobile & Auto Ancillary,IN,A,,2026-06-30
+CP-00083,Automobile Pvt Ltd 13,Automobile & Auto Ancillary,IN,BBB,,2026-06-30
+CP-00084,Automobile Corp 14,Automobile & Auto Ancillary,IN,BBB,,2026-06-30
+CP-00085,Automobile Pvt Ltd 15,Automobile & Auto Ancillary,IN,A,,2026-06-30
+CP-00086,Banks Corp 1,Banks,IN,AAA,,2026-06-30
+CP-00087,Banks & Co 2,Banks,IN,AAA,,2026-06-30
+CP-00088,Banks Industries Ltd 3,Banks,IN,A,,2026-06-30
+CP-00089,Banks Pvt Ltd 4,Banks,IN,AA,,2026-06-30
+CP-00090,Banks Holdings Ltd 5,Banks,IN,AAA,,2026-06-30
+CP-00091,Banks Industries Ltd 6,Banks,IN,AAA,,2026-06-30
+CP-00092,Banks Corp 7,Banks,IN,AA,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00093,Banks Holdings Ltd 8,Banks,IN,A,,2026-06-30
+CP-00094,Banks Pvt Ltd 9,Banks,IN,AA,,2026-06-30
+CP-00095,Banks Pvt Ltd 10,Banks,IN,AAA,,2026-06-30
+CP-00096,Banks Pvt Ltd 11,Banks,IN,A,,2026-06-30
+CP-00097,Banks Pvt Ltd 12,Banks,IN,AAA,,2026-06-30
+CP-00098,Banks Pvt Ltd 13,Banks,IN,AAA,,2026-06-30
+CP-00099,Banks & Co 14,Banks,IN,AA,,2026-06-30
+CP-00100,Banks Corp 15,Banks,IN,AAA,,2026-06-30
+CP-00101,Business Services Industries Ltd 1,Business Services,IN,BBB,,2026-06-30
+CP-00102,Business Services Enterprises 2,Business Services,IN,A,,2026-06-30
+CP-00103,Business Services Enterprises 3,Business Services,IN,A,,2026-06-30
+CP-00104,Business Services Enterprises 4,Business Services,IN,BBB,,2026-06-30
+CP-00105,Business Services Pvt Ltd 5,Business Services,IN,BBB,,2026-06-30
+CP-00106,Business Services Industries Ltd 6,Business Services,IN,A,,2026-06-30
+CP-00107,Business Services Pvt Ltd 7,Business Services,IN,A,,2026-06-30
+CP-00108,Business Services Corp 8,Business Services,IN,A,,2026-06-30
+CP-00109,Business Services Enterprises 9,Business Services,IN,AA,,2026-06-30
+CP-00110,Business Services Corp 10,Business Services,IN,AA,,2026-06-30
+CP-00111,Business Services Corp 11,Business Services,IN,A,,2026-06-30
+CP-00112,Business Services & Co 12,Business Services,IN,A,,2026-06-30
+CP-00113,Business Services Corp 13,Business Services,IN,AA,,2026-06-30
+CP-00114,Business Services Corp 14,Business Services,IN,BBB,,2026-06-30
+CP-00115,Business Services Corp 15,Business Services,IN,AA,,2026-06-30
+CP-00116,Capital Market Intermedi Corp 1,Capital Market Intermediaries,IN,BBB,,2026-06-30
+CP-00117,Capital Market Intermedi Industries Ltd 2,Capital Market Intermediaries,IN,BB,,2026-06-30
+CP-00118,Capital Market Intermedi Industries Ltd 3,Capital Market Intermediaries,IN,BBB,,2026-06-30
+CP-00119,Capital Market Intermedi Industries Ltd 4,Capital Market Intermediaries,IN,BBB,,2026-06-30
+CP-00120,Capital Market Intermedi Enterprises 5,Capital Market Intermediaries,IN,BBB,,2026-06-30
+CP-00121,Capital Market Intermedi Holdings Ltd 6,Capital Market Intermediaries,IN,BB,,2026-06-30
+CP-00122,Capital Market Intermedi Corp 7,Capital Market Intermediaries,IN,BB,,2026-06-30
+CP-00123,Capital Market Intermedi & Co 8,Capital Market Intermediaries,IN,BB,,2026-06-30
+CP-00124,Capital Market Intermedi Enterprises 9,Capital Market Intermediaries,IN,BBB,,2026-06-30
+CP-00125,Capital Market Intermedi Pvt Ltd 10,Capital Market Intermediaries,IN,A,,2026-06-30
+CP-00126,Capital Market Intermedi Pvt Ltd 11,Capital Market Intermediaries,IN,BB,,2026-06-30
+CP-00127,Capital Market Intermedi Industries Ltd 12,Capital Market Intermediaries,IN,A,,2026-06-30
+CP-00128,Capital Market Intermedi Industries Ltd 13,Capital Market Intermediaries,IN,A,,2026-06-30
+CP-00129,Capital Market Intermedi Holdings Ltd 14,Capital Market Intermediaries,IN,BB,,2026-06-30
+CP-00130,Cement Holdings Ltd 1,Cement & Products,IN,A,,2026-06-30
+CP-00131,Cement Corp 2,Cement & Products,IN,AA,,2026-06-30
+CP-00132,Cement Enterprises 3,Cement & Products,IN,AA,,2026-06-30
+CP-00133,Cement Pvt Ltd 4,Cement & Products,IN,A,,2026-06-30
+CP-00134,Cement Pvt Ltd 5,Cement & Products,IN,AAA,,2026-06-30
+CP-00135,Cement Industries Ltd 6,Cement & Products,IN,AAA,,2026-06-30
+CP-00136,Cement Pvt Ltd 7,Cement & Products,IN,AA,,2026-06-30
+CP-00137,Cement Corp 8,Cement & Products,IN,AA,,2026-06-30
+CP-00138,Cement & Co 9,Cement & Products,IN,AA,,2026-06-30
+CP-00139,Cement Holdings Ltd 10,Cement & Products,IN,AAA,,2026-06-30
+CP-00140,Cement Enterprises 11,Cement & Products,IN,AA,,2026-06-30
+CP-00141,Cement Holdings Ltd 12,Cement & Products,IN,AAA,,2026-06-30
+CP-00142,Cement Holdings Ltd 13,Cement & Products,IN,AA,,2026-06-30
+CP-00143,Chemical and Products Enterprises 1,Chemical and Products,IN,A,,2026-06-30
+CP-00144,Chemical and Products Industries Ltd 2,Chemical and Products,IN,BBB,,2026-06-30
+CP-00145,Chemical and Products Corp 3,Chemical and Products,IN,A,,2026-06-30
+CP-00146,Chemical and Products Pvt Ltd 4,Chemical and Products,IN,A,,2026-06-30
+CP-00147,Chemical and Products Industries Ltd 5,Chemical and Products,IN,A,,2026-06-30
+CP-00148,Chemical and Products Enterprises 6,Chemical and Products,IN,AA,,2026-06-30
+CP-00149,Chemical and Products Holdings Ltd 7,Chemical and Products,IN,A,,2026-06-30
+CP-00150,Chemical and Products Corp 8,Chemical and Products,IN,BBB,,2026-06-30
+CP-00151,Chemical and Products Holdings Ltd 9,Chemical and Products,IN,A,,2026-06-30
+CP-00152,Chemical and Products Enterprises 10,Chemical and Products,IN,BBB,,2026-06-30
+CP-00153,Chemical and Products Enterprises 11,Chemical and Products,IN,A,,2026-06-30
+CP-00154,Chemical and Products Enterprises 12,Chemical and Products,IN,A,,2026-06-30
+CP-00155,Chemical and Products Holdings Ltd 13,Chemical and Products,IN,BBB,,2026-06-30
+CP-00156,Chemical and Products Holdings Ltd 14,Chemical and Products,IN,AA,,2026-06-30
+CP-00157,Coal Enterprises 1,Coal & Petroleum Products,IN,AAA,,2026-06-30
+CP-00158,Coal Enterprises 2,Coal & Petroleum Products,IN,AAA,,2026-06-30
+CP-00159,Coal Corp 3,Coal & Petroleum Products,IN,AA,,2026-06-30
+CP-00160,Coal & Co 4,Coal & Petroleum Products,IN,AAA,,2026-06-30
+CP-00161,Coal Enterprises 5,Coal & Petroleum Products,IN,A,,2026-06-30
+CP-00162,Coal Holdings Ltd 6,Coal & Petroleum Products,Overseas,AAA,,2026-06-30
+CP-00163,Coal Corp 7,Coal & Petroleum Products,IN,AAA,,2026-06-30
+CP-00164,Coal Industries Ltd 8,Coal & Petroleum Products,IN,AAA,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00165,Coal Industries Ltd 9,Coal & Petroleum Products,IN,AA,,2026-06-30
+CP-00166,Coal Industries Ltd 10,Coal & Petroleum Products,IN,AAA,,2026-06-30
+CP-00167,Coal Corp 11,Coal & Petroleum Products,IN,AA,,2026-06-30
+CP-00168,Coal Industries Ltd 12,Coal & Petroleum Products,IN,AA,,2026-06-30
+CP-00169,Coal Holdings Ltd 13,Coal & Petroleum Products,IN,AAA,,2026-06-30
+CP-00170,Coal Enterprises 14,Coal & Petroleum Products,IN,AAA,,2026-06-30
+CP-00171,Coal Holdings Ltd 15,Coal & Petroleum Products,IN,A,,2026-06-30
+CP-00172,Consumer Durables & Co 1,Consumer Durables,IN,AA,,2026-06-30
+CP-00173,Consumer Durables Enterprises 2,Consumer Durables,IN,BBB,,2026-06-30
+CP-00174,Consumer Durables Pvt Ltd 3,Consumer Durables,Overseas,A,,2026-06-30
+CP-00175,Consumer Durables Corp 4,Consumer Durables,IN,BBB,,2026-06-30
+CP-00176,Consumer Durables Holdings Ltd 5,Consumer Durables,IN,A,,2026-06-30
+CP-00177,Consumer Durables Pvt Ltd 6,Consumer Durables,IN,A,,2026-06-30
+CP-00178,Consumer Durables Holdings Ltd 7,Consumer Durables,IN,BBB,,2026-06-30
+CP-00179,Consumer Durables Enterprises 8,Consumer Durables,IN,BBB,,2026-06-30
+CP-00180,Consumer Durables Corp 9,Consumer Durables,IN,A,,2026-06-30
+CP-00181,Consumer Durables Pvt Ltd 10,Consumer Durables,IN,AA,,2026-06-30
+CP-00182,Consumer Durables Corp 11,Consumer Durables,IN,A,,2026-06-30
+CP-00183,Consumer Durables Industries Ltd 12,Consumer Durables,IN,AA,,2026-06-30
+CP-00184,Consumer Durables Industries Ltd 13,Consumer Durables,IN,A,,2026-06-30
+CP-00185,Consumer Durables & Co 14,Consumer Durables,IN,AA,,2026-06-30
+CP-00186,Consumer Loans Pvt Ltd 1,Consumer Loans,IN,AA,,2026-06-30
+CP-00187,Consumer Loans Corp 2,Consumer Loans,IN,BBB,,2026-06-30
+CP-00188,Consumer Loans Enterprises 3,Consumer Loans,IN,AA,,2026-06-30
+CP-00189,Consumer Loans Pvt Ltd 4,Consumer Loans,IN,AA,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00190,Consumer Loans Industries Ltd 5,Consumer Loans,IN,A,,2026-06-30
+CP-00191,Consumer Loans Enterprises 6,Consumer Loans,IN,AA,,2026-06-30
+CP-00192,Consumer Loans Enterprises 7,Consumer Loans,IN,BBB,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00193,Consumer Loans Enterprises 8,Consumer Loans,IN,A,,2026-06-30
+CP-00194,Consumer Loans Enterprises 9,Consumer Loans,IN,AA,,2026-06-30
+CP-00195,Consumer Loans & Co 10,Consumer Loans,IN,BBB,,2026-06-30
+CP-00196,Consumer Loans Pvt Ltd 11,Consumer Loans,IN,BBB,,2026-06-30
+CP-00197,Consumer Loans Industries Ltd 12,Consumer Loans,IN,BBB,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00198,Consumer Loans Pvt Ltd 13,Consumer Loans,IN,AA,,2026-06-30
+CP-00199,Consumer Loans Industries Ltd 14,Consumer Loans,IN,A,,2026-06-30
+CP-00200,Consumer Loans & Co 15,Consumer Loans,IN,AA,,2026-06-30
+CP-00201,Consumer Loans Pvt Ltd 16,Consumer Loans,IN,A,,2026-06-30
+CP-00202,Consumer Loans Enterprises 17,Consumer Loans,IN,AA,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00203,Consumer Services Industries Ltd 1,Consumer Services,IN,BBB,,2026-06-30
+CP-00204,Consumer Services Corp 2,Consumer Services,IN,A,,2026-06-30
+CP-00205,Consumer Services Industries Ltd 3,Consumer Services,IN,AA,,2026-06-30
+CP-00206,Consumer Services Enterprises 4,Consumer Services,IN,AA,,2026-06-30
+CP-00207,Consumer Services Enterprises 5,Consumer Services,IN,A,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00208,Consumer Services Corp 6,Consumer Services,IN,A,,2026-06-30
+CP-00209,Consumer Services Enterprises 7,Consumer Services,IN,A,,2026-06-30
+CP-00210,Consumer Services Corp 8,Consumer Services,IN,BBB,,2026-06-30
+CP-00211,Consumer Services & Co 9,Consumer Services,IN,BBB,,2026-06-30
+CP-00212,Consumer Services Enterprises 10,Consumer Services,IN,AA,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00213,Consumer Services Enterprises 11,Consumer Services,IN,A,,2026-06-30
+CP-00214,Consumer Services Pvt Ltd 12,Consumer Services,IN,A,,2026-06-30
+CP-00215,Consumer Services Enterprises 13,Consumer Services,IN,A,,2026-06-30
+CP-00216,Consumer Services Pvt Ltd 14,Consumer Services,IN,BBB,,2026-06-30
+CP-00217,Consumer Services Industries Ltd 15,Consumer Services,IN,BBB,,2026-06-30
+CP-00218,Drugs and Pharmaceutical Holdings Ltd 1,Drugs and Pharmaceuticals,IN,BBB,,2026-06-30
+CP-00219,Drugs and Pharmaceutical Enterprises 2,Drugs and Pharmaceuticals,IN,BBB,,2026-06-30
+CP-00220,Drugs and Pharmaceutical Holdings Ltd 3,Drugs and Pharmaceuticals,IN,BBB,,2026-06-30
+CP-00221,Drugs and Pharmaceutical & Co 4,Drugs and Pharmaceuticals,IN,A,,2026-06-30
+CP-00222,Drugs and Pharmaceutical Enterprises 5,Drugs and Pharmaceuticals,IN,BBB,,2026-06-30
+CP-00223,Drugs and Pharmaceutical & Co 6,Drugs and Pharmaceuticals,IN,A,,2026-06-30
+CP-00224,Drugs and Pharmaceutical & Co 7,Drugs and Pharmaceuticals,IN,A,,2026-06-30
+CP-00225,Drugs and Pharmaceutical Enterprises 8,Drugs and Pharmaceuticals,IN,BB,,2026-06-30
+CP-00226,Drugs and Pharmaceutical Enterprises 9,Drugs and Pharmaceuticals,IN,BBB,,2026-06-30
+CP-00227,Drugs and Pharmaceutical Holdings Ltd 10,Drugs and Pharmaceuticals,IN,BBB,,2026-06-30
+CP-00228,Drugs and Pharmaceutical Corp 11,Drugs and Pharmaceuticals,IN,BBB,,2026-06-30
+CP-00229,Drugs and Pharmaceutical Pvt Ltd 12,Drugs and Pharmaceuticals,IN,BB,,2026-06-30
+CP-00230,Drugs and Pharmaceutical & Co 13,Drugs and Pharmaceuticals,IN,BBB,,2026-06-30
+CP-00231,Drugs and Pharmaceutical Corp 14,Drugs and Pharmaceuticals,IN,BB,,2026-06-30
+CP-00232,Engineering Corp 1,Engineering,IN,AA,,2026-06-30
+CP-00233,Engineering Corp 2,Engineering,Overseas,A,,2026-06-30
+CP-00234,Engineering Corp 3,Engineering,IN,BBB,,2026-06-30
+CP-00235,Engineering Corp 4,Engineering,IN,BBB,,2026-06-30
+CP-00236,Engineering Industries Ltd 5,Engineering,IN,A,,2026-06-30
+CP-00237,Engineering Industries Ltd 6,Engineering,IN,AA,,2026-06-30
+CP-00238,Engineering Industries Ltd 7,Engineering,IN,A,,2026-06-30
+CP-00239,Engineering Enterprises 8,Engineering,IN,BBB,,2026-06-30
+CP-00240,Engineering Corp 9,Engineering,IN,AA,,2026-06-30
+CP-00241,Engineering Enterprises 10,Engineering,IN,BBB,,2026-06-30
+CP-00242,Engineering Enterprises 11,Engineering,IN,BBB,,2026-06-30
+CP-00243,Engineering Industries Ltd 12,Engineering,IN,AA,,2026-06-30
+CP-00244,Engineering Industries Ltd 13,Engineering,IN,AA,,2026-06-30
+CP-00245,Engineering Corp 14,Engineering,IN,A,,2026-06-30
+CP-00246,Engineering & Co 15,Engineering,IN,A,,2026-06-30
+CP-00247,Fertilisers Pvt Ltd 1,Fertilisers & Pesticides,IN,BBB,,2026-06-30
+CP-00248,Fertilisers Enterprises 2,Fertilisers & Pesticides,IN,BBB,,2026-06-30
+CP-00249,Fertilisers Holdings Ltd 3,Fertilisers & Pesticides,IN,A,,2026-06-30
+CP-00250,Fertilisers & Co 4,Fertilisers & Pesticides,IN,AA,,2026-06-30
+CP-00251,Fertilisers Pvt Ltd 5,Fertilisers & Pesticides,IN,A,,2026-06-30
+CP-00252,Fertilisers Pvt Ltd 6,Fertilisers & Pesticides,IN,A,,2026-06-30
+CP-00253,Fertilisers Enterprises 7,Fertilisers & Pesticides,IN,AA,,2026-06-30
+CP-00254,Fertilisers Corp 8,Fertilisers & Pesticides,IN,BBB,,2026-06-30
+CP-00255,Fertilisers & Co 9,Fertilisers & Pesticides,IN,AA,,2026-06-30
+CP-00256,Fertilisers & Co 10,Fertilisers & Pesticides,IN,AA,,2026-06-30
+CP-00257,Fertilisers Enterprises 11,Fertilisers & Pesticides,IN,A,,2026-06-30
+CP-00258,Fertilisers Industries Ltd 12,Fertilisers & Pesticides,IN,AA,,2026-06-30
+CP-00259,Fertilisers Pvt Ltd 13,Fertilisers & Pesticides,IN,A,,2026-06-30
+CP-00260,Financial Institutions Pvt Ltd 1,Financial Institutions,IN,AAA,,2026-06-30
+CP-00261,Financial Institutions Pvt Ltd 2,Financial Institutions,IN,AA,,2026-06-30
+CP-00262,Financial Institutions Industries Ltd 3,Financial Institutions,IN,AA,,2026-06-30
+CP-00263,Financial Institutions Corp 4,Financial Institutions,IN,AAA,,2026-06-30
+CP-00264,Financial Institutions Holdings Ltd 5,Financial Institutions,IN,AAA,,2026-06-30
+CP-00265,Financial Institutions & Co 6,Financial Institutions,IN,AAA,,2026-06-30
+CP-00266,Financial Institutions Corp 7,Financial Institutions,IN,AAA,,2026-06-30
+CP-00267,Financial Institutions & Co 8,Financial Institutions,IN,AAA,,2026-06-30
+CP-00268,Financial Institutions Industries Ltd 9,Financial Institutions,IN,AAA,,2026-06-30
+CP-00269,Financial Institutions Holdings Ltd 10,Financial Institutions,IN,AAA,,2026-06-30
+CP-00270,Financial Institutions Holdings Ltd 11,Financial Institutions,IN,A,,2026-06-30
+CP-00271,Financial Institutions Pvt Ltd 12,Financial Institutions,IN,AAA,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00272,Financial Institutions Enterprises 13,Financial Institutions,IN,AA,,2026-06-30
+CP-00273,Financial Institutions & Co 14,Financial Institutions,IN,A,,2026-06-30
+CP-00274,Financial Institutions Enterprises 15,Financial Institutions,IN,AA,,2026-06-30
+CP-00275,Financial Intermediaries Industries Ltd 1,Financial Intermediaries,IN,AAA,,2026-06-30
+CP-00276,Financial Intermediaries Enterprises 2,Financial Intermediaries,IN,AA,,2026-06-30
+CP-00277,Financial Intermediaries Holdings Ltd 3,Financial Intermediaries,IN,AAA,,2026-06-30
+CP-00278,Financial Intermediaries Corp 4,Financial Intermediaries,IN,AA,,2026-06-30
+CP-00279,Financial Intermediaries Enterprises 5,Financial Intermediaries,IN,AA,,2026-06-30
+CP-00280,Financial Intermediaries Enterprises 6,Financial Intermediaries,IN,AA,,2026-06-30
+CP-00281,Financial Intermediaries Industries Ltd 7,Financial Intermediaries,IN,AAA,,2026-06-30
+CP-00282,Financial Intermediaries Corp 8,Financial Intermediaries,IN,AAA,,2026-06-30
+CP-00283,Financial Intermediaries Enterprises 9,Financial Intermediaries,IN,AA,,2026-06-30
+CP-00284,Financial Intermediaries Corp 10,Financial Intermediaries,Overseas,AAA,,2026-06-30
+CP-00285,Financial Intermediaries Enterprises 11,Financial Intermediaries,IN,AA,,2026-06-30
+CP-00286,Financial Intermediaries Industries Ltd 12,Financial Intermediaries,IN,AA,,2026-06-30
+CP-00287,Financial Intermediaries Holdings Ltd 13,Financial Intermediaries,IN,AAA,,2026-06-30
+CP-00288,Financial Intermediaries Enterprises 14,Financial Intermediaries,IN,AAA,,2026-06-30
+CP-00289,FMCG Industries Ltd 1,FMCG & Personal Care,IN,AA,,2026-06-30
+CP-00290,FMCG Holdings Ltd 2,FMCG & Personal Care,IN,A,,2026-06-30
+CP-00291,FMCG Pvt Ltd 3,FMCG & Personal Care,IN,AA,,2026-06-30
+CP-00292,FMCG Industries Ltd 4,FMCG & Personal Care,IN,A,,2026-06-30
+CP-00293,FMCG & Co 5,FMCG & Personal Care,IN,AA,,2026-06-30
+CP-00294,FMCG Industries Ltd 6,FMCG & Personal Care,IN,A,,2026-06-30
+CP-00295,FMCG & Co 7,FMCG & Personal Care,IN,BBB,,2026-06-30
+CP-00296,FMCG Holdings Ltd 8,FMCG & Personal Care,IN,BBB,,2026-06-30
+CP-00297,FMCG Pvt Ltd 9,FMCG & Personal Care,IN,AA,,2026-06-30
+CP-00298,FMCG Pvt Ltd 10,FMCG & Personal Care,IN,BBB,,2026-06-30
+CP-00299,FMCG Holdings Ltd 11,FMCG & Personal Care,IN,A,,2026-06-30
+CP-00300,FMCG Corp 12,FMCG & Personal Care,IN,AA,,2026-06-30
+CP-00301,FMCG Corp 13,FMCG & Personal Care,IN,BBB,,2026-06-30
+CP-00302,Food and Beverage Enterprises 1,Food and Beverage,IN,BBB,,2026-06-30
+CP-00303,Food and Beverage Industries Ltd 2,Food and Beverage,IN,A,,2026-06-30
+CP-00304,Food and Beverage Corp 3,Food and Beverage,IN,BB,,2026-06-30
+CP-00305,Food and Beverage Enterprises 4,Food and Beverage,IN,BB,,2026-06-30
+CP-00306,Food and Beverage Corp 5,Food and Beverage,IN,A,,2026-06-30
+CP-00307,Food and Beverage Holdings Ltd 6,Food and Beverage,IN,A,,2026-06-30
+CP-00308,Food and Beverage Holdings Ltd 7,Food and Beverage,IN,A,,2026-06-30
+CP-00309,Food and Beverage Industries Ltd 8,Food and Beverage,IN,BB,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00310,Food and Beverage Holdings Ltd 9,Food and Beverage,IN,A,,2026-06-30
+CP-00311,Food and Beverage Enterprises 10,Food and Beverage,IN,A,,2026-06-30
+CP-00312,Food and Beverage & Co 11,Food and Beverage,IN,A,,2026-06-30
+CP-00313,Food and Beverage & Co 12,Food and Beverage,IN,BB,,2026-06-30
+CP-00314,Food and Beverage Enterprises 13,Food and Beverage,IN,BBB,,2026-06-30
+CP-00315,Food and Beverage Enterprises 14,Food and Beverage,IN,BB,,2026-06-30
+CP-00316,Food and Beverage Enterprises 15,Food and Beverage,IN,BB,,2026-06-30
+CP-00317,Gems and Jewellery & Co 1,Gems and Jewellery,IN,AAA,,2026-06-30
+CP-00318,Gems and Jewellery Corp 2,Gems and Jewellery,IN,AA,,2026-06-30
+CP-00319,Gems and Jewellery Industries Ltd 3,Gems and Jewellery,IN,AAA,,2026-06-30
+CP-00320,Gems and Jewellery Industries Ltd 4,Gems and Jewellery,IN,A,,2026-06-30
+CP-00321,Gems and Jewellery & Co 5,Gems and Jewellery,IN,AAA,,2026-06-30
+CP-00322,Gems and Jewellery Corp 6,Gems and Jewellery,IN,AA,,2026-06-30
+CP-00323,Gems and Jewellery Corp 7,Gems and Jewellery,IN,AAA,,2026-06-30
+CP-00324,Gems and Jewellery Pvt Ltd 8,Gems and Jewellery,IN,AA,,2026-06-30
+CP-00325,Gems and Jewellery Corp 9,Gems and Jewellery,IN,AA,,2026-06-30
+CP-00326,Gems and Jewellery Holdings Ltd 10,Gems and Jewellery,IN,AAA,,2026-06-30
+CP-00327,Gems and Jewellery Pvt Ltd 11,Gems and Jewellery,IN,AAA,,2026-06-30
+CP-00328,Gems and Jewellery Enterprises 12,Gems and Jewellery,IN,AA,,2026-06-30
+CP-00329,Gems and Jewellery Enterprises 13,Gems and Jewellery,IN,A,,2026-06-30
+CP-00330,Gems and Jewellery Holdings Ltd 14,Gems and Jewellery,IN,AAA,,2026-06-30
+CP-00331,Housing Finance Companie Enterprises 1,Housing Finance Companies,IN,AAA,,2026-06-30
+CP-00332,Housing Finance Companie Enterprises 2,Housing Finance Companies,IN,AA,,2026-06-30
+CP-00333,Housing Finance Companie & Co 3,Housing Finance Companies,IN,AAA,,2026-06-30
+CP-00334,Housing Finance Companie Industries Ltd 4,Housing Finance Companies,IN,A,,2026-06-30
+CP-00335,Housing Finance Companie Holdings Ltd 5,Housing Finance Companies,IN,AA,,2026-06-30
+CP-00336,Housing Finance Companie & Co 6,Housing Finance Companies,IN,A,,2026-06-30
+CP-00337,Housing Finance Companie Industries Ltd 7,Housing Finance Companies,IN,AAA,,2026-06-30
+CP-00338,Housing Finance Companie Industries Ltd 8,Housing Finance Companies,IN,AAA,,2026-06-30
+CP-00339,Housing Finance Companie Industries Ltd 9,Housing Finance Companies,IN,AAA,,2026-06-30
+CP-00340,Housing Finance Companie Industries Ltd 10,Housing Finance Companies,IN,AA,,2026-06-30
+CP-00341,Housing Finance Companie Enterprises 11,Housing Finance Companies,IN,AA,,2026-06-30
+CP-00342,Housing Finance Companie Pvt Ltd 12,Housing Finance Companies,IN,AAA,,2026-06-30
+CP-00343,Housing Finance Companie Pvt Ltd 13,Housing Finance Companies,IN,AA,,2026-06-30
+CP-00344,Housing Finance Companie Enterprises 14,Housing Finance Companies,IN,A,,2026-06-30
+CP-00345,Information Technology Enterprises 1,Information Technology,IN,BBB,,2026-06-30
+CP-00346,Information Technology Holdings Ltd 2,Information Technology,IN,AA,,2026-06-30
+CP-00347,Information Technology Corp 3,Information Technology,IN,BBB,,2026-06-30
+CP-00348,Information Technology Industries Ltd 4,Information Technology,IN,AA,,2026-06-30
+CP-00349,Information Technology Pvt Ltd 5,Information Technology,IN,BBB,,2026-06-30
+CP-00350,Information Technology Enterprises 6,Information Technology,IN,A,,2026-06-30
+CP-00351,Information Technology Holdings Ltd 7,Information Technology,IN,A,,2026-06-30
+CP-00352,Information Technology Enterprises 8,Information Technology,IN,AA,,2026-06-30
+CP-00353,Information Technology & Co 9,Information Technology,IN,A,,2026-06-30
+CP-00354,Information Technology Industries Ltd 10,Information Technology,IN,A,,2026-06-30
+CP-00355,Information Technology & Co 11,Information Technology,IN,BBB,,2026-06-30
+CP-00356,Information Technology & Co 12,Information Technology,IN,A,,2026-06-30
+CP-00357,Information Technology Corp 13,Information Technology,IN,AA,,2026-06-30
+CP-00358,Infrastructure Developme & Co 1,Infrastructure Development,IN,A,,2026-06-30
+CP-00359,Infrastructure Developme Pvt Ltd 2,Infrastructure Development,IN,BBB,,2026-06-30
+CP-00360,Infrastructure Developme Corp 3,Infrastructure Development,IN,AA,,2026-06-30
+CP-00361,Infrastructure Developme Corp 4,Infrastructure Development,IN,AA,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00362,Infrastructure Developme & Co 5,Infrastructure Development,IN,A,,2026-06-30
+CP-00363,Infrastructure Developme Corp 6,Infrastructure Development,IN,A,,2026-06-30
+CP-00364,Infrastructure Developme Pvt Ltd 7,Infrastructure Development,IN,BBB,,2026-06-30
+CP-00365,Infrastructure Developme Pvt Ltd 8,Infrastructure Development,IN,BBB,,2026-06-30
+CP-00366,Infrastructure Developme & Co 9,Infrastructure Development,IN,A,,2026-06-30
+CP-00367,Infrastructure Developme Pvt Ltd 10,Infrastructure Development,IN,BBB,,2026-06-30
+CP-00368,Infrastructure Developme Holdings Ltd 11,Infrastructure Development,IN,BBB,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00369,Infrastructure Developme Pvt Ltd 12,Infrastructure Development,IN,BBB,,2026-06-30
+CP-00370,Infrastructure Developme & Co 13,Infrastructure Development,IN,A,,2026-06-30
+CP-00371,Infrastructure Developme Holdings Ltd 14,Infrastructure Development,IN,BBB,,2026-06-30
+CP-00372,Infrastructure Developme Enterprises 15,Infrastructure Development,IN,A,,2026-06-30
+CP-00373,Iron and Steel Corp 1,Iron and Steel,IN,A,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00374,Iron and Steel Corp 2,Iron and Steel,IN,A,,2026-06-30
+CP-00375,Iron and Steel Enterprises 3,Iron and Steel,IN,AA,,2026-06-30
+CP-00376,Iron and Steel & Co 4,Iron and Steel,IN,BBB,,2026-06-30
+CP-00377,Iron and Steel & Co 5,Iron and Steel,IN,A,,2026-06-30
+CP-00378,Iron and Steel Industries Ltd 6,Iron and Steel,IN,BBB,,2026-06-30
+CP-00379,Iron and Steel & Co 7,Iron and Steel,IN,BBB,,2026-06-30
+CP-00380,Iron and Steel Industries Ltd 8,Iron and Steel,IN,AA,,2026-06-30
+CP-00381,Iron and Steel Enterprises 9,Iron and Steel,IN,AA,,2026-06-30
+CP-00382,Iron and Steel Pvt Ltd 10,Iron and Steel,IN,AA,,2026-06-30
+CP-00383,Iron and Steel Enterprises 11,Iron and Steel,IN,AA,,2026-06-30
+CP-00384,Iron and Steel Holdings Ltd 12,Iron and Steel,IN,BBB,,2026-06-30
+CP-00385,Iron and Steel Enterprises 13,Iron and Steel,IN,BBB,,2026-06-30
+CP-00386,Iron and Steel & Co 14,Iron and Steel,IN,BBB,,2026-06-30
+CP-00387,Iron and Steel Pvt Ltd 15,Iron and Steel,IN,A,,2026-06-30
+CP-00388,Mining and Minerals Corp 1,Mining and Minerals,IN,AA,,2026-06-30
+CP-00389,Mining and Minerals Corp 2,Mining and Minerals,IN,AA,,2026-06-30
+CP-00390,Mining and Minerals & Co 3,Mining and Minerals,IN,AA,,2026-06-30
+CP-00391,Mining and Minerals Corp 4,Mining and Minerals,IN,AAA,,2026-06-30
+CP-00392,Mining and Minerals & Co 5,Mining and Minerals,IN,A,,2026-06-30
+CP-00393,Mining and Minerals Corp 6,Mining and Minerals,IN,AA,,2026-06-30
+CP-00394,Mining and Minerals Pvt Ltd 7,Mining and Minerals,IN,AA,,2026-06-30
+CP-00395,Mining and Minerals & Co 8,Mining and Minerals,IN,AA,,2026-06-30
+CP-00396,Mining and Minerals Enterprises 9,Mining and Minerals,IN,A,,2026-06-30
+CP-00397,Mining and Minerals Pvt Ltd 10,Mining and Minerals,IN,AAA,,2026-06-30
+CP-00398,Mining and Minerals Enterprises 11,Mining and Minerals,IN,AAA,,2026-06-30
+CP-00399,Mining and Minerals Enterprises 12,Mining and Minerals,IN,AAA,,2026-06-30
+CP-00400,Mining and Minerals Pvt Ltd 13,Mining and Minerals,IN,AAA,,2026-06-30
+CP-00401,Mining and Minerals Holdings Ltd 14,Mining and Minerals,IN,AA,,2026-06-30
+CP-00402,NBFCs Industries Ltd 1,NBFCs,IN,AAA,,2026-06-30
+CP-00403,NBFCs Pvt Ltd 2,NBFCs,IN,A,,2026-06-30
+CP-00404,NBFCs Industries Ltd 3,NBFCs,IN,AAA,,2026-06-30
+CP-00405,NBFCs Corp 4,NBFCs,IN,AA,,2026-06-30
+CP-00406,NBFCs Corp 5,NBFCs,Overseas,AAA,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00407,NBFCs Pvt Ltd 6,NBFCs,IN,AA,,2026-06-30
+CP-00408,NBFCs Corp 7,NBFCs,IN,AAA,,2026-06-30
+CP-00409,NBFCs Industries Ltd 8,NBFCs,IN,AA,,2026-06-30
+CP-00410,NBFCs Corp 9,NBFCs,IN,AA,,2026-06-30
+CP-00411,NBFCs Corp 10,NBFCs,IN,AA,,2026-06-30
+CP-00412,NBFCs Corp 11,NBFCs,IN,AAA,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00413,NBFCs Enterprises 12,NBFCs,IN,AA,,2026-06-30
+CP-00414,NBFCs Enterprises 13,NBFCs,IN,AAA,,2026-06-30
+CP-00415,NBFCs & Co 14,NBFCs,IN,A,,2026-06-30
+CP-00416,NBFCs & Co 15,NBFCs,IN,AAA,,2026-06-30
+CP-00417,NBFCs & Co 16,NBFCs,IN,AA,,2026-06-30
+CP-00418,Non-ferrous Metals Enterprises 1,Non-ferrous Metals,IN,BBB,,2026-06-30
+CP-00419,Non-ferrous Metals Corp 2,Non-ferrous Metals,IN,BBB,,2026-06-30
+CP-00420,Non-ferrous Metals Holdings Ltd 3,Non-ferrous Metals,IN,AA,,2026-06-30
+CP-00421,Non-ferrous Metals Enterprises 4,Non-ferrous Metals,IN,A,,2026-06-30
+CP-00422,Non-ferrous Metals Industries Ltd 5,Non-ferrous Metals,IN,A,,2026-06-30
+CP-00423,Non-ferrous Metals Corp 6,Non-ferrous Metals,IN,AA,,2026-06-30
+CP-00424,Non-ferrous Metals Holdings Ltd 7,Non-ferrous Metals,IN,AA,,2026-06-30
+CP-00425,Non-ferrous Metals Corp 8,Non-ferrous Metals,IN,BBB,,2026-06-30
+CP-00426,Non-ferrous Metals Pvt Ltd 9,Non-ferrous Metals,IN,A,,2026-06-30
+CP-00427,Non-ferrous Metals Industries Ltd 10,Non-ferrous Metals,IN,BBB,,2026-06-30
+CP-00428,Non-ferrous Metals Holdings Ltd 11,Non-ferrous Metals,IN,A,,2026-06-30
+CP-00429,Non-ferrous Metals Corp 12,Non-ferrous Metals,IN,AA,,2026-06-30
+CP-00430,Non-ferrous Metals Holdings Ltd 13,Non-ferrous Metals,IN,BBB,,2026-06-30
+CP-00431,Non-ferrous Metals Corp 14,Non-ferrous Metals,IN,AA,,2026-06-30
+CP-00432,Other Non-metalic Minera Pvt Ltd 1,Other Non-metalic Mineral Products,IN,A,,2026-06-30
+CP-00433,Other Non-metalic Minera & Co 2,Other Non-metalic Mineral Products,IN,A,,2026-06-30
+CP-00434,Other Non-metalic Minera Enterprises 3,Other Non-metalic Mineral Products,IN,AA,,2026-06-30
+CP-00435,Other Non-metalic Minera Industries Ltd 4,Other Non-metalic Mineral Products,IN,A,,2026-06-30
+CP-00436,Other Non-metalic Minera Pvt Ltd 5,Other Non-metalic Mineral Products,IN,AA,,2026-06-30
+CP-00437,Other Non-metalic Minera Industries Ltd 6,Other Non-metalic Mineral Products,Overseas,AA,,2026-06-30
+CP-00438,Other Non-metalic Minera Pvt Ltd 7,Other Non-metalic Mineral Products,IN,A,,2026-06-30
+CP-00439,Other Non-metalic Minera Industries Ltd 8,Other Non-metalic Mineral Products,IN,A,,2026-06-30
+CP-00440,Other Non-metalic Minera & Co 9,Other Non-metalic Mineral Products,IN,A,,2026-06-30
+CP-00441,Other Non-metalic Minera Pvt Ltd 10,Other Non-metalic Mineral Products,IN,A,,2026-06-30
+CP-00442,Other Non-metalic Minera Pvt Ltd 11,Other Non-metalic Mineral Products,IN,A,,2026-06-30
+CP-00443,Other Non-metalic Minera Corp 12,Other Non-metalic Mineral Products,IN,BBB,,2026-06-30
+CP-00444,Other Non-metalic Minera Industries Ltd 13,Other Non-metalic Mineral Products,IN,AA,,2026-06-30
+CP-00445,"Paper, Printing and Stat Pvt Ltd 1","Paper, Printing and Stationery",IN,BBB,,2026-06-30
+CP-00446,"Paper, Printing and Stat Holdings Ltd 2","Paper, Printing and Stationery",IN,A,,2026-06-30
+CP-00447,"Paper, Printing and Stat & Co 3","Paper, Printing and Stationery",IN,AA,,2026-06-30
+CP-00448,"Paper, Printing and Stat Corp 4","Paper, Printing and Stationery",IN,AA,,2026-06-30
+CP-00449,"Paper, Printing and Stat Holdings Ltd 5","Paper, Printing and Stationery",IN,AA,,2026-06-30
+CP-00450,"Paper, Printing and Stat Holdings Ltd 6","Paper, Printing and Stationery",IN,AA,,2026-06-30
+CP-00451,"Paper, Printing and Stat Holdings Ltd 7","Paper, Printing and Stationery",IN,AA,,2026-06-30
+CP-00452,"Paper, Printing and Stat Industries Ltd 8","Paper, Printing and Stationery",IN,A,,2026-06-30
+CP-00453,"Paper, Printing and Stat Holdings Ltd 9","Paper, Printing and Stationery",IN,A,,2026-06-30
+CP-00454,"Paper, Printing and Stat Corp 10","Paper, Printing and Stationery",IN,BBB,,2026-06-30
+CP-00455,"Paper, Printing and Stat & Co 11","Paper, Printing and Stationery",IN,AA,,2026-06-30
+CP-00456,"Paper, Printing and Stat Holdings Ltd 12","Paper, Printing and Stationery",IN,A,,2026-06-30
+CP-00457,"Paper, Printing and Stat Pvt Ltd 13","Paper, Printing and Stationery",IN,A,,2026-06-30
+CP-00458,Plastic Enterprises 1,Plastic & Products,IN,BBB,,2026-06-30
+CP-00459,Plastic Enterprises 2,Plastic & Products,IN,A,,2026-06-30
+CP-00460,Plastic Enterprises 3,Plastic & Products,IN,A,,2026-06-30
+CP-00461,Plastic Holdings Ltd 4,Plastic & Products,IN,BBB,,2026-06-30
+CP-00462,Plastic Enterprises 5,Plastic & Products,IN,BBB,,2026-06-30
+CP-00463,Plastic Enterprises 6,Plastic & Products,IN,BBB,,2026-06-30
+CP-00464,Plastic Industries Ltd 7,Plastic & Products,IN,A,,2026-06-30
+CP-00465,Plastic Industries Ltd 8,Plastic & Products,IN,AA,,2026-06-30
+CP-00466,Plastic Pvt Ltd 9,Plastic & Products,IN,BBB,,2026-06-30
+CP-00467,Plastic Corp 10,Plastic & Products,IN,A,,2026-06-30
+CP-00468,Plastic Pvt Ltd 11,Plastic & Products,IN,BBB,,2026-06-30
+CP-00469,Plastic Industries Ltd 12,Plastic & Products,IN,A,,2026-06-30
+CP-00470,Plastic Industries Ltd 13,Plastic & Products,IN,AA,,2026-06-30
+CP-00471,Power Industries Ltd 1,Power,IN,A,,2026-06-30
+CP-00472,Power Industries Ltd 2,Power,IN,A,,2026-06-30
+CP-00473,Power Pvt Ltd 3,Power,IN,BBB,,2026-06-30
+CP-00474,Power Holdings Ltd 4,Power,IN,AA,,2026-06-30
+CP-00475,Power Holdings Ltd 5,Power,IN,A,,2026-06-30
+CP-00476,Power Pvt Ltd 6,Power,IN,A,,2026-06-30
+CP-00477,Power Enterprises 7,Power,IN,AA,,2026-06-30
+CP-00478,Power Corp 8,Power,IN,A,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00479,Power Enterprises 9,Power,IN,A,,2026-06-30
+CP-00480,Power & Co 10,Power,IN,AA,,2026-06-30
+CP-00481,Power Industries Ltd 11,Power,IN,BBB,,2026-06-30
+CP-00482,Power Pvt Ltd 12,Power,IN,A,,2026-06-30
+CP-00483,Power Enterprises 13,Power,IN,A,,2026-06-30
+CP-00484,Power Corp 14,Power,IN,AA,,2026-06-30
+CP-00485,Power Industries Ltd 15,Power,IN,AA,,2026-06-30
+CP-00486,Real Estate & Co 1,Real Estate & Property Services,IN,A,,2026-06-30
+CP-00487,Real Estate Pvt Ltd 2,Real Estate & Property Services,IN,BBB,,2026-06-30
+CP-00488,Real Estate Holdings Ltd 3,Real Estate & Property Services,IN,BBB,,2026-06-30
+CP-00489,Real Estate Holdings Ltd 4,Real Estate & Property Services,IN,A,,2026-06-30
+CP-00490,Real Estate & Co 5,Real Estate & Property Services,IN,BBB,,2026-06-30
+CP-00491,Real Estate Enterprises 6,Real Estate & Property Services,IN,BBB,,2026-06-30
+CP-00492,Real Estate Pvt Ltd 7,Real Estate & Property Services,IN,A,,2026-06-30
+CP-00493,Real Estate & Co 8,Real Estate & Property Services,IN,BBB,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00494,Real Estate Enterprises 9,Real Estate & Property Services,IN,A,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00495,Real Estate Holdings Ltd 10,Real Estate & Property Services,IN,A,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00496,Real Estate & Co 11,Real Estate & Property Services,IN,AA,,2026-06-30
+CP-00497,Real Estate Corp 12,Real Estate & Property Services,IN,BBB,,2026-06-30
+CP-00498,Real Estate Holdings Ltd 13,Real Estate & Property Services,IN,AA,,2026-06-30
+CP-00499,Real Estate & Co 14,Real Estate & Property Services,IN,BBB,,2026-06-30
+CP-00500,Real Estate Enterprises 15,Real Estate & Property Services,IN,A,,2026-06-30
+CP-00501,Retail Trade Industries Ltd 1,Retail Trade,IN,A,,2026-06-30
+CP-00502,Retail Trade Industries Ltd 2,Retail Trade,IN,BBB,,2026-06-30
+CP-00503,Retail Trade Enterprises 3,Retail Trade,IN,BBB,,2026-06-30
+CP-00504,Retail Trade Holdings Ltd 4,Retail Trade,IN,A,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00505,Retail Trade Industries Ltd 5,Retail Trade,IN,A,,2026-06-30
+CP-00506,Retail Trade Industries Ltd 6,Retail Trade,IN,BBB,,2026-06-30
+CP-00507,Retail Trade Pvt Ltd 7,Retail Trade,IN,A,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00508,Retail Trade Industries Ltd 8,Retail Trade,IN,BB,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00509,Retail Trade Pvt Ltd 9,Retail Trade,IN,A,,2026-06-30
+CP-00510,Retail Trade Corp 10,Retail Trade,IN,BB,,2026-06-30
+CP-00511,Retail Trade Enterprises 11,Retail Trade,IN,BBB,,2026-06-30
+CP-00512,Retail Trade Enterprises 12,Retail Trade,IN,BB,,2026-06-30
+CP-00513,Retail Trade & Co 13,Retail Trade,IN,BBB,,2026-06-30
+CP-00514,Retail Trade Corp 14,Retail Trade,IN,A,,2026-06-30
+CP-00515,Retail Trade Pvt Ltd 15,Retail Trade,IN,A,,2026-06-30
+CP-00516,Road Transportation Enterprises 1,Road Transportation,IN,BBB,,2026-06-30
+CP-00517,Road Transportation Holdings Ltd 2,Road Transportation,IN,BB,,2026-06-30
+CP-00518,Road Transportation Enterprises 3,Road Transportation,IN,BB,,2026-06-30
+CP-00519,Road Transportation Corp 4,Road Transportation,IN,BBB,,2026-06-30
+CP-00520,Road Transportation Pvt Ltd 5,Road Transportation,IN,BBB,,2026-06-30
+CP-00521,Road Transportation Industries Ltd 6,Road Transportation,IN,BBB,,2026-06-30
+CP-00522,Road Transportation Corp 7,Road Transportation,IN,BBB,,2026-06-30
+CP-00523,Road Transportation Industries Ltd 8,Road Transportation,IN,BBB,,2026-06-30
+CP-00524,Road Transportation Holdings Ltd 9,Road Transportation,IN,A,,2026-06-30
+CP-00525,Road Transportation Holdings Ltd 10,Road Transportation,IN,A,,2026-06-30
+CP-00526,Road Transportation Industries Ltd 11,Road Transportation,IN,A,,2026-06-30
+CP-00527,Road Transportation Enterprises 12,Road Transportation,IN,BB,,2026-06-30
+CP-00528,Road Transportation Industries Ltd 13,Road Transportation,IN,BB,,2026-06-30
+CP-00529,Road Transportation Corp 14,Road Transportation,IN,A,,2026-06-30
+CP-00530,Road Transportation Pvt Ltd 15,Road Transportation,IN,BBB,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00531,Telecom Holdings Ltd 1,Telecom,IN,AA,,2026-06-30
+CP-00532,Telecom Corp 2,Telecom,IN,AAA,,2026-06-30
+CP-00533,Telecom Holdings Ltd 3,Telecom,IN,A,,2026-06-30
+CP-00534,Telecom Holdings Ltd 4,Telecom,IN,AA,,2026-06-30
+CP-00535,Telecom Corp 5,Telecom,IN,AAA,,2026-06-30
+CP-00536,Telecom & Co 6,Telecom,IN,AAA,,2026-06-30
+CP-00537,Telecom Industries Ltd 7,Telecom,IN,A,,2026-06-30
+CP-00538,Telecom Pvt Ltd 8,Telecom,IN,AAA,,2026-06-30
+CP-00539,Telecom Enterprises 9,Telecom,IN,AAA,,2026-06-30
+CP-00540,Telecom Corp 10,Telecom,IN,AAA,,2026-06-30
+CP-00541,Telecom Industries Ltd 11,Telecom,IN,AA,,2026-06-30
+CP-00542,Telecom Industries Ltd 12,Telecom,IN,AA,,2026-06-30
+CP-00543,Telecom Pvt Ltd 13,Telecom,IN,AAA,,2026-06-30
+CP-00544,Telecom & Co 14,Telecom,IN,A,,2026-06-30
+CP-00545,Textiles Industries Ltd 1,Textiles & Garments,IN,A,,2026-06-30
+CP-00546,Textiles Holdings Ltd 2,Textiles & Garments,IN,BBB,,2026-06-30
+CP-00547,Textiles Enterprises 3,Textiles & Garments,IN,BBB,,2026-06-30
+CP-00548,Textiles Pvt Ltd 4,Textiles & Garments,Overseas,BBB,,2026-06-30
+CP-00549,Textiles Holdings Ltd 5,Textiles & Garments,IN,BBB,,2026-06-30
+CP-00550,Textiles Holdings Ltd 6,Textiles & Garments,IN,A,,2026-06-30
+CP-00551,Textiles Pvt Ltd 7,Textiles & Garments,IN,BBB,,2026-06-30
+CP-00552,Textiles Holdings Ltd 8,Textiles & Garments,IN,A,,2026-06-30
+CP-00553,Textiles Holdings Ltd 9,Textiles & Garments,IN,BBB,,2026-06-30
+CP-00554,Textiles & Co 10,Textiles & Garments,IN,BBB,,2026-06-30
+CP-00555,Textiles Industries Ltd 11,Textiles & Garments,IN,BB,,2026-06-30
+CP-00556,Textiles Corp 12,Textiles & Garments,IN,BBB,,2026-06-30
+CP-00557,Textiles Corp 13,Textiles & Garments,IN,BBB,,2026-06-30
+CP-00558,Textiles Corp 14,Textiles & Garments,IN,A,,2026-06-30
+CP-00559,Textiles Corp 15,Textiles & Garments,IN,BBB,,2026-06-30
+CP-00560,Wholesale Trade Corp 1,Wholesale Trade - Industrial,IN,BBB,,2026-06-30
+CP-00561,Wholesale Trade Holdings Ltd 2,Wholesale Trade - Industrial,IN,BB,,2026-06-30
+CP-00562,Wholesale Trade Pvt Ltd 3,Wholesale Trade - Industrial,IN,A,,2026-06-30
+CP-00563,Wholesale Trade & Co 4,Wholesale Trade - Industrial,IN,A,,2026-06-30
+CP-00564,Wholesale Trade Industries Ltd 5,Wholesale Trade - Industrial,IN,BBB,,2026-06-30
+CP-00565,Wholesale Trade & Co 6,Wholesale Trade - Industrial,IN,BB,,2026-06-30
+CP-00566,Wholesale Trade Holdings Ltd 7,Wholesale Trade - Industrial,IN,BB,,2026-06-30
+CP-00567,Wholesale Trade Enterprises 8,Wholesale Trade - Industrial,IN,BBB,,2026-06-30
+CP-00568,Wholesale Trade Pvt Ltd 9,Wholesale Trade - Industrial,IN,BB,,2026-06-30
+CP-00569,Wholesale Trade Enterprises 10,Wholesale Trade - Industrial,IN,BB,,2026-06-30
+CP-00570,Wholesale Trade Enterprises 11,Wholesale Trade - Industrial,IN,BB,,2026-06-30
+CP-00571,Wholesale Trade Holdings Ltd 12,Wholesale Trade - Industrial,IN,BB,,2026-06-30
+CP-00572,Wholesale Trade Holdings Ltd 13,Wholesale Trade - Industrial,IN,BBB,,2026-06-30
+CP-00573,Wholesale Trade Corp 14,Wholesale Trade - Industrial,IN,BBB,,2026-06-30
+CP-00574,Wholesale Trade Holdings Ltd 15,Wholesale Trade - Industrial,IN,A,,2026-06-30
+CP-00575,Wholesale Trade Corp 1,Wholesale Trade - Non Industrial,IN,A,,2026-06-30
+CP-00576,Wholesale Trade Industries Ltd 2,Wholesale Trade - Non Industrial,IN,A,,2026-06-30
+CP-00577,Wholesale Trade Industries Ltd 3,Wholesale Trade - Non Industrial,IN,A,,2026-06-30
+CP-00578,Wholesale Trade Enterprises 4,Wholesale Trade - Non Industrial,IN,BBB,,2026-06-30
+CP-00579,Wholesale Trade Corp 5,Wholesale Trade - Non Industrial,IN,BBB,,2026-06-30
+CP-00580,Wholesale Trade & Co 6,Wholesale Trade - Non Industrial,IN,AA,,2026-06-30
+CP-00581,Wholesale Trade Enterprises 7,Wholesale Trade - Non Industrial,IN,AA,,2026-06-30
+CP-00582,Wholesale Trade Holdings Ltd 8,Wholesale Trade - Non Industrial,IN,AA,,2026-06-30
+CP-00583,Wholesale Trade Corp 9,Wholesale Trade - Non Industrial,IN,AA,,2026-06-30
+CP-00584,Wholesale Trade Pvt Ltd 10,Wholesale Trade - Non Industrial,IN,BBB,,2026-06-30
+CP-00585,Wholesale Trade & Co 11,Wholesale Trade - Non Industrial,IN,BBB,,2026-06-30
+CP-00586,Wholesale Trade Corp 12,Wholesale Trade - Non Industrial,IN,BBB,,2026-06-30
+CP-00587,Wholesale Trade Enterprises 13,Wholesale Trade - Non Industrial,IN,BBB,,2026-06-30
+CP-00588,Wholesale Trade Enterprises 14,Wholesale Trade - Non Industrial,IN,A,,2026-06-30
+CP-00589,Wholesale Trade Industries Ltd 15,Wholesale Trade - Non Industrial,IN,A,,2026-06-30
+CP-00590,Other Industries Corp 1,Other Industries,IN,BBB,,2026-06-30
+CP-00591,Other Industries Corp 2,Other Industries,IN,BBB,,2026-06-30
+CP-00592,Other Industries Industries Ltd 3,Other Industries,IN,AA,,2026-06-30
+CP-00593,Other Industries Corp 4,Other Industries,IN,AA,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00594,Other Industries Enterprises 5,Other Industries,IN,BBB,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00595,Other Industries & Co 6,Other Industries,IN,AA,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00596,Other Industries Industries Ltd 7,Other Industries,IN,BBB,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00597,Other Industries Pvt Ltd 8,Other Industries,IN,A,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00598,Other Industries Corp 9,Other Industries,IN,A,LARGE_EXPOSURE_TOP5PCT,2026-06-30
+CP-00599,Other Industries Industries Ltd 10,Other Industries,IN,BBB,,2026-06-30
+CP-00600,Other Industries & Co 11,Other Industries,IN,A,,2026-06-30
+CP-00601,Other Industries Pvt Ltd 12,Other Industries,IN,BBB,,2026-06-30
+CP-00602,Other Industries Corp 13,Other Industries,IN,A,,2026-06-30
+CP-00603,Other Industries Holdings Ltd 14,Other Industries,IN,BBB,,2026-06-30
+CP-00604,Other Industries Pvt Ltd 15,Other Industries,IN,BBB,,2026-06-30
+CP-00605,Other Industries Industries Ltd 16,Other Industries,IN,AA,,2026-06-30

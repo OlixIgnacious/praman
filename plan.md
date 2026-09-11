@@ -30,10 +30,10 @@ brand/            logo assets — populated
 
 ## Days 3–6 — Synthetic data + Snowflake foundation
 
-- [ ] `generator/` — script that reads `data/raw/pillar3/HDFC_Bank_Basel_III_Pillar3_2026-06-30.pdf` and produces GL entries, positions, and a counterparty book in `data/synthetic/` that aggregate to its real disclosed line items
+- [x] `generator/` — `generate_synthetic_data.py` (+ `anchors.py` with the real PDF figures, page-cited). **Done, exactly reconciled**: industry-wise fund/non-fund exposure (42 sectors), gross NPA, NPA provisions, and the 5-way NPA classification split all match HDFC's disclosed figures to the decimal (verified via a fragment-based exact-partition algorithm, not approximated). `EXPOSURE_CLASS` risk-weight buckets and `TRANSACTIONS` are documented approximations — no real per-industry disclosure exists to reconcile those against. Output: 605 counterparties, 2,064 positions, 2,206 GL entries, 24,540 transactions in `data/synthetic/`.
 - [x] `sql/ddl/` — table DDL for `RULE_CORPUS`, `LINE_ITEM_MAP`, `GL_ENTRIES`, `POSITIONS`, `COUNTERPARTIES`, `TRANSACTIONS`, `INJECTED_CASES`, `AUDIT_LOG`, `EVAL_RESULTS`, `DIVERGENCE_DISCLOSURES` — written, **not yet run against Snowflake**. Two schemas: `PRAMAN.CORE` (runtime) and `PRAMAN.EVAL` (isolated, no Skill-role grant). Run order in `sql/ddl/README.md`.
-- [ ] Actually execute `sql/ddl/*.sql` against the account (create the database/schema/tables for real)
-- [ ] Load `data/synthetic/` output into the Snowflake tables above
+- [x] Actually execute `sql/ddl/*.sql` against the account. **Done.** All 10 tables live: `PRAMAN.CORE` (`RULE_CORPUS`, `LINE_ITEM_MAP`, `COUNTERPARTIES`, `POSITIONS`, `GL_ENTRIES`, `TRANSACTIONS`, `DIVERGENCE_DISCLOSURES`, `AUDIT_LOG`) and `PRAMAN.EVAL` (`INJECTED_CASES`, `EVAL_RESULTS`) — verified via `SHOW TABLES IN DATABASE PRAMAN`, all currently 0 rows.
+- [x] Load `data/synthetic/` output into the Snowflake tables above. **Done** — `sql/load_synthetic_data.sql` (PUT + COPY INTO), row counts verified independently in Snowflake: 605 / 2,064 / 2,206 / 24,540, and gross NPA sums to exactly ₹384,786.7M in-database, matching the source PDF.
 - [ ] `sql/rbac/` — roles and grants: `ANALYST_READ`, `GOVERNANCE_WRITE`, `AUDIT_INSERT` (insert-only, no update/delete to any role), `OFFICER_SIGNOFF`
 - [ ] Ingest `data/raw/circulars/RBI_DoS_2026-27_415_..._Supervisory_Returns_Directions_2026.txt` (or `...412...`) — chunk with page/section metadata, `CREATE CORTEX SEARCH SERVICE` over `RULE_CORPUS`
 - [ ] Seed `LINE_ITEM_MAP` with approved mappings for the Pillar 3 line items in scope

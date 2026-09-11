@@ -1,0 +1,1119 @@
+Source: https://www.rbi.org.in/scripts/DataDefinition.aspx (page content, not gated)
+Retrieved: page last updated June 17, 2026
+
+DATA DEFINITIONS (Last Updated on June 17, 2026) 
+DOWNLOAD ALL (64 kb) 
+ 1. BANKING STATISTICS I (HARMONISED DEFINITIONS) 
+ DOWNLOAD (40 kb) 
+ 2. BANKING STATISTICS II (INCLUDING FINANCIAL INCLUSION) 
+ DOWNLOAD (24 kb) 
+ 3. CONSUMER EDUCATION AND PROTECTION 
+ DOWNLOAD (11 kb) 
+ 4. EXTERNAL SECTOR 
+ DOWNLOAD (13 kb) 
+ 5. FINANCIAL MARKETS 
+ DOWNLOAD (11 kb) 
+ 6. PAYMENT SYSTEMS 
+ DOWNLOAD (10 kb) 
+ BANKING STATISTICS I (HARMONISED DEFINITIONS) 
+(Updated as on June 17, 2026) (As per the press release of ' Technical Guidance Note - Harmonization of Banking Statistics ’ issued on March 30, 2017) 
+ 1) Definition of Data Elements related to Assets: Number of Data Definitions = 27 
+ S. No. 
+ Data Elements 
+ Harmonised Definitions 
+ Assets 
+ 1 
+ Cash in India/ Cash in Hand 
+ Consist of (i) total amount of rupee notes and coins held by bank branches / ATMs / Cash deposit machines maintained by banks in India, including transit cash on bank's books as also cash with Business correspondents (BCs), but excluding cash, where physical possession is with outsourced vendors/BCs, which is not replenished in bank's ATM and/or is not reflected on bank's books. (ii) In addition to (i) above, the foreign currency held by a bank would be included under cash in its balance sheet. 
+ 2 
+ Deemed Cash 
+ Consists of (a) cash deposit/balances by a scheduled bank (including banks incorporated outside India)/ non-scheduled bank with the Reserve Bank, in excess of required CRR balances, (b) securities deposited with the Reserve Bank, to the extent unencumbered, by a bank incorporated outside India and (c) Net balances in current accounts with other banks in India (as defined in the Explanation to sub-section (1) of Section 18 of the BR Act, read with section 56 thereof). 
+ 3 
+ Balances with banks 
+ Balances of banks in their (a) current account/s and (b) other deposit account/s maintained with other banks in India (including cooperative banks) / outside India as per banks' own books. Balances with banks outside India includes debit balances in Nostro accounts, balances held by foreign branches with banks outside India as well as balances held by the Indian branches with banks outside India. Balances held with foreign branches by other branches of the bank should not be shown under this head but should be included in inter-branch accounts. Money at Call and short notices (with banks and others) are shown under separate sub head "money at call and short notice" and not under "balances with banks". 
+ 4 
+ Bank Credit 
+ Bank Credit is synonymous with 'Gross loans and Advances' and includes all types of credit facilities such as cash credit, overdrafts, demand loans, term loans, bills discounted/ purchased and factored receivables. It includes money lent by the bank to its borrowers/ customers, interest accrued and due on such monies lent, debit balances in deposits accounts, amount of participation on risk sharing basis under IBPC, outstanding in credit card operations, interest bearing advances to staff members, amount receivable under any special schemes announced by GOI (e.g., Agricultural Debt Waiver Scheme 2008), any other fund based exposure deemed as loans and advances as per extant regulatory instructions. It also includes recalled assets (other than fraud related receivables) and amount of refinances. For the purpose of Bank Credit, refinancing shall include the loans extended due to swapping /replacing of the outstanding debt with a new debt as per the terms and conditions of the original sanction. However, it excludes amount in Interest Suspense Account as per extant RBI guidelines. Prudential write-offs, securitised loans, loans transferred to asset reconstruction companies (ARCs), bills rediscounted, which are not forming part of banks' balance sheets also do not form part of 'loans and advances'. 
+ 5 
+ Gross Loans and Advances 
+ All outstanding loans and advances as indicated under the definition above of 'Bank Credit'. These are gross of all provisions and netting items as specified under the definition of 'net loans and advances' at Sr.No.6 below. 
+ 6 
+ Net Loans and Advances 
+ To arrive at 'Net Loans and Advances', following items should be netted out from Gross Loans and Advances: i. Provisions held in the case of NPA Accounts as per asset classification (including additional Provisions for NPAs at higher than prescribed rates), ii. DICGC / ECGC claims received and held pending adjustment, iii. Part payment received and kept in Suspense Account or any other similar account, iv. Balance in Sundries Account (Interest Capitalization - Restructured Accounts), in respect of NPA Accounts, v. Floating Provisions (to the extent, banks have exercised this option, over utilising it towards Tier II capital), and vi. Provisions in lieu of diminution in the fair value of restructured accounts classified as a) standard assets and b) NPAs. 
+ 7 
+ Cash Credit 
+ A facility, under which a customer is allowed an advance up to the credit limit against the security by way of hypothecation/ pledge of goods, book debts, standing crops, etc. The facility is a running account and 'Drawing Power - DP' is periodically determined with reference to the value of the eligible current assets. The outstanding amount is repayable on demand. 
+ 8 
+ Overdraft 
+ A facility, under which a customer is allowed to draw an agreed sum (credit limit) in excess of credit balance in their account. The overdraft facility may be secured (against fixed/term deposits and other securities, like small saving instruments, surrender value of insurance policies, etc.) or clean (i.e., without any security). The overdraft facility might be granted on their current account, savings deposits account or temporary overdraft on credit accounts. 
+ 9 
+ Term Loans 
+ A loan which has a specified maturity and is payable in instalments or in bullet form. Term loans having maturity in excess of one year should only be reported under this head (term loans with maturity up to one year are to be reported under demand loans). 
+ 10 
+ Demand Loans 
+ All loans repayable on demand (such as cash credit, overdraft, bills purchased and discounted, etc.) and short-term loans with maturity up to one year, whether secured or unsecured, are considered demand loans. 
+ 11 
+ Bills Purchased and Discounted 
+ A negotiable instrument that gives the holder the right to receive stated fixed sums on demand or at a fixed or determinable future time. When a bank negotiates a bill payable on demand (sight bill) and provides funds to the holder, at a fee/ interest, the facility is referred to as bill purchase. When a bank negotiates bill payable after a usance i.e., at a fixed or determinable future time (usance bill) and provides funds to the holder, at a discount, the facility is referred to as bill discounting. Bills purchased and discounted can be Inland Bills and Foreign Bills. Inland Bills are Bills of Exchange drawn in India and paid in India to a person in India. 
+ 12 
+ Advances Fully Secured by Tangible Assets 
+ Advances where all amounts due are covered fully by the value of tangible security (primary as well as collateral security) duly discharged to the bank in respect of those dues and the market value of such security is not, at any time, less than the amount of such advance. Securities in intangible form like guarantees / comfort letters, etc. of the promoter/ others (including State Government guarantees), goodwill etc., are not included. The rights, licenses, authorisations, etc., charged to the banks as collateral in respect of projects (including infrastructure projects) financed by them, should also not be reckoned as tangible security, unless or otherwise, specifically permitted by the RBI. However, banks may treat annuities under build-operate-transfer (BOT) model in respect of road / highway projects and toll collection rights, where there are provisions to compensate the project sponsor if a certain level of traffic is not achieved, as tangible securities subject to the condition that banks' right to receive annuities and toll collection rights is legally enforceable and irrevocable. Similarly, in case of infrastructure project that have been adopted by various Ministries and State Governments for their respective public-private partnership (PPP) projects, the debts due to the lenders may be considered as secured to the extent assured by the project authority in terms of the Model Concession Agreement, subject to prescribed conditions. Further, where the market value of the tangible security is less than all amounts due, the advance is secured only to the extent of the market value of the assets held as security. The residual portion of the advance is unsecured loan/ advance. 
+ 13 
+ Unsecured Loans 
+ Where the market value of the tangible security is less than all amounts due, the advance is secured only to the extent of the market value of the assets held as security. The residual portion of the advance is unsecured loan/ advance. Note: For the limited purpose of application of RBI prudential norms on Income Recognition and Asset Classification (IRAC Norms), 'Unsecured Loan/Advance' is, however, defined as an exposure where the realisable value of the security, as assessed by the bank / approved valuer / Reserve Bank inspecting officers, is not more than 10 percent of the outstanding exposure in the borrowal accounts. 'Security' here means tangible security properly discharged to the bank and will not include intangible securities like guarantees (including State government guarantees), comfort letters etc. 
+ 14 
+ Advances Covered by Bank/ Government Guarantees 
+ Advances guaranteed by Indian and or foreign banks, Indian Central/State/ Local government and or foreign governments, and other recognised institutions [e.g., Export Credit Guarantee Corporation of India Limited (ECGC), Deposit Insurance and Credit Guarantee Corporation (DICGC), Credit Guaranteed Fund Trust for Micro and Small Enterprises (CGTMSE)]. 
+ 15 
+ Clean Loans/Advances 
+ A loan/advance which is granted without any primary or collateral security. 
+ 16 
+ Non-performing Assets 
+ A non-performing Asset (NPA) is an asset, other than investments where; (a) interest and/or instalment of principal remain overdue* for a period of more than 90 days in respect of a term loan, (b) the account remains 'out of order'**, in respect of an Overdraft/ Cash Credit (OD/CC), (c) the bill remains overdue for a period of more than 90 days in the case of bills purchased and discounted, (d) the instalment of principal or interest thereon remains overdue for two crop seasons for short duration crops, the instalment of principal or interest thereon remains overdue for one crop season for long duration crops, (f) the amount of liquidity facility remains outstanding for more than 90 days in respect of a securitisation transaction undertaken in terms of guidelines on securitisation, (g) derivative transactions where the overdue receivables representing positive mark-to-market value of a derivative contract remain unpaid for a period of more than 90 days from the specified due date for payment, (h) In respect of a working capital borrowal account, if irregular drawings are permitted in the account for a continuous period of more than 90 days even though the unit may be working or the borrower's financial position is satisfactory. For this purpose, any outstanding in the account based on drawing power calculated from stock statements older than three months would also be deemed as irregular. (i) an account where the regular / ad hoc credit limits have not been reviewed/ renewed within 180 days from the due date / date of ad hoc sanction. In case of interest payments, banks should, classify an account as NPA only if the interest is due and charged during any quarter is not serviced fully within 90 days from the end of the quarter. If the debits arising out of devolvement of letters of credit or invoked guarantees are parked in a separate account, the balance outstanding in that account also should be treated as a part of the borrower's principal operating account for the purpose of application of prudential norms on income recognition, asset classification and provisioning. However, the bills discounted under LC favouring a borrower may not be classified as a non-performing asset (NPA), when any other facility granted to the borrower is classified as NPA. However, in case documents under LC are not accepted on presentation or the payment under the LC is not made on the due date by the LC issuing bank for any reason and the borrower does not immediately make good the amount disbursed as a result of discounting of concerned bills, the outstanding bills discounted will immediately be classified as NPA with effect from the date when the other facilities had been classified as NPA. * 'Overdue' - Any amount due to the bank under any credit facility is 'overdue' if it is not paid on the due date fixed by the bank. ** 'Out of Order'-An account should be treated as 'out of order' if the outstanding balance remains continuously in excess of the sanctioned limit/drawing power for 90 days. In cases where the outstanding balance in the principal operating account is less than the sanctioned limit/drawing power, but there are no credits continuously for 90 days as on the date of Balance Sheet or credits are not enough to cover the interest debited during the same period, these accounts should be treated as 'out of order'. 
+ 17 
+ Non-Earning Assets 
+ Assets that do not generate income and inter-alia include cash in hand or cash with banks' agents/ service providers, fixed assets (excluding leased assets), balances in current accounts with other banks including the RBI, and other assets including intangible assets. 
+ 18 
+ Syndicated Loans 
+ Loan syndication involves participation by a group of lending institutions (banks/ financial institutions) as financiers to a single borrower. The borrower selects a bank or financial institution to act as a nodal agent for syndication which then invites participation of other banks and financial institutions to finance the single borrower. Although the borrower signs a common document, drawn up by the syndicate manager, the borrower has distinct contractual relationship with each of the syndicate members. 
+ 19 
+ Technical / Prudential Write-off 
+ The amount of non-performing assets, which are outstanding in the books of the branches (or outstanding at borrowers' loan account level in centralised operations unit) but have been written-off (fully or partially) at Head Office level. 
+ 20 
+ Gross Investments 
+ As per Banking Regulation Act, 1949, it comprises investments in India as well as investments outside India. Investments in India comprise investments in Indian government securities (Central/ State Government securities and Government of India Treasury bills at book value), other approved securities (as per Banking Regulation Act, 1949), shares/debentures/bonds (not included under other approved securities) of companies and corporations, investments in subsidiaries/ joint ventures (including those in RRBs), Certificate of Deposits and others (other residual investments), if any, like gold, commercial paper and other instruments in the nature of shares/ debentures/bonds. Investments outside India comprise foreign government securities (including local authorities), shares, debentures & bonds, subsidiaries and/or joint ventures abroad and other investments. As repo/ reverse repo transactions are now accounted as lending/ borrowing obligations (and not as sale/purchase agreements), securities sold under repo transactions (both under market repo as well as RBI LAF window) should continue to be included under investments. However, securities bought under reverse repo transactions (both market reverse repo as well as RBI LAF window) should not be included under investments. Investments are to be shown gross of provisions made for depreciation and provision for non-performing investments. Note: For reporting of investments for the purpose of SLR (such as in Form VIII and Statement on daily maintenance of SLR), the securities (including margins) sold under market repo transactions should not be accounted for SLR by the borrower of funds. The securities (including margins) acquired under market reverse repo as well as RBI LAF window will be reckoned for SLR purpose by the lender of funds. 
+ 21 
+ Net Investments 
+ Gross investments less aggregate of provisions for non-performing investments and depreciation for diminution in value of investments. 
+ 22 
+ Non-performing Investment (NPI) 
+ An NPI, similar to a non-performing advance (NPA), is one where; (i) Interest/ instalment (including maturity proceeds) is due and remains unpaid for more than 90 days. (ii) The above would apply mutatis-mutandis to preference shares where the fixed dividend is not paid. (iii) In the case of equity shares, in the event the investment in the shares of any company is valued at Re.1 per company on account of the non-availability of the latest balance sheet would also be reckoned as NPI. (iv) If any credit facility availed by the issuer is NPA in the books of the bank, investment in any of the securities, including preference shares issued by the same issuer would also be treated as NPI and vice versa. However, if only the preference shares are classified as NPI, the investment in any of the other performing securities issued by the same issuer may not be classified as NPI and any performing credit facilities granted to that borrower need not be treated as NPA. (v) The investments in debentures/ bonds, which are deemed to be in the nature of advance, would also be subjected to NPI norms as applicable to investments. (vi) In case of conversion of principal and / or interest into equity, debentures (including zero coupon bonds or other instruments which seek to defer the liability of the issuer), such instruments should be treated as NPI, ab initio, in the same asset classification category as the restructured loan. The prudential treatment for Central Government Guaranteed bonds has to be identical to Central Government guaranteed advances. Hence, bank's investments in bonds guaranteed by Central Government need not be classified as NPI until the Central Government have repudiated the guarantee when invoked. However, this exemption from classification as NPI is not for the purpose of recognition of income. 
+ 23 
+ Leased Assets 
+ Assets which are subject of a lease arrangement. 
+ 24 
+ Interest Receivable/ Accrued 
+ The amount of interest accrued but not due on advances and investments and interest due but not collected on investments. Only such interest accrued in respect of assets where banks are allowed to recognise income on accrual basis should be shown under this head. 
+ 25 
+ Tax Deducted at Source (TDS) 
+ Tax Deducted at Source (TDS) refers to the deduction in payment made by the person responsible for making the payment as per the relevant provisions of the Income Tax Act, 1961. 
+ 26 
+ Advance tax paid and TDS 
+ The amount of tax deducted at source on income, and taxes (advance income tax, wealth tax, fringe benefit tax, or other applicable taxes) paid in advance or self-assessment tax paid, etc. to the extent that these items are not set off against relative tax provisions. 
+ 27 
+ Inter-office Adjustments Assets 
+ Inter-office adjustments represent items in transit and unadjusted items. The inter-office adjustments balance, if in debit, is considered inter-office adjustments assets. Only net position of inter-office accounts, inland as well as foreign, should be shown here. For arriving at the net balance of inter-office adjustment accounts, all connected inter-office accounts should be aggregated and the net balance, if in debit only should be shown here. 
+ 2) Definition of Data Elements related to Liabilities: Number of Data Definitions = 43 
+ S. No. 
+ Data Elements 
+ Harmonised Definitions 
+ Liabilities 
+ 1 
+ Equity/ Ordinary Share 
+ A share, which is not a preference share, is called equity/ ordinary share. 
+ 2 
+ Local Capital Funds 
+ Interest free funds remitted from Head Office (Overseas Parent) for meeting capital adequacy norms of foreign bank branch (es) in India. These are kept in a separate account in Indian books. 
+ 3 
+ Preference Share Capital 
+ That part of the share capital, which enjoys preferential rights in respect of payments of fixed dividend and repayment of capital. Preference shares may also have full or partial participating rights in surplus profits or surplus capital. 
+ 4 
+ Paid-up Capital 
+ That part of the subscribed share capital for which consideration in cash or otherwise has been received. Paid up capital comprises of equity share capital and preference share capital subject to RBI prescriptions as regards preference shares (Presently, only perpetual non-cumulative preference shares are advised to be included). Bonus shares allotted by the bank are also included. Foreign banks should report their local capital funds here. 
+ 5 
+ Paid-up Equity Capital 
+ That part of the subscribed equity share capital for which consideration in cash or otherwise has been received. Accordingly, calls-in-arrears is not part of paid-up equity capital, but paid-up value of forfeited shares is included here. Also bonus shares allotted by the enterprise are included. In case of foreign banks, their local capital funds should be included here. 
+ 6 
+ Reserves and Surplus 
+ The portion of earnings, receipts or other surplus (including balances in profit/ loss account) of an enterprise (whether capital or revenue) appropriated by the management for a general or a specific purpose other than a provision for depreciation or diminution in the value of assets or for a known liability. 'Reserve' shall not include any amount written-off or retained by way of providing for depreciation, renewals or diminution in value of assets or retained by way of providing for any known liability. Reserves could be of many types, for eg., statutory reserves, capital reserve, share premium, revenue and other reserves, revaluation reserves, etc. 
+ 7 
+ Capital and Reserves 
+ Paid up capital + all reserves and surplus (e.g., statutory reserves, capital reserve, share premium, revenue and other reserves, revaluation reserves, and balance carried forward from profit and loss account), net of accumulated losses/ debit in the P& L Account. 
+ 8 
+ Statutory Reserves 
+ Reserves created out of the profits in compliance with the Section 17 (c) and 11(2)(b) of the Banking Regulation Act, 1949. 
+ 9 
+ Revaluation Reserve 
+ A reserve created on the revaluation of assets or net assets represented by the surplus of the estimated replacement cost or estimated market values over the book values thereof. 
+ 10 
+ Capital Reserves 
+ Capital reserves arise on account of sale of land and premises, revaluation of fixed assets, sale investments held under 'Held to Maturity' category or investment in subsidiaries/ associates, joint ventures (or other strategic partners), on amalgamations/ mergers, consolidation of financials of subsidiary, etc. In respect of foreign banks, it also includes funds held in a separate account which (a) are interest-free and remitted from abroad for the purpose of acquisition of property and (b) arise out of sale of assets in India, and not eligible for repatriation so long as the bank functions in India. These reserves are not available for distribution as dividend. 
+ 11 
+ Share Premium 
+ The excess of the issue price of shares over their face value. 
+ 12 
+ Revenue Reserves 
+ Any reserve other than Capital Reserve. 
+ 13 
+ Investment Reserve/ Investment Depreciation Reserves 
+ In the event of provisions created on account of depreciation in the 'Available for Sale' or 'Held for Trading' categories being found to be in excess of the required amount in any year, the excess should be credited to the Profit & Loss account and an equivalent amount (net of taxes, if any and net of transfer to Statutory Reserves as applicable to such excess provision) should be appropriated to an Investment Reserve Account. 
+ 14 
+ Unallocated Surplus 
+ Balance amount remaining in profit and loss account after making all appropriations. These are shown as balances of profit/ loss carried to the balance sheet under 'Reserves and Surplus'. 
+ 15 
+ Net Worth 
+ The excess of the book value of assets of a bank over its liabilities. Net worth comprises of paid-up capital plus Free Reserves including Share Premium but excluding Revaluation Reserves plus Investment Fluctuation Reserve/ and credit balance in Profit & Loss account, less debit balance in Profit and Loss account, Accumulated Losses, Intangible Assets and Deferred Revenue Expenditure. No general or specific provisions should be included in computation of net worth. 
+ 16 
+ Free Reserve 
+ A reserve, the utilisation of which is not restricted in any manner. 
+ 17 
+ Borrowings 
+ Borrowings by a bank may be from the RBI/ Government (in form of LAF overnight/ term fixed/ variable rate repo, from Government owned institutions, etc.), borrowings from other banks, from non-depository institutions (such as insurance companies and pension funds), from refinancing institutions (EXIM Bank, NABARD etc.), from other financial institutions, from public, etc. Borrowings may be through inter-bank/ money/ capital markets either in the form of, simple borrowing/ lending arrangements, or by way of refinancing, participation certificates, or through markets (such as repo), or by issuing capital/ debt instruments (such as preference shares excluding PNCPS). Borrowings will also include borrowing from head offices in respect of branches of foreign banks. Inter-office transactions are not borrowings. Borrowings in India as well as outside India will be as per RBI's circular on "Revised Format of the Balance Sheet and Profit & Loss Account". 
+ 18 
+ Refinancing 
+ Financing of a loan asset of a bank through liability raised from refinancing agencies. Government of India, RBI, EXIM Bank, NABARD and SIDBI are major agencies that provide refinance to banks for loans extended to specified sectors. The refinance obtained by a bank from refinancing agencies (including other institutions notified by the RBI or Government of India) represents borrowings of the bank. 
+ 19 
+ Inter-bank Borrowings 
+ A subset of total borrowings of a bank. Borrowings by one bank from another bank. It includes borrowings by banks in inter-bank markets such as Repo, Call money, etc. for specified period. Inter-office transactions are not borrowings and hence should not be included under the item. 
+ 20 
+ Commercial Paper 
+ A short-term unsecured money market instrument issued in the form of promissory note by companies, PDs and FIs, satisfying stipulated eligibility criteria. It is issued at a discount on the face value and can have tenure of 7 days to one year from the date of issue. It is freely tradable. Individuals, banks, other corporate bodies (registered or incorporated in India), unincorporated bodies and non-resident Indians are also eligible to invest in Commercial Paper. 
+ 21 
+ Secured Borrowings 
+ Borrowings contracted in India or abroad against securities. The security (tangible assets) may be forfeited by the lender if the borrower fails to make the necessary payments. 
+ 22 
+ Deposits 
+ Acceptance of Money, repayable on demand or otherwise, and withdrawable by cheque or otherwise. Aggregate deposits comprise deposits of branches in India and outside India; It comprises of (a) demand deposits from banks and from others (including credit balances in overdrafts, cash credit accounts, deposits payable at call, overdue deposits, inoperative current accounts, matured time deposits and cash certificates, certificates of deposits, etc.)., (b) savings bank deposits (including inoperative saving bank accounts) and (c) term deposits from banks and others (including fixed deposits, cumulative and recurring deposits, cash certificates, certificates of deposits, annuity deposits, deposits mobilised under various schemes, ordinary staff deposits, foreign currency non-resident deposits accounts, etc.). However, overdraft accounts (i.e., negative balances in deposits accounts) should be excluded and be treated as credit/ loans. Bankers' cheques, demand drafts, telegraphic transfers etc., which are issued but not presented, are not part of deposits, but should be treated as "Other liabilities". Deposits of offshore banking units (OBUs) may be treated as deposits outside India. 
+ 23 
+ Business in India 
+ Business in India means all transactions done through branches of banks located in India. The term excludes transactions done by offshore banking units (OBUs) of Indian banks located in India, except with regard to their transactions in respect of the SEZs and units in the Domestic Tariff Area. Further, credit given (or any other business) by International Finance Service Centres (IFSC) Banking Units (IBUs) should also be excluded. 
+ 24 
+ Inter-bank Deposits 
+ Deposits placed by other banks with the bank. 
+ 25 
+ Customer Deposits 
+ Deposits other than inter-bank deposits, which are repayable on demand or otherwise and withdrawable by cheque or otherwise. 
+ 26 
+ Current Account 
+ Current Account shall mean a form of non-interest-bearing demand deposit where from withdrawals are allowed any number of times depending upon the balance in the account or up to a particular agreed amount, and shall also be deemed to include other deposit accounts which are neither Savings Deposit nor Term Deposit. 
+ 27 
+ Current Deposits 
+ Current/demand deposits comprise of balances in current accounts (including inoperative accounts) and other deposits payable on demand, excluding savings account deposits, but including cash certificates, matured term deposits (that are not auto renewed), credit balances in overdrafts, cash credit accounts, and sundry deposits identifiable as relating to deposits accounts. 
+ 28 
+ Savings Deposits 
+ Savings Deposit means a form of interest bearing demand deposit which is a deposit account whether designated as "Savings Account", "Savings Bank Account", "Savings Deposit Account", "Basic Savings Bank Deposit Account (BSBDA)" or by whatever name called which is subject to the restrictions as to the number of withdrawals as also the amount of withdrawals permitted by the bank during any specified period. 
+ 29 
+ Term Deposits 
+ Term Deposit means an interest bearing deposit received by the bank for a fixed period that also includes deposits such as Recurring /Cumulative /Annuity /Reinvestment deposits and Cash Certificates. 
+ 30 
+ Demand Deposits 
+ Demand Deposit shall mean a deposit received by the bank which is withdrawable on demand and shall include current deposits, demand portion of savings deposits, credit balances in overdrafts, cash credit accounts, deposits payable at call, overdue deposits, cash certificates, etc. 
+ 31 
+ Time Deposits 
+ Deposits, which are not demand deposits. 
+ 32 
+ Certificates of Deposits 
+ A negotiable money market instrument issued in dematerialised form or as a Usance Promissory Note against funds deposited at a bank or other eligible financial institution for a specified time period. CDs can be issued by scheduled commercial banks (excluding Regional Rural Banks and Local Area Banks) and select All-India Financial Institutions (AIFIs) that have been permitted by the RBI to raise short-term resources within the umbrella limit fixed by the RBI. The maturity period of CDs issued by banks should not be less than 7 days and not more than one year, from the date of issue. FIs can issue CDs for a period not less than 1 year and not exceeding 3 years from the date of issue. CDs are freely tradable and can be held by Individuals, corporations, companies (including banks and PDs), trusts, funds, associations, etc. and Non-Resident Indians (on non-repatriable basis). 
+ 33 
+ Margin Deposits 
+ A security in the form of deposits that the bank requires its customers to place with it when it takes current/ potential exposure on their account. Margin deposits, which are not free deposits, must be treated as "Other liabilities". 
+ 34 
+ Bulk Deposit 
+ Single Rupee term deposits of Rupees two crore and above for Scheduled commercial Banks (excluding Regional Rural banks) and Small Finance Banks. 
+ 35 
+ Floating Rate Deposits 
+ A deposit whose interest rate is periodically adjusted upwards or downwards on the basis of a clearly linked benchmark interest rate or an index. Only market-based benchmark rates, which are directly observable and transparent to the customer, should be used by banks for pricing their floating rate deposit. 
+ 36 
+ Bills Payable 
+ Instruments issued by banks against money received from customers, which are to be paid to the customers or as per their orders (usually at different bank branches). Bills payable include demand drafts, telegraphic transfers, traveller's cheques/ cards, pay-orders, banker's cheques and similar other instruments issues by banks but not presented for payment. 
+ 37 
+ Inter-office Adjustments Liabilities 
+ The inter-office adjustments balance, if in credit, should be shown under this head. However, the bank should first segregate the credit entries outstanding for more than 5 years in the inter-office account and transfer them to a separate Blocked Account which should be shown under 'Other Liabilities & Provisions - Others'. While arriving at the net amount of inter-office transactions for inclusion here, the aggregate amount of Blocked Account should be excluded and only the amount representing the remaining credit entries should be netted against debit entries. Only net position of inter-office accounts, inland as well as foreign, should be shown here. 
+ 38 
+ Interest Payable/ Interest Accrued Payable Provision 
+ Interest accrued but not due for payment on various deposits and borrowings. 
+ 39 
+ Provisions/ Provisions Held 
+ An amount held in the balance sheet towards depreciation or diminution in value of assets or towards any known liability and the amount of which cannot be determined with substantial accuracy. This would include general provisions, specific provisions and any other provision made by the banks. 
+ 40 
+ General Provision 
+ General provisions are provisions routed through profit and loss account but not attributable to any actual diminution in value or identifiable potential loss in any specific asset. This would include floating provision, counter cyclical provisioning buffer, provisions for unhedged foreign currency exposure, provision made in respect of standard assets, etc. 
+ 41 
+ Specific Provision 
+ An amount held in the balance sheet, which is attributable to actual diminution in value or identifiable potential loss in a specific asset. This would include provisions made towards non-performing assets (including additional provisions made on them over and above the regulatory requirements), provisions made towards restructured assets (including assets classified as restructured standard asset), fraud accounts etc. 
+ 42 
+ Floating Provision 
+ A provision which is not made in respect of specific non-performing asset/s or made, in excess of regulatory requirement for provisions for standard assets. 
+ 43 
+ Counter Cyclical Provisioning Buffer 
+ A provisioning buffer created during good times i.e., when the profits are good, which can be used for absorbing losses in a downturn 
+ 3) Definition of Data Elements related to Off-Balance Sheet Items: Number of Data Definitions = 14 
+ S. No. 
+ Data Elements 
+ Harmonised Definitions 
+ Off-Balance Sheet Items 
+ 1 
+ Claims not Acknowledged as Debts 
+ Claims not acknowledged as debt represent present obligations that arise from past events or transactions but are not recognised due to the fact that either it is not probable that an outflow of resources embodying economic benefits will be required to settle the obligations, or a reliable estimate of the amount of obligations cannot be made. 
+ 2 
+ Bank Guarantee 
+ Financial and performance guarantees issued by banks on behalf of their clients. A financial guarantee assures payment of money in the event of non-fulfilment of contractual obligations by the client. A performance guarantee provides assurance of compensation if there is delayed or inadequate performance on a contract. A deferred payment guarantee assures payment of instalments due to a supplier of goods. 
+ 3 
+ Letter of Credit (LC) 
+ Any arrangement how so ever named or described, that is irrevocable and thereby constitutes a definite undertaking of the issuing bank to honour a complying presentation. An LC confirmed by a bank based and operating in another country is payable by the confirming bank. 
+ 4 
+ Acceptances Endorsements and other Obligations 
+ This item will include Letters of Credit to which the bank has added its confirmation, bills accepted/ co-accepted and such other items that have the character of acceptance. These are to be reported on gross basis. Acceptance is the drawee's acknowledgement of the liability on bills of exchange, in writing on the instrument itself. A bill may also bear a co-acceptance by a bank, which is guaranteed to honour, the instrument in the event of default by the drawee. 
+ 5 
+ Committed Lines of Credit 
+ A commitment to provide credit under pre-specified terms and conditions. 
+ 6 
+ Bills Rediscounted DUPN (Derivative Usance Promissory Note) 
+ Negotiable instruments drawn by banks for suitable maturities up to 90 days on the strength of underlying commercial bills discounted by the banks' respective branches. Through this instrument, the underlying commercial bills can be rediscounted multiple times (through secondary market) with other banks and approved financial institutions. The minimum rediscounting period is 15 days. 
+ 7 
+ Liability on Account of Outstanding Forward Foreign Exchange Contracts 
+ Higher of sum of negative mark to market (MTM) amounts of contracts having negative MTM and exposure amount computed as per current exposure method for computing default risk capital charge. 
+ 8 
+ Current credit exposure 
+ The sum of the positive mark-to-market value of market related off-balance sheet transactions. 
+ 9 
+ Potential Future Credit Exposure 
+ Potential future credit exposure is determined by multiplying the notional principal amount of each of the underlying contracts irrespective of whether the contract has a zero, positive or negative mark-to-market value by the relevant add-on factor prescribed by RBI, according to the nature and residual maturity of the instrument. However, in the case of CDS contracts, the protection seller's exposure on protection buyer cannot exceed the amount of the premium unpaid. 
+ 10 
+ Credit Equivalent Amount 
+ The credit equivalent amount in relation to a non-market related off-balance sheet item is determined by multiplying the contracted amount of that particular transaction by the relevant credit conversion factor. The credit equivalent amount of a market related off-balance sheet transaction is calculated using the Current Exposure Method and is the sum of current credit exposure and potential future credit exposure of these contracts. 
+ 11 
+ Current Exposure Method 
+ Current Exposure Method is used to calculate the exposure amount for the purpose of computing default risk capital charge for counterparty credit risk. 
+ 12 
+ Contingent Credit Exposures 
+ Possible credit exposure that may arise in the future depending on the occurrence or non-occurrence of one or more uncertain future events not wholly within the control of the bank. 
+ 13 
+ Bills for collection 
+ Bills held by a bank for collection on behalf of its customers. These bills are generally bills of exchange accompanied by documents of title to goods. 
+ 14 
+ PV01/ Price value basis point 
+ Measures the change in market value of the security/ derivative contract on account of one basis point change in the yield. 
+ 4) Definition of Data Elements related to Profit and Loss Account Items: Number of Data Definitions = 10 
+ S. No. 
+ Data Elements 
+ Harmonised Definitions 
+ Profit and Loss Account 
+ 1 
+ Interest earned/ interest income 
+ Includes interest and discount on all types of loans and advances like cash credit, demand loans, overdrafts, export loans, term loans, domestic and foreign bills purchased and discounted (including those rediscounted), interest on debt instruments (including Government securities), overdue interest and also penal interest, interest subsidy, etc., if any, relating to such advance/bills. Note: Dividend on equity/ preference shares is other operating income. Interest on advance income tax, etc. are to be considered as miscellaneous income. 
+ 2 
+ Income from off balance sheet operations 
+ Income earned from contingent facilities (such as fee income earned for issue of LCs, BGs, acceptances, endorsements and committed lines of credit) and positive marked to market (MTM) valuations of derivative transactions or gains recorded on derivative transactions due to favourable movements of market variables (such as yields, exchange rates). 
+ 3 
+ Other operating income 
+ Income earned from regular activities of banks other than from the core operations of lending and investing of funds, which yield interest income. It includes commission, exchange and brokerage (such as commission on bills for collection, commission / exchange on remittances / transfers, commission on LCs / guarantees, processing charges, syndication fees, credit / debit card fee income, locker rent, commission on government business, brokerage on securities, fee on insurance / mutual fund referral and banking service charges), profit on exchange transactions (revaluation gains / losses on forward foreign exchange contracts and other derivative contracts, premium income / expenses on options, etc), dividends from subsidiaries and joint ventures abroad/ in India. 
+ 4 
+ Non-operating Income 
+ Non-operating income is income earned by banks from other than their core/ regular activities and which are not their regular source of income, e.g., profit (and losses) on sale of fixed assets/ HTM category investments, revaluation of HTM category investments, recovery of written-off assets, etc. 
+ 5 
+ Recovery from written off accounts 
+ The amount a bank receives in part or full against the previously written off assets. It is considered as non-operating income. 
+ 6 
+ Operating expenses 
+ Expenses other than interest expenses, provisions & contingencies. It includes payments to and provisions for employees, rent/ taxes & lighting, printing & stationery, advertisement & publicity, depreciation on bank's property, directors' fees/ allowances & expenses, auditors' fees & expenses (including branch auditors' fees and expenses), law charges, postages/ telegrams & telephones, repairs & maintenance, insurance and other expenditure. 
+ 7 
+ Interest expenses/ expended 
+ These are interest paid on deposits and borrowings. It includes interest paid on all types of deposits including deposits from individuals, banks and other institutions, discount/ interest on all borrowings and refinance (including those from the RBI, other banks and financial institutions). All other payments like interest on participation certificates, penal interest paid, etc. also form part of interest expenses. 
+ 8 
+ Write-off 
+ Write-off, complete or partial, is the reduction in the gross carrying amount of an asset, when the entity has no reasonable expectations of recovering the asset in its entirety or a portion thereof. 
+ 9 
+ Net interest income 
+ The difference between the interest income and the interest expenses. 
+ 10 
+ Return on assets 
+ A profitability ratio which indicates the profits (i.e., income) generated on average working funds (i.e., total of assets excluding accumulated losses, if any). It is computed by dividing net income (i.e., profits after tax) by average working funds. Average working funds is derived from the monthly average total assets as reported to RBI in Form X under Section 27 of the Banking Regulation Act, 1949 during the year. 
+ 5) Definition of Data Elements related to Miscellaneous Items: Number of Data Definitions = 95 
+ S. No. 
+ Data Elements 
+ Harmonised Definitions 
+ Miscellaneous 
+ 1-12 
+ Capital/ Fixed Assets/ Lease/ Financial Lease/ Operating Lease/ Advance Tax Paid/ Goodwill/ Goodwill on Consolidation/ Intangible Assets/ Deferred Tax Assets/ Deferred Tax Liabilities/ Minority Interest/ Contingencies/ Contingent Liabilities (12 Items) 
+ As per applicable accounting standards and explanations issued thereon. 
+ 13 
+ Consumer Credit 
+ Consumer credit refers to the loans given to individuals, which consists of (a) loans for consumer durables, (b) credit card receivables, (c) auto loans (other than loans for commercial use), (d) personal loans secured by gold, gold jewellery, immovable property, fixed deposits (including FCNR(B)), shares and bonds, etc., (other than for business / commercial purposes), (e) personal loans to professionals (excluding loans for business purposes), and (f) loans given for other consumptions purposes (e.g., social ceremonies, etc.). However, it excludes (a) education loans, (b) loans given for creation/ enhancement of immovable assets (e.g., housing, etc.), (c) loans given for investment in financial assets (shares, debentures, etc.), and (d) consumption loans given to farmers under KCC. For risk weighting purposes under the Capital Adequacy Framework, the extant regulatory guidelines will be applicable. 
+ 14 
+ Personal loans 
+ Personal loans refer to loans given to individuals and consist of (a) consumer credit, (b) education loan, (c) loans given for creation/ enhancement of immovable assets (e.g., housing, etc.), and (d) loans given for investment in financial assets (shares, debentures, etc.). 
+ 15 
+ Funded Credit 
+ Funded credit implies amount actually lent or credited to a borrower's account or debited to borrower's loan/ cash credit/ overdraft or any other borrowing account for payment on behalf of the borrower. 
+ 16 
+ Weighted Average Lending Rate 
+ Weighted average lending rate (WALR) relates to all types of rupee credit accounts (viz., cash credit, demand loans, overdrafts, inland bills financed and discounted, term loans and other types, if any). The amount of loans under each credit account is multiplied with its corresponding interest rates (usually, it is done individual account-wise under each type of credit account) and then, added together. This sum of all products is then divided by the total amount of loans to arrive at WALR. 
+ 17 
+ Pre-shipment Credit 
+ Pre-shipment credit means any loan or advance granted or any other credit provided by a bank to an exporter for financing the purchase, processing, manufacturing or packing of goods prior to shipment / working capital expenses towards rendering of services on the basis of letter of credit opened in his favour or in favour of some other person, by an overseas buyer or a confirmed and irrevocable order for the export of goods / services from India or any other evidence of an order for export from India having been placed on the exporter or some other person, unless lodgement of export orders or letter of credit with the bank has been waived. 
+ 18 
+ Take-out Finance/ Conditional Take-out Finance 
+ Take-out finance is an arrangement where an institution / bank, financing infrastructure projects, will have an arrangement with any financial institution for transferring to the latter, the outstanding in respect of such financing in their books on a pre-determined basis. Conditional take-out finance: In this scenario, the taking over institution would have stipulated certain conditions to be satisfied by the borrower before it is taken over from the lending institution. 
+ 19 
+ Unsecured Guarantees 
+ Unsecured guarantees are those which are not secured by any collateral. Limit on the amount of unsecured guarantees is fixed by a bank's board. 
+ 20 
+ Slippage 
+ Slippage refers to new accretion to NPAs during a period. 
+ 21 
+ Standard Advances 
+ Standard advance is an advance which is not non-performing as per extant IRAC and provisioning norms. 
+ 22 
+ Substandard Advances 
+ A substandard advance is one, which remains non-performing for a period less than or equal to 12 months. 
+ 23 
+ Doubtful Advances 
+ An advance which remains in the substandard category for a period of 12 months. 
+ 24 
+ Restructured Accounts 
+ A restructured account is one where the bank, for economic or legal reasons relating to the borrower's financial difficulty, grants to the borrower, concessions that the bank would not otherwise consider. Restructuring would normally involve modification of terms of the advances / securities, which would generally include, among others, alteration of repayment period / repayable amount/ the amount of instalments / rate of interest (due to reasons other than competitive reasons). However, extension in repayment tenure of a floating rate loan on reset of interest rate, so as to keep the equated monthly instalment (EMI) unchanged, provided it is applied to a class of accounts uniformly, will not render the account to be classified as 'Restructured account'. In other words, extension or deferment of EMIs to individual borrowers as against to an entire class, would render the accounts to be classified as 'restructured accounts'. 
+ 25 
+ Restructured Standard Advances 
+ Restructured standard advances are the advances restructured/ permitted to be classified as standard, as per extant DBR instructions. 
+ 26 
+ Mortgage-backed Security 
+ A Mortgage-backed security is a bond-type security in which the collateral is provided by a pool of mortgages. Income from the underlying mortgages is used to meet interest and principal repayments. 
+ 27 
+ Treasury Bills 
+ Treasury bills are short term negotiable non-coupon bearing instruments issued by the Government of India. 
+ 28 
+ Shifted Investments 
+ Shifted investments are amount of investments shifted from/to one category to another, among the three categories i.e. held to maturity (HTM), available for sale (AFS), and held for trading (HFT). 
+ 29 
+ Equities Participations 
+ Equities participations refer to the bank's investment in equities of subsidiary / associate / joint venture either in India or abroad or equity participation in other entities. 
+ 30 
+ Securities Held for Trade (HFT), Available for Sale (AFS), Held to Maturity (HTM) 
+ Held for Trading (HFT) Securities: The securities acquired by the banks with the intention to trade by taking advantage of the short-term price / interest rate movements. These securities are to be sold within 90 days. Held to maturity (HTM) Securities: The securities acquired by the banks with the intention to hold them up to maturity. Available for Sale (AFS) Securities: Securities not classified under HFT and HTM are included under AFS. 
+ 31 
+ Adjusted Net Bank Credit (ANBC) 
+ ANBC denotes the outstanding Bank Credit in India [As prescribed in item No.VI of Form 'A' under Section 42 (2) of the RBI Act, 1934] minus bills rediscounted with RBI and other approved Financial Institutions plus permitted non SLR bonds/debentures under Held to Maturity (HTM) category plus other investments eligible to be treated as part of priority sector lending (e.g., investments in securitised assets). For UCBs, only the investments made after August 30, 2007 in permitted non SLR bonds held under 'Held to Maturity' (HTM) category, will form part of ANBC. The outstanding deposits under RIDF and other funds with NABARD, NHB, SIDBI and MUDRA Ltd. in lieu of non-achievement of priority sector lending targets/sub-targets* will form part of ANBC along with outstanding Net PSLCs. The eligible amount for exemption on account of issuance of long-term bonds for infrastructure and affordable housing as per Reserve Bank of India (Resource Raising Norms) Directions, 2025 as applicable to Commercial Banks and Small Finance Banks, will also be excluded from the ANBC for computation of priority sector lending targets. The eligible amount for exemption in the computation of Adjusted Net Bank Credit (ANBC) for Priority Sector Lending (PSL), arising from the issuance of long-term bonds for infrastructure and affordable housing, shall be the lower of: (i) Eligible Credit (EC) and (ii) Outstanding long-term bonds (LB), as specified in the Reserve Bank of India (Commercial Banks - Resource Raising Norms) Directions, 2025 . Advances extended in India against the incremental FCNR (B)/NRE deposits, qualifying for exemption from CRR/SLR requirements, as per the Reserve Bank's circulars DBOD.No.Ret.BC.36/12.01.001/2013-14 dated August 14, 2013 read with DBOD.No.Ret.BC.93/12.01.001/2013-14 dated January 31, 2014 and DBOD mailbox clarification issued on February 6, 2014 and UBD.BPD.(PCB).CIR.No.5/13.01.000/2013-14 dated August 27, 2013 read with UBD.BPD.(PCB).Cir.No.72/13.01.000/2013-14 dated June 11, 2014 , will be excluded from the ANBC for computation of priority sector lending targets, till their repayment. Investments made by public sector banks in the Recapitalization Bonds floated by Government of India will also be excluded from the ANBC for computation of priority sector lending targets. 
+ 32 
+ Inside Liabilities 
+ Inside liabilities are capital, reserves and risk provisions. 
+ 33 
+ Outside Liabilities 
+ Outside liabilities are liabilities excluding capital, reserves and risk provisions. 
+ 34 
+ Risk Sensitive Liabilities 
+ Liabilities which are sensitive to market risks. 
+ 35 
+ Assigned Capital 
+ Indian banks operating abroad through branches, assign a specific amount as assigned capital for the overseas branches. This assigned capital is reflected as assigned capital in the overseas branch ledger and reported to DSB (overseas returns) submitted by such banks. 
+ 36 
+ Perpetual Non-Cumulative Preference Shares 
+ Perpetual non-cumulative preference shares refer to preference shares which are eligible for inclusion in additional Tier I capital subject to prescribed guidelines. 
+ 37 
+ Disclosed Reserve 
+ Disclosed reserves refer to the appropriations of profit after tax to specific categories of reserves which are required to be disclosed in Schedule 2 of the published balance sheet as per provisions of the Banking Regulation Act 1949 and regulatory instructions. 
+ 38 
+ Regulatory Capital 
+ Regulatory capital means total of tier I and tier II capital calculated as per extant instructions on capital adequacy. 
+ 39 
+ Capital Conservation Buffer (CCB) 
+ Capital conservation buffer refers to capital buffer, comprising of common equity tier I capital, which banks are required to maintain above the regulatory minimum capital requirement of 9% under part - D of master circular - Basel III capital regulations - DBR.No.BP.BC.1/21.06.201/2015-16 dated 01-07-2015 . 
+ 40 
+ Horizontal Disallowance 
+ A disallowance of offsets to required capital using the BIS Method for assessing market risk for regulatory capital. In order to calculate the capital required for interest rate risk of a trading portfolio, the BIS Method allows offsets of long and short positions. Yet, interest rate risk of instruments at different horizontal points of the yield curve are not perfectly correlated. Hence, the BIS Method requires that a portion of these offsets be disallowed. 
+ 41 
+ Vertical Disallowance 
+ In the BIS method for determining regulatory capital, necessary to cushion market risk, a reversal of the offsets of a general risk charge of a long position by a short position in each currency in two or more securities in the same time band in the yield curve where the securities have differing credit risks. 
+ 42 
+ Collateralised Borrowing and Lending Obligation (CBLO) 
+ The Clearing Corporation of India Ltd. (CCIL) has developed and introduced, with effect from January 20, 2003, a money market instrument called 'Collateralised Borrowing and Lending Obligation (CBLO)'. It is a money market instrument with original maturity varying from one day to one year. It is fully collateralised by government securities, deposited by the borrowers in their SGL or constituents' subsidiary general ledger (CSGL) account with CCIL and traded on the platform provided by CCIL. This instrument creates an obligation on the borrower to repay the money borrowed along with interest on a predetermined future date; and provide right and authority to the lender to receive money lent along with interest on the predetermined future date. 
+ 43 
+ Lower Tier II Bonds 
+ Lower tier II bonds are rupee tier II subordinated debt which can be raised by Indian banks for inclusion in lower tier II capital, subject to prescribed terms and conditions. Foreign banks operating in India can raise subordinated debt in tier II capital by way of head office borrowings in foreign currency, subject to prescribed guidelines. 
+ 44 
+ Upper Tier II Bonds 
+ Upper tier II bonds are the debt capital instruments issued by Indian banks and qualify the required terms and conditions as set out in Annex-3, and also the capital instruments such as perpetual cumulative preference shares (PCPS), redeemable non-cumulative preference shares (RNCPS) and redeemable cumulative preference shares (RCPS) qualifying terms and conditions as set out in Annex-4, of the extant master circular on 'Prudential Guidelines on Capital Adequacy and Market Discipline - New Capital Adequacy Framework (NCAF)'. 
+ 45 
+ Hybrid Capital 
+ Hybrid capital instruments are those which have close similarities to equity, in particular when they are able to support losses on an ongoing basis without triggering liquidation. These are included as part of tier II capital subject to prescribed guidelines. 
+ 46 
+ Securitised Debt Instruments 
+ Securitised debt instruments are debt obligations created out of cash flows from the pool of securitised assets. 
+ 47 
+ Redeemable Debt Instruments 
+ Redeemable debt instruments are the bonds / debentures which Indian banks may raise to augment capital funds for capital adequacy purpose, subject to prescribed guidelines. 
+ 48 
+ Subordinated Debt 
+ Subordinated debt refers to debt instruments eligible for inclusion in Tier II capital subject to prescribed guidelines. These instruments rank subordinate to claims of other debts in the case of bankruptcy or liquidation of the debtor. 
+ 49 
+ Long-term Time Deposit 
+ As per the Master Circular on cash reserve ratio (CRR)/ statutory liquidity ratio (SLR) dated July 01, 2015 , long-term time deposits are deposits of contractual maturity of more than one year. 
+ 50 
+ Core Deposits 
+ Core deposits is the sum of all deposits (including current and savings accounts) with maturity of more than a year (as reported in structural liquidity statement) and net worth. 
+ 51 
+ Unclaimed Deposits 
+ All accounts in India which have not been operated for 10 years. Provided that in case of money deposited for a fixed period the said term of 10 years shall be reckoned from the date of expiry of such period 
+ 52 
+ Exchange Earners Foreign Currency Account/ Deposits (EEFC) 
+ Exchange Earners' Foreign Currency Account (EEFC) is an account maintained in foreign currency with an authorised dealer i.e., a bank dealing in foreign exchange. It is a facility provided to the foreign exchange earners, including exporters, to credit 100 per cent of their foreign exchange earnings to the account, so that the account holders do not have to convert foreign exchange into rupees and vice versa, thereby minimising the transaction costs. 
+ 53 
+ Risk Provisions 
+ Risk provisions cover all charges to profit and loss account to record actual losses / diminution in values recognised and losses / diminution in values estimated and recognized by the bank during a financial year. 
+ 54 
+ Para-banking Activities 
+ Para-banking activities are those permitted activities which a banking company may engage, in addition to the business of banking, under Sub-Section 1 of Section 6 of the Banking Regulation Act 1949 subject to regulatory guidelines issued on para-banking activities. 
+ 55 
+ Offshore Banking Units 
+ An offshore banking unit is a branch of a bank located in a special economic zone (SEZ) and which has obtained the permission under clause (a) of Sub-Section (1) of Section 23 of the Banking Regulation Act, 1949 as defined in Para 2 (u) of Chapter 1 of 'The Special Economic Zones Act, 2005' dated June 23, 2005. 
+ 56 
+ Liability on Partly Paid-up Shares 
+ Liability on partly paid-up shares arise when only a portion of the face value of shares has been paid and the shareholder is still required to pay the remaining amount to the issuer company. 
+ 57 
+ Forward Deposits 
+ Forward deposits are a commitment to place deposits at a future date for an agreed amount and at pre-determined rate. It is an off-balance sheet item. 
+ 58 
+ Non-funded Commitments 
+ Non-funded commitments include any commitment which is not covered under funded commitments. 
+ 59 
+ Non-fund Based Advances 
+ Non-fund based advances refer to contingent credits which are off-balance sheet exposure such as letter of credit, guarantees, etc. issued to a borrower. 
+ 60 
+ Short-term Facilities by Bank 
+ Short term facilities are credit facilities (funded and/ or non-funded) for less than one year. 
+ 61 
+ Revolving Underwriting Facilities 
+ Revolving underwriting facilities is an agreement whereby a bank agrees to provide credit facility to an issuer (borrower) by buying any unsold notes / bonds as per the agreed terms and conditions. 
+ 62 
+ Formal Standby Facilities and Credit Lines 
+ A formal standby facility or credit line is a formalised arrangement in which the counterparty has the right, but not the obligation to draw funds to a specified limit. 
+ 63 
+ Gross Exposure 
+ Gross exposure includes credit exposure (funded and non-funded credit limits) and investment exposure (including underwriting and similar commitments) without making adjustments. 
+ 64 
+ Net Funded Exposure 
+ Net funded exposure is the gross funded exposure 'minus' collaterals, guarantees, insurance etc. Netting/Offsetting may be permitted for eligible financial collaterals; credit derivatives, third party guarantees and credit insurance available in/ issued by counterparties in a lower risk category for capital adequacy purposes than the counterparty on which exposure is assumed. 
+ The offsetting shall be as given in the Basel III Capital Regulations. 
+ 65 
+ Real Estate Exposures 
+ Real Estate is generally defined as an immovable asset - land (earth space) and the permanently attached improvements to it. Real estate exposure includes exposure to home loans, commercial real estate loans, loans against property, investments in mortgaged backed securities, etc. 
+ 66 
+ Securitisation Exposures 
+ Securitisation means a process by which a single performing asset or a pool of performing assets are sold to a bankruptcy remote SPV and transferred from the balance sheet of the originator to the SPV in return for an immediate cash payment. 
+ 67 
+ Re-securitisation Exposures 
+ A re-securitisation exposure is a securitisation exposure in which the risk associated with an underlying pool of exposures is trenched and at least one of the underlying exposures is a securitisation exposure. In addition, an exposure to one or more re-securitisation exposures is a re-securitisation exposure. 
+ 68 
+ Non-market Related Exposure 
+ Non-market related exposure is off-balance sheet exposure (other than market related off balance sheet exposures) such as direct credit substitutes, trade and performance related contingent items and commitments with certain drawdown, other commitments, etc. 
+ 69 
+ Market Related Exposure 
+ Market related exposure includes foreign exchange contracts, interest rate contracts, and any other market related contracts specifically allowed by the Reserve Bank which gives rise to credit risk. 
+ 70 
+ Credit Risk 
+ Credit risk is the possibility of losses associated with diminution in the credit quality of borrowers or counterparties. Credit risk emanates from a bank's dealings with an individual, corporate, bank, financial institution or a sovereign. 
+ 71 
+ Credit Event Payments 
+ Credit event payment is the amount which is payable by the credit protection provider to the credit protection buyer under the terms of the credit derivative contract following the occurrence of a credit event. 
+ 72 
+ Adjusted Value of Credit Risk Mitigant 
+ Adjusted value of credit risk mitigant is the value of eligible financial collaterals after application of 'haircuts' as per extant instructions on capital adequacy framework. 
+ 73 
+ Risk Adjusted Value 
+ Risk adjusted value is the net exposure (exposure adjusted for collaterals, after applying haircuts&nbsp;on both exposure and collateral) multiplied by the applicable risk weight.&nbsp;The purpose underlying the application of haircut is to capture the market-related volatility inherent in the value of exposures as well as of the eligible financial collaterals. 
+ 74 
+ Risk Weighted Assets 
+ Risk-weighted assets are used to determine the minimum amount of capital a bank must hold in relation to the risk profile of the bank's assets. The bank's assets value is multiplied by the risk weight applicable to the counterparty or to the purpose for which the bank has extended finance or the type of asset, whichever is higher. Risk weighted assets are calculated as per risk weights assigned to each asset (funded/ non-funded) as per prescribed guidelines. 
+ 75 
+ Credit Default Swap (CDS) Transaction 
+ Credit Default Swap (CDS) is a bilateral derivative contract on one or more reference assets in which the protection buyer pays a fee through the life of the contract in return for a credit event payment by the protection seller following a credit event of the reference entities. 
+ 76 
+ Forex Buy Sell Swaps 
+ A forex buy sell swap involves buying foreign currency on a near maturity date and simultaneous selling of the foreign currency on a future maturity date as per the agreement between the parties Over the counter (OTC) 
+ 77 
+ Forex Sell Buy Swaps 
+ A forex sell buy swap involves selling foreign currency on a near maturity date and simultaneous buying of the foreign currency on a future maturity date as per the agreement between the parties Over the counter (OTC) 
+ 78 
+ Foreign Currency Rupee Swaps 
+ An agreement between two counterparties whereby one counterparty agrees to exchange principal and/ or interest payments on a loan or an asset in one currency to the second counter party, in return for receiving payments of principal and/ or interest payments on an equivalent loan or an asset in another currency from the second counter party as per the agreed rates. 
+ 79 
+ Open Foreign Exchange Position Limit Capital Charge 
+ Open foreign exchange position limit capital charge is the capital charge, which is maintained on total open foreign exchange position limit as the per regulatory prescriptions. 
+ 80 
+ Credit Conversion Factor 
+ A credit conversion factor is the factor which converts the notional amount of the transaction covered under off-balance sheet exposure item into a credit equivalent amount, which in turn is multiplied by a risk weight applicable to the counterparty to arrive at risk adjusted value for calculation of capital to risk-weighted assets ratio (CRAR). 
+ 81 
+ Market Risk 
+ Market risk is the risk that the value of 'on 'or 'off' balance sheet positions would be adversely affected by movements in equity and interest rate markets, currency exchange rates and commodity prices. 
+ 82 
+ Gross Mark to Market Value (Negative/ Positive) 
+ Gross mark to market value means the absolute value of a security or contract or position that reflect its market value arrived in accordance with the agreed methods, subject to regulatory prescriptions. 
+ 83 
+ Marked to Market Positions 
+ Mark to market (MTM) is a method to assess the fair value of assets or liabilities that can change over time. Mark to market aims to provide a realistic assessment of an institution's current financial situation. 
+ 84 
+ Haircut Adjustment 
+ Banks are required to adjust both the amount of exposure to a counterparty and the value of any collateral received in support of that counterparty to take account of possible future fluctuations in the value of either the exposure or the collateral, occasioned by market movements. These adjustments are referred to as 'haircuts'. 
+ 85 
+ Gap Limit 
+ Cash flows mismatches in terms of maturity buckets are called gaps which lead to liquidity and market risk. Limits placed on such gaps to restrict liquidity or market risk is called gap limit. 
+ 86 
+ Cumulative Gap 
+ Cumulative gap is the progressive summation over a sequential periodic buckets of individual net gaps with signs. For example, cumulative gap of bucket 'over 3 months and up to 6 months' is calculated as cumulative gap of the bucket ' 29 days and up to 3 months' plus net gap of the bucket 'over 3 months and up to 6 months'. . 
+ 87 
+ Net gap 
+ Net gap refers to summation of individual bucket-wise balance sheet gap and the total of other products with signs. 
+ 88 
+ Maximum Aggregate Gap Limit 
+ Maximum aggregate gap refers to summation of tenure-wise (time bucket-wise) gaps in foreign currencies ignoring the signs. A limit placed on the aggregate gap is called maximum aggregate limit. 
+ 89 
+ Operational Risk 
+ Operational risk is the risk of loss resulting from inadequate or failed internal processes, people and systems or from external events. It includes legal risk but excludes strategic and reputational risk. 
+ 90 
+ Extraordinary Items 
+ As per accounting standard 5 (AS 5), Extraordinary items are income or expenses that arise from events or transactions that are clearly distinct from the ordinary activities of the enterprise and, therefore, are not expected to recur frequently or regularly. 
+ 91 
+ Hurdle Rate 
+ Hurdle rate is the minimum acceptable return on business activity. In the context of rating grades, it refers to the rating grade (on the internal master rating scale of the bank) below which, as per bank's approved internal policy fresh exposures to counterparties will not be undertaken. 
+ 92 
+ Extraordinary Loss/ Expenses/ Charges 
+ As per accounting standard 5 (AS 5), extraordinary charges are expenses that arise from events or transactions that are clearly distinct from the ordinary activities of the enterprise and, therefore, are not expected to recur frequently or transactions that are clearly distinct from the ordinary activities of the enterprise and, therefore, are not expected to recur frequently or regularly. 
+ 93 
+ Diluted Earnings 
+ Diluted earnings per share is calculated by assuming that everyone who has an instrument that can be converted into an equity share, converts it into an equity share and so the total number of outstanding shares of the company increases, thereby reducing the EPS. For details, please refer to accounting standard 20 (AS 20). 
+ 94 
+ Basic Earnings Per Share 
+ Basic earnings per share is the net profit or loss for the period attributable to the equity shareholders divided by the weighted average number of the equity shares outstanding during the period. For details refer to accounting standard 20 (AS 20). 
+ 95 
+ Beta Factor 
+ Beta serves as a proxy for the industry-wide relationship between the operational risk loss experience for a given business line and the aggregate level of gross income for that business line. 
+ Summary Table: 
+ # 
+ Contents 
+ Number of Data Element Definition 
+ 1. 
+ Assets 
+ 27 
+ 2. 
+ Liabilities 
+ 43 
+ 3. 
+ Off-Balance Sheet Items 
+ 14 
+ 4. 
+ Profit and Loss Account Items 
+ 10 
+ 5. 
+ Miscellaneous 
+ 95 
+ Total Data Element Definitions 
+ 189 
+ Banking Statistics II (Including Financial Inclusion) 
+ (Updated as on February 27, 2026) 
+ In the event of difference / variation between the definitions of a term provided in technical guidance note vis-&agrave;-vis the statutory/accounting/regulatory definition (provided in the relevant circulars), the latter would prevail. 
+ S. No. 
+ Data Elements 
+ Definitions 
+ 1 
+ Benchmark Prime Lending Rate (BPLR) 
+ Benchmark Prime Lending Rate (BPLR) means internal benchmark rate used to determine the interest rates on advances/loans sanctioned by banks during the period from April 2003 to June 30, 2010. 
+ 2 
+ External benchmark rate 
+ External benchmark rate means the reference rate which includes: 
+ a) Reserve Bank of India policy Repo Rate 
+ b) Government of India 3-Months and 6-Months Treasury Bill yields published by Financial Benchmarks India Private Ltd (FBIL). 
+ c) Any other benchmark market interest rate published by FBIL. 
+ 3 
+ Marginal Cost of Funds based Lending Rate (MCLR) 
+ The Marginal Cost of Funds based Lending Rate (MCLR) is an internal benchmark which shall comprise of the following components: 
+ a) Marginal cost of funds; 
+ b) Negative carry on account of Cash Reserve Ratio; 
+ c) Operating costs; 
+ d) Tenor premium. 
+ Detailed computation methodology is provided in Master Direction - Reserve Bank of India (Interest Rate on Advances) Directions, 2016 (as updated for the latest period). 
+ 4 
+ Assets with Banking System 
+ Assets with Banking System include 
+ a) balances with banks in current account, balances with banks and notified financial institutions in other accounts, funds made available to banking system by way of loans or deposits repayable at call or short notice of a fortnight or less and loans other than money at call and short notice made available to the banking system; and 
+ b) any other amounts due from the banking system which cannot be classified under any of the above items. 
+ 5 
+ Post-shipment Export Credit 
+ Post-shipment Credit means loans or advances granted or any other credit provided by a bank to an exporter of goods from India from the date of extending credit after shipment of goods to the date of realisation of export proceeds and includes any loan or advance granted to an exporter, in consideration of, or on the security of any duty drawback allowed by the Government from time to time. Post-shipment advance can mainly take the form of - 
+ (i) Export bills purchased/discounted/negotiated. 
+ (ii) Advances against bills for collection. 
+ (iii) Advances against duty drawback receivable from Government. Post-shipment credit is to be liquidated by the proceeds of export bills received from abroad in respect of goods exported. 
+ 6 
+ Net Demand and Time Liabilities (NDTL) 
+ Net Demand and Time Liabilities (NDTL) of a bank includes (a) liabilities towards the banking system net of assets with the banking system (as defined in Section 42 of the Reserve Bank of India Act, 1934 for scheduled banks, Small Finance Banks and Payments Banks or Section 18 of the Banking Regulation Act, 1949 for non-scheduled banks or Section 18 of the Banking Regulation Act, 1949 read with Section 56 thereof for non-scheduled co-operative banks); and (b) liabilities towards others in the form of demand and time deposits or borrowings or other miscellaneous items of liabilities. 
+ The detailed computation methodology for Cash Reserve Ratio (CRR) and Statutory Liquidity Ratio (SLR) purposes are provided in Master Direction - Reserve Bank of India [Cash Reserve Ratio (CRR) and Statutory Liquidity Ratio (SLR)] Directions - 2021 (as updated for the latest period). 
+ 7 
+ Other Approved Securities 
+ Following securities shall be considered as Approved Securities/ SLR Securities: 
+ (i) Dated securities of the Government of India issued from time to time under the market borrowing programme and the Market Stabilisation Scheme; 
+ (ii) Treasury Bills of the Government of India; and 
+ (iii) State Development Loans (SDLs) of the State Governments issued from time to time under the market borrowing programme. 
+(iv) Any other instrument as may be notified by the Reserve Bank of India (As and when prescribed). 
+Other Approved Securities shall mean Government Securities, other than the securities mentioned above, subject to the condition that they are notified as approved securities. 
+ 8 
+ Statutory Liquidity Ratio (SLR) assets 
+ Statutory Liquidity Ratio (SLR) assets [for Scheduled Commercial Banks (Including Regional Rural Banks), Local Area Banks, Small Finance Banks and Payments Banks] shall be maintained by banks as under: 
+ (a) Cash; 
+ (b) Gold, as defined in Section 5(g) of the Banking Regulation Act, 1949, valued at a price not exceeding the current market price; 
+ (c) SLR securities 
+ Cash includes 
+ (i) cash in hand; 
+ (ii) the net balance in current accounts with other scheduled commercial banks in India; 
+ (iii) the deposit required under sub-section (2) of Section 11 of the Banking Regulation Act, 1949 to be made with the Reserve Bank by a banking company incorporated outside India; 
+ (iv) any balance maintained by a scheduled bank with the Reserve Bank in excess of the balance required to be maintained by it under Section 42 of the Reserve Bank of India Act,1934 (2 of 1934); 
+ (v) balances held by banks with the RBI under the Standing Deposit Facility (SDF). 
+ 9 
+ Statutory Liquidity Ratio (SLR) Securities 
+ Following securities shall be considered as Approved Securities/Statutory Liquidity Ratio (SLR) Securities: 
+ Dated securities of the Government of India issued from time to time under the market borrowing programme and the Market Stabilisation Scheme; Treasury Bills of the Government of India; and State Development Loans (SDLs) of the State Governments issued from time to time under the market borrowing programme. Any other instrument as may be notified by the Reserve Bank of India (As and when prescribed). 
+ For Form A Return and its Annex, bank should report the total investment in approved securities as per it's investment book i.e. including encumbered securities. For SLR purpose, only unencumbered portion of investment in approved securities qualify as specified SLR assets. The following SLR securities, however, shall not be considered as encumbered securities for SLR purpose and hence they will also qualify as specified SLR asset: Securities lodged with another institution for an advance or any other credit arrangement to the extent to which such securities have not been drawn against or availed of; Securities offered as collateral to the Reserve Bank for availing liquidity assistance from Marginal Standing Facility (MSF) up to the permissible percentage of the total Net Demand and Time Liabilities (NDTL) in India, carved out of the required SLR portfolio of the bank concerned; Securities offered as collateral to the Reserve Bank for availing liquidity assistance under Facility to Avail Liquidity for Liquidity Coverage Ratio (FALLCR); and Securities acquired by banks under RBI-LAF and market repo transactions. 
+ Ref: Master Direction - Reserve Bank of India [Cash Reserve Ratio (CRR) and Statutory Liquidity Ratio (SLR)] Directions - 2021 ( DOR.No.RET.REC.32/12.01.001/2021-22 dated July 20, 2021 ) updated from time to time. 
+ 10 
+ Unencumbered Approved Securities 
+ Unencumbered approved securities or unencumbered securities include the securities lodged by the company with another institution for an advance or any other credit arrangement to the extent to which such securities have not been drawn against or availed of. 
+ 11 
+ Wilful default 
+ A 'wilful default' would be deemed to have occurred if any of the following events is noted: 
+ (a) The unit has defaulted in meeting its payment / repayment obligations to the lender even when it has the capacity to honour the said obligations. 
+ (b) The unit has defaulted in meeting its payment / repayment obligations to the lender and has not utilised the finance from the lender for the specific purposes for which finance was availed of but has diverted the funds for other purposes. 
+ (c) The unit has defaulted in meeting its payment / repayment obligations to the lender and has siphoned off the funds so that the funds have not been utilised for the specific purpose for which finance was availed of, nor are the funds available with the unit in the form of other assets. 
+ (d) The unit has defaulted in meeting its payment / repayment obligations to the lender and has also disposed off or removed the movable fixed assets or immovable property given for the purpose of securing a term loan without the knowledge of the bank / lender. 
+ The term 'unit' includes individuals, juristic persons and all other forms of business enterprises, whether incorporated or not. In case of business enterprises (other than companies), banks / All India Notified Financial Institutions may also report the names of those persons who are in charge and responsible for the management of the affairs of the business enterprise. 
+ 12 
+ Overdue status 
+ Any amount due to the bank or regulated entity under any credit facility is 'overdue' if it is not paid on the due date fixed by the bank or regulated entity. The borrower accounts shall be flagged as overdue as part of day-end processes for the due date, irrespective of the time of running such processes. 
+ 13 
+ Loss Assets 
+ A loss asset is one where loss has been identified by the bank/ regulated entity or internal or external auditors or the Reserve Bank of India (RBI) inspection, but the amount has not been written off wholly. In other words, such an asset is considered uncollectible and of such little value that its continuance as a bankable asset is not warranted although there may be some salvage or recovery value. 
+ 14 
+ Securities Financing Transactions (SFTs) 
+ Securities Financing Transactions (SFTs) are transactions such as repurchase agreements, reverse repurchase agreements, security lending and borrowing, collateralised borrowing and lending and margin lending transactions, where the value of the transactions depends on market valuations and the transactions are often subject to margin agreements. 
+ 15 
+ Central counterparty (CCP) 
+ A central counterparty (CCP) is a clearing house that interposes itself between counterparties to contracts traded in one or more financial markets, becoming the buyer to every seller and the seller to every buyer and thereby ensuring the future performance of open contracts. A CCP becomes counterparty to trades with market participants through novation, an open offer system, or another legally binding arrangement. 
+ 16 
+ Qualifying central counterparty (QCCP) 
+ A qualifying central counterparty (QCCP) is an entity that is licensed to operate as a CCP (including a license granted by way of confirming an exemption), and is permitted by the appropriate regulator / overseer to operate as such with respect to the products offered. This is subject to the provision that the CCP is based and prudentially supervised in a jurisdiction where the relevant regulator/overseer has established, and publicly indicated that it applies to the CCP on an ongoing basis, domestic rules and regulations that are consistent with the CPSS-IOSCO Principles for Financial Market Infrastructures. 
+ 17 
+ Leverage Ratio 
+ The Basel III leverage ratio is defined as the capital measure (the numerator) divided by the exposure measure (the denominator), with this ratio expressed as a percentage. The capital measure for the leverage ratio is the Tier 1 capital of the risk-based capital framework, taking into account various regulatory adjustments / deductions and the transitional arrangements. In other words, the capital measure used for the leverage ratio at any particular point in time is the Tier 1 capital measure applying at that time under the risk-based framework. 
+ (i) The exposure measure for the leverage ratio should generally follow the accounting value, subject to the following: 
+ (a) on-balance sheet, non-derivative exposures are included in the exposure measure net of specific provisions or accounting valuation adjustments (e.g. accounting credit valuation adjustments, e.g. prudent valuation adjustments for available for sale (AFS) and held for trading (HFT) positions); 
+ (b) netting of loans and deposits is not allowed. 
+ (ii) Unless specified differently below, banks must not take account of physical or financial collateral, guarantees or other credit risk mitigation techniques to reduce the exposure measure. 
+ (iii) A bank's total exposure measure is the sum of the following exposures: (a) on-balance sheet exposures; (b) derivative exposures; (c) securities financing transaction (SFT) exposures; and (d) off- balance sheet (OBS) items. 
+ 18 
+ Capital adequacy 
+ A measure of the adequacy of an entity's capital resources in relation to its current liabilities and also in relation to the risks associated with its assets. An appropriate level of capital adequacy ensures that the entity has sufficient capital to support its activities and that its net worth is sufficient to absorb adverse changes in the value of its assets without becoming insolvent. 
+ 19 
+ Off-Balance Sheet exposures 
+ Off-Balance Sheet exposures refer to the business activities of a bank that generally do not involve booking assets (loans) and taking deposits. Off-balance sheet activities normally generate fees, but produce liabilities or assets that are deferred or contingent and thus, do not appear on the institution's balance sheet until or unless they become actual assets or liabilities. 
+ 20 
+ Outstanding Exposure at Default (EAD) 
+ Outstanding Exposure at Default (EAD) for a given over-the counter (OTC) derivative counterparty is defined as the greater of zero and the difference between the sum of EADs across all netting sets with the counterparty and the credit valuation adjustment (CVA) for that counterparty which has already been recognised by the bank as an incurred write-down (i.e., a CVA loss). 
+ 21 
+ Netting Set 
+ Netting Set is a group of transactions with a single counterparty that are subject to a legally enforceable bilateral netting arrangement and for which netting is recognised for regulatory capital purposes. Each transaction that is not subject to a legally enforceable bilateral netting arrangement that is recognised for regulatory capital purposes should be interpreted as its own netting set for the purpose of these rules. 
+ 22 
+ Hedging Set 
+ Hedging Set is a group of risk positions from the transactions within a single netting set for which only their balance is relevant for determining the exposure amount or Exposure at Default (EAD) under the Counterparty Credit Risk (CCR) standardised method. 
+ 23 
+ Current Exposure 
+ Current Exposure is the larger of zero, or the market value of a transaction or portfolio of transactions within a netting set with a counterparty that would be lost upon the default of the counterparty, assuming no recovery on the value of those transactions in bankruptcy. Current exposure is often also called Replacement Cost. 
+ 24 
+ Open Position 
+ It is the net difference between the amounts payable and amounts receivable in a particular instrument or commodity. It results from the existence of a net long or net short position in the particular instrument or commodity. 
+ 25 
+ Nostro accounts/ Nostro Balance 
+ Foreign currency settlement accounts that a bank maintains with its overseas correspondent banks. These accounts are assets of the domestic bank. 
+ The account balances of Nostro Account are Nostro Balances. 
+ 26 
+ Value at risk (VAR) 
+ It is a method for calculating and controlling exposure to market risk. Value at risk (VAR) is a single number (currency amount) which estimates the maximum expected loss of a portfolio over a given time horizon (the holding period) and at a given confidence level. 
+ 27 
+ Counterparty Credit Risk 
+ Counterparty Credit Risk (CCR) is the risk that the counterparty to a transaction could default before the final settlement of the transaction's cash flows. An economic loss would occur if the transactions or portfolio of transactions with the counterparty has a positive economic value at the time of default. Unlike a firm's exposure to credit risk through a loan, where the exposure to credit risk is unilateral and only the lending bank faces the risk of loss, CCR creates a bilateral risk of loss: the market value of the transaction can be positive or negative to either counterparty to the transaction. The market value is uncertain and can vary over time with the movement of underlying market factors. 
+ 28 
+ Average Yield on Interest Earning Assets 
+ Average Yield on Interest Earning Assets = (Yield on Interest Earning Assets / Monthly Average Interest Earning Assets) * 100. 
+ 29 
+ Average Cost of Funds 
+ Average Cost of Funds = (Cost of funds / Monthly Average Funds) * 100. 
+ 30 
+ Agriculture Credit (Priority Sector) 
+ Lending to Agriculture includes Farm Credit (Agriculture and Allied Activities), lending for Agriculture Infrastructure and Ancillary Activities. 
+ Ref: Para 9 of Master Directions - Reserve Bank of India (Priority Sector Lending – Targets and Classification) Directions, 2025 ( RBI/FIDD/2024-25/128 Master Directions FIDD.CO.PSD.BC.13/04.09.001/2024-25 dated March 24, 2025 - updated from time to time). 
+ 31 
+ Agriculture Infrastructure (Priority sector) 
+ Loans for agriculture infrastructure are subjected to an aggregate sanctioned limit of &#8377;100 crores per borrower from the banking system. An indicative list of eligible activities under Agriculture Infrastructure includes i) Loans for construction of storage facilities (warehouse, market yards, godowns and silos) including cold storage units/cold storage chains designed to store agriculture produce/products, irrespective of their location. ii) Soil conservation and watershed development. iii) Plant tissue culture and agri-biotechnology, seed production, production of bio-pesticides, bio-fertiliser, and vermi composting. iv) Loans for construction of oil extraction/ processing units for production of bio-fuels, their storage and distribution infrastructure along with loans to entrepreneurs for setting up Compressed Bio Gas (CBG) plants. 
+ Ref: Paras 9.2 of Master Directions - Reserve Bank of India (Priority Sector Lending – Targets and Classification) Directions, 2025 ( RBI/FIDD/2024-25/128 Master Directions FIDD.CO.PSD.BC.13/04.09.001/2024-25 dated March 24, 2025 - updated from time to time). 
+ 32 
+ Ancillary Services (Priority Sector) 
+ An indicative list of eligible activities under Ancillary Services includes 
+ (i) Loans for setting up of Agri-clinics and Agri-business centres. 
+ (ii) Loans to Custom Service Units managed by individuals, institutions or organisations who maintain a fleet of tractors, bulldozers, well-boring equipment, threshers, combines, etc., and undertake farm work for farmers on contract basis. 
+ (iii) Bank loans to Primary Agricultural Credit Societies (PACS), Farmers’ Service Societies (FSS) and Large-sized Adivasi Multipurpose Societies (LAMPS) for on-lending to agriculture. 
+ (iv) Loans sanctioned by banks to Micro Finance Institutions (MFIs) for on-lending to agriculture sector as per the conditions specified in Master Directions on Priority Sector Lending 
+ (v) Loans sanctioned by banks to registered NBFCs (other than MFIs) for ‘Term lending’ component under Agriculture will be allowed up to ₹10 lakh per borrower. 
+ Following loans under ancillary services will be subject to limits prescribed as under: 
+ (i) Loans up to ₹50 crore to Start-ups, as per definition of Ministry of Commerce and Industry, Govt. of India that are engaged in agriculture and allied services; 
+ (ii) Loans for Food and Agro-processing up to an aggregate sanctioned limit of ₹100 crore per borrower from the banking system; 
+ (iii) Outstanding deposits under Rural Infrastructure Development Fund (RIDF) and other eligible funds with NABARD on account of priority sector shortfall. 
+ Ref: Paras 9.3, 22 and 23 of Master Directions - Reserve Bank of India (Priority Sector Lending – Targets and Classification) Directions, 2025 ( RBI/FIDD/2024-25/128 Master Directions FIDD.CO.PSD.BC.13/04.09.001/2024-25 dated March 24, 2025 - updated from time to time). 
+ 33 
+ Education (Priority Sector) 
+ Loans to individuals for educational purposes, including vocational courses, not exceeding ₹25 lakh are considered as eligible for priority sector classification. 
+ Ref: Para 12 of Master Directions - Reserve Bank of India (Priority Sector Lending – Targets and Classification) Directions, 2025 ( RBI/FIDD/2024-25/128 Master Directions FIDD.CO.PSD.BC.13/04.09.001/2024-25 dated March 24, 2025 - updated from time to time). 
+ 34 
+ Export Credit (Priority Sector) 
+ Export credit includes pre-shipment and post-shipment export credit (excluding off-balance sheet items). 
+ Export credit to agriculture and MSMEs shall be eligible for classification as PSL in the respective categories and subject to the aggregate limits mentioned therein. 
+ Loans eligible under export credit (other than that classified under agriculture and MSME) for PSL classification are indicated below: 
+ a) Domestic banks / Wholly Owned Subsidiaries of Foreign banks/ Small Finance Banks/ Urban Co-operative Banks: Incremental export credit over corresponding date of the preceding year, up to 2 per cent of adjusted net bank credit (ANBC) or credit equivalent of off-balance sheet exposures (CEOBSE) whichever is higher, subject to a sanctioned limit of up to ₹50 crore per borrower 
+ b) Foreign banks with 20 branches and above: Incremental export credit over corresponding date of the preceding year, up to 2 percent of ANBC or CEOBSE whichever is higher 
+ c) Foreign banks with less than 20 branches: Export credit up to 32 per cent of ANBC or CEOBSE whichever is higher. 
+ Ref: Reserve Bank of India (Credit Facilities) Directions, 2025, as applicable to Commercial Banks, Small Finance Banks and Urban Co-operative Banks; Para 11 of Master Directions - Reserve Bank of India (Priority Sector Lending – Targets and Classification) Directions, 2025 ( RBI/FIDD/2024-25/128 Master Directions FIDD.CO.PSD.BC.13/04.09.001/2024-25 dated March 24, 2025 - updated from time to time). 
+ 35 
+ Farm Credit (Priority Sector) 
+ A. Farm Credit - Individual farmers-Loans to individual farmers [including Self Help Groups (SHGs) or Joint Liability Groups (JLGs) i.e. groups of individual farmers, provided banks maintain disaggregated data of such loans] and Proprietorship firms of farmers, directly engaged in Agriculture and Allied Activities, viz. dairy, fishery, animal husbandry, poultry, bee-keeping and sericulture include- 
+ (i) Crop loans including loans for traditional/non-traditional plantations, horticulture and allied activities, 
+ (ii) Medium and long-term loans for agriculture and allied activities (e.g. purchase of agricultural implements and machinery and developmental loans for allied activities), 
+ (iii) Loans for pre and post-harvest activities viz. spraying, harvesting, grading and transporting of their own farm produce, 
+(iv) Loans to distressed farmers indebted to non-institutional lenders, 
+ (v) Loans under the Kisan Credit Card Scheme, 
+ (vi) Loans to small and marginal farmers for purchase of land for agricultural purposes, 
+ (vii) Loans against pledge/hypothecation of agricultural produce (including warehouse receipts) for a period not exceeding 12 months subject to a limit up to &#8377;90 lakh against Negotiable Warehouse Receipts (NWRs) / electronic Negotiable Warehouse Receipts (eNWRs) and up to &#8377;60 lakh against warehouse receipts other than NWRs/eNWRs, 
+ (viii) Loans to farmers for installation of stand-alone Solar Agriculture Pumps and for solarisation of grid connected Agriculture Pumps. (ix) Loans to farmers for installation of solar power plants on barren/fallow land or in stilt fashion on agriculture land owned by farmer. 
+ B. Farm Credit - Corporate farmers, Farmer Producer Organisations/ Companies (FPOs)/(FPCs) of Individual Farmers, Partnership firms and Co-operatives of farmers engaged in Agriculture and Allied Activities includes: 
+ (i) Loans for the following activities will be subject to an aggregate limit of &#8377;4 crore per borrowing entity [Crop loans to farmers which will include traditional/non-traditional plantations and horticulture and loans for allied activities, Medium and long-term loans for agriculture and allied activities (e.g. purchase of agricultural implements and machinery and developmental loans for allied activities), Loans for pre and post-harvest activities viz. spraying, harvesting, grading and transporting of their own farm produce.]; (ii) Loans up to &#8377;4 crore against pledge/hypothecation of agricultural produce (including warehouse receipts) for a period not exceeding 12 months against NWRs/eNWRs and up to &#8377;2.5 crore against warehouse receipts other than NWRs/eNWRs; (iii) Loans up to &#8377;10 crore per borrowing entity to FPOs/FPCs undertaking farming with assured marketing of their produce at a pre-determined price; (iv) Loans up to &#8377;10 crore for purchase of the produce of members directly engaged in agriculture and allied activities. 
+ Urban Co-operative Banks are not permitted to lend to co-operatives of farmers. 
+ Ref: Paras 9.1(A) and 9.1(B) of Master Directions - Reserve Bank of India (Priority Sector Lending - Targets and Classification) Directions, 2025 ( RBI/FIDD/2024-25/128 Master Directions FIDD.CO.PSD.BC.13/04.09.001/2024-25 dated March 24, 2025 - updated from time to time). 
+ 36 
+ Housing (Priority Sector) 
+ Bank loans to Housing sector as per limits prescribed below are eligible for priority sector classification: 
+ (i) Loans to individuals up to &#8377;50 lakh in centres with population of 50 lakh and above, up to &#8377;45 lakh in centres with population of 10 lakh and above but below 50 lakh, and up to &#8377;35 lakh in centres with population below 10 lakh for purchase/construction of a dwelling unit per family provided the overall cost of the dwelling unit at the centres does not exceed &#8377;63 lakh, &#8377;57 lakh and &#8377;44 lakh respectively. 
+ (ii) Housing loans to banks' own employees will not be eligible for classification under the priority sector. 
+ (iii) Since Housing loans which are backed by long term bonds are exempted from adjusted net bank credit (ANBC), banks should not classify such loans under priority sector. Investments made by UCBs in bonds issued by National Housing Bank (NHB )/ Housing and Urban Development Corporation Ltd (HUDCO) on or after April 1, 2007 shall not be eligible for classification under priority sector. 
+ Loans up to up to &#8377;15 lakh in centres with population of 50 lakh and above, up to &#8377;12 lakh in centres with population of 10 lakh and above but below 50 lakh, and up to &#8377;10 lakh in centres with population below 10 lakh for repairs to damaged dwelling units conforming to the overall cost of the dwelling unit as indicated above. 
+ Bank loans to any governmental agency for construction of dwelling units or for slum clearance and rehabilitation of slum dwellers subject to dwelling units with carpet area of not more than 60 sq.m. 
+ Bank loans for affordable housing projects using at least 50% of Floor Space Area (FAR)/Floor Space Index (FSI) for dwelling units with carpet area of not more than 60 sq.m. 
+ Outstanding deposits with NHB on account of priority sector shortfall. 
+ Bank credit to Housing Finance Companies (HFCs), approved by NHB for their refinance, for on-lending for the purpose of purchase/construction/reconstruction of individual dwelling units or for slum clearance and rehabilitation of slum dwellers, will be eligible for classification as PSL, subject to an aggregate loan limit of &#8377;20 lakh per borrower. Banks shall maintain necessary borrower-wise details of the underlying portfolio and obtain external auditors' certificates from the HFCs, confirming that on-lending benefit in respect of such loans has not been claimed from any other bank. Bank credit to HFCs for on-lending as applicable, will be allowed up to an overall limit of five percent of individual bank's total priority sector lending of the previous financial year. Banks shall determine adherence to the prescribed cap by averaging the eligible portfolio under on-lending mechanism across four quarters of the current financial year. In case of a newly licensed bank, the cap shall be applicable on an on-going basis during its first year of operations. 
+ Ref: Paras 13, 24 and 25 of Master Directions - Reserve Bank of India (Priority Sector Lending - Targets and Classification) Directions, 2025 ( RBI/FIDD/2024-25/128 Master Directions FIDD.CO.PSD.BC.13/04.09.001/2024-25 dated March 24, 2025 - updated from time to time). 
+ 37 
+ Kisan Credit Card (KCC) Loan 
+ The Kisan Credit Card (KCC) scheme aims at providing adequate and timely credit support from the banking system under a single window with flexible and simplified procedure to the farmers for their cultivation and other needs such as short term credit requirements for cultivation of crops; Post-harvest expenses; Produce marketing loan; Consumption requirements of farmer household; Working capital for maintenance of farm assets and activities allied to agriculture; rearing of animals, birds, fish, shrimp, other aquatic organisms, capture of fish, Investment credit requirement for agriculture and allied activities. 
+ Ref: Master Circular - Kisan Credit Card (KCC) Scheme' ( RBI/2018-19/10 FIDD.CO.FSD.BC.No.6/05.05.010/2018-19 dated July 04, 2018 - updated from time to time) and para 2 of 'Kisan Credit Card (KCC) Scheme: Working Capital for Animal Husbandry and Fisheries' ( RBI/2018-19/112 FIDD.CO.FSD.BC.12/05.05.010/2018-19 dated February 4, 2019 - updated from time to time) 
+ 38 
+ Micro Enterprises 
+ The definition of micro, small and medium enterprises (MSMEs) will be as per Government of India (GoI). Presently, micro enterprise is an enterprise where the investment in plant and machinery or equipment does not exceed Rs.2.5 crore and turnover does not exceed Rs.10 crore. 
+ 39 
+ Small Enterprises 
+ The definition of micro, small and medium enterprises (MSMEs) will be as per Government of India (GoI). Presently, micro enterprise is an enterprise where the investment in plant and machinery or equipment does not exceed Rs. 25 crore and turnover does not exceed Rs. 100 crore. 
+ 40 
+ Medium Enterprises 
+ The definition of micro, small and medium enterprises (MSMEs) will be as per Government of India (GoI). Presently, micro enterprise is an enterprise where the investment in plant and machinery or equipment does not exceed Rs. 125 crore and turnover does not exceed Rs. 500 crore. 
+ 41 
+ Others' Category under priority Sector 
+ Loans to 'Others' category eligible for priority sector classification include 
+ (i) Microfinance loans provided directly by banks to individuals and individual members of SHGs/JLGs satisfying the criteria as prescribed in Reserve Bank of India (Credit Facilities) Directions, 2025, as applicable to Commercial Banks, Small Finance Banks, Regional Rural Banks, Urban Co-operative Banks and Local Area Banks. 
+ (ii) Loans not exceeding &#8377;2.00 lakh provided by banks to SHG/JLG for activities other than agriculture or micro, small and medium enterprise (MSME), viz., loans for meeting social needs, construction or repair of house, construction of toilets or any viable common activity started by SHGs. 
+ (iii) Loans to distressed persons [other than distressed farmers indebted to non-institutional lenders] not exceeding &#8377;1.00 lakh per borrower to prepay their debt to non-institutional lenders. 
+ (iv) Loans sanctioned to State Sponsored Organisations for Scheduled Castes/ Scheduled Tribes for the specific purpose of purchase and supply of inputs and/or the marketing of the outputs of the beneficiaries of these organisations. 
+ (v) Loans up to &#8377;50 crore to Start-ups, as per definition of Ministry of Commerce and Industry, Government of India that are engaged in activities other than Agriculture or MSME. 
+ Ref:&nbsp; Para 16 of Master Directions - Reserve Bank of India (Priority Sector Lending - Targets and Classification) Directions, 2025 ( RBI/FIDD/2024-25/128 Master Directions FIDD.CO.PSD.BC.13/04.09.001/2024-25 dated March 24, 2025 - updated from time to time). 
+ 42 
+ Priority Sector Lending Certificate (PSLC) 
+ Priority Sector Lending Certificate (PSLC) enables banks to achieve the priority sector lending (PSL) target and sub-targets by purchase of these instruments in the event of shortfall and at the same time incentivise the surplus banks; thereby enhancing lending to the categories under priority sector. 
+ 43 
+ Priority Sector Lending Certificate (PSLC)-Agriculture 
+ PSLC-Agriculture represents all eligible agriculture loans except loans to Small Farmer (SF)/ Marginal Farmer (MF) for which separate certificates are available. Additionally, PSLC-Agriculture counts towards the achievement of agriculture target and overall priority sector lending (PSL) target. 
+ 44 
+ Priority Sector Lending Certificate (PSLC)-General 
+ PSLC-General represents the residual priority sector loans i.e., other than loans to agriculture and micro enterprises for which separate certificates are available. Additionally, PSLC -General counts towards achievement of overall priority sector lending (PSL)&nbsp; target. 
+ 45 
+ Priority Sector Lending Certificate (PSLC)-Micro Enterprises 
+ PSLC-Micro Enterprises represents all priority sector lending (PSL) Loans to Micro Enterprises. Additionally, PSLC-Micro Enterprises counts towards the achievement of micro-enterprise sub-target and overall PSL target. 
+ 46 
+ Priority Sector Lending Certificate (PSLC)-Small Farmer (SF)/Marginal Farmer (MF) 
+ PSLC-SF/MF represents all eligible loans to small/marginal farmers. Additionally, PSLC-SF/MF counts towards achievement of SSF/MF sub-target, Weaker Sections sub-target, NCF sub-target, agriculture target, and overall&nbsp; priority sector lending (PSL) target. 
+ 47 
+ Renewable Energy (Priority Sector) 
+ Bank loans up to a limit of &#8377;35 crore to borrowers for renewable energy-based power generators and for renewable energy based public utilities, viz., street lighting systems, remote village electrification etc., will be eligible for priority sector classification. For individual households, the loan limit will be &#8377;10 lakh per borrower. 
+ Ref: Para 15 of Master Directions - Reserve Bank of India (Priority Sector Lending - Targets and Classification) Directions, 2025 ( RBI/FIDD/2024-25/128 Master Directions FIDD.CO.PSD.BC.13/04.09.001/2024-25 dated March 24, 2025 - updated from time to time). 
+ 48 
+ Small & Marginal Farmers (Priority Sector) 
+ For the purpose of computation of achievement of the sub-target, Small and Marginal Farmers (SMFs) will include the following: 
+ i. Farmers with landholding of up to 1 hectare (Marginal Farmers). 
+ ii. Farmers with a landholding of more than 1 hectare and up to 2 hectares (Small Farmers). 
+ iii. Landless agricultural labourers, tenant farmers, oral lessees and sharecroppers whose share of landholding is within the limits prescribed for SMFs. 
+ iv. Loans to Self Help Groups (SHGs) or Joint Liability Groups (JLGs), i.e. groups of individual SMFs directly engaged in Agriculture and Allied Activities, provided banks maintain disaggregated data of such loans. 
+ v. Loans up to &#8377;2.5 lakh to individuals solely engaged in Allied activities without any accompanying land holding criteria. 
+ vi. Loans to Farmer Producer Organisations (FPOs)/Farmer Producer Company (FPC) of individual farmers and co-operatives of farmers directly engaged in Agriculture and Allied Activities where the land-holding share of SMFs is not less than 75 per cent, subject to loan limits prescribed in para 9.1 (B). 
+ Urban Co-operative Banks are not permitted to lend to co-operatives of farmers. 
+ Ref: Para 9.4 of Master Directions - Reserve Bank of India (Priority Sector Lending - Targets and Classification) Directions, 2025 ( RBI/FIDD/2024-25/128 Master Directions FIDD.CO.PSD.BC.13/04.09.001/2024-25 dated March 24, 2025 - updated from time to time). 
+ 49 
+ Social Infrastructure (Priority Sector) 
+ Bank loans to social infrastructure sector as per limits prescribed below are eligible for priority sector classification: 
+ (i) Loans up to a limit of &#8377;8 crore per borrower for setting up schools, drinking water facilities and sanitation facilities including construction/refurbishment of household toilets and water improvements at household level, etc. 
+ (ii) Loans up to a limit of &#8377;12 crore per borrower for building health care facilities in Tier II to Tier VI centres. In case of UCBs, the equivalent centres are those with population of less than 1 lakh 
+ (iii) Loans (other than by RRBs, UCBs and SFBs) to MFIs extended for on-lending to individuals and also to members of SHGs/JLGs for water and sanitation facilities subject to the criteria laid down in paragraph 22 of the Master Directions on Priority Sector Lending. 
+ Ref: Paras 14 and 22 of Master Directions - Reserve Bank of India (Priority Sector Lending - Targets and Classification) Directions, 2025 ( RBI/FIDD/2024-25/128 Master Directions FIDD.CO.PSD.BC.13/04.09.001/2024-25 dated March 24, 2025 - updated from time to time). 
+ 50 
+ Weaker Sections (Priority Sector) 
+ Priority sector loans to the following borrowers are considered as lending under Weaker Sections category: 
+ (i) Small and Marginal Farmers, 
+ (ii) Artisans, village and cottage industries where individual credit limits do not exceed &#8377;2 lakh 
+ (iii) Beneficiaries under Government Sponsored Schemes such as National Rural Livelihood Mission (NRLM) and Self Employment Scheme for Rehabilitation of Manual Scavengers (SRMS) 
+ (iv) Scheduled Castes and Scheduled Tribes 
+ (v) Beneficiaries of Differential Rate of Interest (DRI) scheme 
+ (vi) Self Help Groups/Joint Liability Groups 
+ (vii) Individuals and individual members of SHGs/JLGs availing microfinance loans satisfying the criteria as prescribed in Reserve Bank of India (Credit Facilities) Directions, 2025, as applicable to Commercial Banks, Small Finance Banks, Regional Rural Banks, Urban Co-operative Banks and Local Area Banks 
+ (viii) Individual women beneficiaries up to &#8377;2 lakh per borrower (the limit of '&#8377;2 lakh per borrower' is not applicable to UCBs) 
+ (ix) Distressed farmers indebted to non-institutional lenders 
+ (x) Distressed persons other than farmers, with loan amount not exceeding &#8377;1 lakh per borrower to prepay their debt to non-institutional lenders 
+ (xi) Persons with disabilities 
+ (xii) Transgenders 
+ (xiii) Minority communities as may be notified by Government of India from time to time. 
+ Further, Overdraft availed by Pradhan Mantri Jan Dhan Yojana (PMJDY) account holders as per limits and conditions prescribed by Department of Financial Services, Ministry of Finance from time to time may also be classified under Weaker Sections. 
+ Ref: Para 17 of the Master Directions - Reserve Bank of India (Priority Sector Lending - Targets and Classification) Directions, 2025 ( RBI/FIDD/2024-25/128 Master Directions FIDD.CO.PSD.BC.13/04.09.001/2024-25 dated March 24, 2025 - updated from time to time). 
+ 51 
+ Non-Financial Corporations 
+ Non-Financial Corporations sector includes: (a) Government Non-Financial Departmental/ Non-Departmental Commercial Undertakings (NDCUs), (b) 'NonGovernment Non-Financial Public and Private Limited Companies', (c) Port Trusts (both public and private) and (d) the Cooperative Non-Credit Societies. The NDCUs would comprise the non-financial Central and State Public Sector Enterprises (CPSEs and SPSEs) and the Power Generation/ Transmission/ Distribution Companies/ State Electricity Boards. 
+ 52 
+ Government Non-Financial Corporations 
+ Government Non-Financial Corporations includes 
+ i. Departmental undertakings of central government such as Railways, Post and Telegraph. 
+ ii. Departmental undertakings of state government such as State Transport Undertakings, Food and Civil Supplies Department etc., 
+ iii. Quasi Government Bodies such as State Electricity Boards, Housing Boards, Indian Council of Agricultural Research (ICAR), Indian Council of Medical Research (ICMR), Council of Scientific and Industrial Research (CSIR), etc. 
+ iv. Non-Departmental Commercial Undertakings which consist of public sector undertakings/ companies. Public Sector Companies are defined in the Companies Act, 2013, as companies in which not less than 51 per cent of the paid-up share capital is held by the Central Government or the State Government(s) or partly by the Central Government and partly by one or more State Governments, and includes a company which is a subsidiary company of such a Government /public sector company. State Trading Corporation, Food Corporation of India, State Road Transport Corporation, Public Port Trusts, Warehousing Corporation and other state-owned companies and corporation are to be treated as public sector companies/ corporations. 
+ 53 
+ Non-Government Non-Financial Corporations 
+ Non-Government Non-Financial Corporations consists of 
+ i. Non-Financial companies include companies (not owned by government) engaged in manufacturing, trading activities, etc. and registered under Companies Acts of 2013 or before. State managed companies which are not owned but managed by Government are also to be included (e.g., Sick Textile mills whose management are taken over by Government, Indian Iron and Steel Company Ltd., etc.). 
+ ii. Non-Credit Co-operative institutions would include marketing societies/ federations, housing societies, industrial co-operatives, etc. 
+ iii. Other entities such as Private Port Trusts, non-profit institutions serving business and quasi-corporations. Quasi-corporations will include large educational institutions, hospitals, which are funded privately. Non-profit Institutions serving business will include The Federation of Indian Chambers of Commerce and Industry (FICCI), The Associated Chambers of Commerce and Industry of India (ASSOCHAM), The Confederation of Indian Industry (CII), etc. 
+ Consumer Education and Protection 
+(Updated as on February 27, 2026) 
+ In the event of difference / variation between the definitions of a term provided in technical guidance note vis-&agrave;-vis the statutory/accounting/regulatory definition (provided in the relevant circulars), the latter would prevail. 
+ S. No. 
+ Data Elements 
+ Definitions 
+ 1 
+ Complaint (applicable to Return on Complaints submitted by commercial banks on customer complaints) 
+ "Complaint" means a representation in writing, alleging a deficiency in service on the part of a Regulated Entity, submitted by its customer or his/her authorised representative, and seeking relief. 
+ 2 
+ Award (applicable to Return on Complaints submitted by commercial banks on customer complaints) 
+ Award means an award passed by the RBI Ombudsman in the event of: 
+ (a) non-furnishing of documents/information by the Regulated Entity in reply to the averments in the complaint or 
+ (b) the matter not getting resolved under clause 14(9) of the Reserve Bank - Integrated Ombudsman Scheme (RB-IOS), 2021 based on records placed, and after affording a reasonable opportunity of being heard to both the parties. 
+ Ref: Reserve Bank - Integrated Ombudsman Scheme (RB-IOS), 2021 
+ 3 
+ Appeal (applicable to Return on Complaints submitted by commercial banks on customer complaints) 
+ Appeal means 
+ (i) the right of the Regulated Entity aggrieved by an Award under clause 15(1)(b) or closure of a complaint under clauses 16(2)(c) to 16(2)(f) of the Reserve Bank - Integrated Ombudsman Scheme (RB-IOS), 2021 to raise a request for re-examination of the Award issued or closure of the complaint or 
+ (ii) the right of the complainant aggrieved by an Award issued under clause 15(1) or rejection of a complaint under clauses 16(2)(c) to 16(2)(f) of the Reserve Bank - Integrated Ombudsman Scheme (RB-IOS), 2021 to raise a request for re-examination of the Award issued or closure of the complaint. 
+ Ref: Reserve Bank - Integrated Ombudsman Scheme (RB-IOS), 2021 
+ 4 
+ Appellate Authority (applicable to Return on Complaints submitted by commercial banks on customer complaints) 
+ Appellate Authority means the Executive Director in-Charge of the Department of the Reserve Bank administering the Reserve Bank - Integrated Ombudsman Scheme (RB-IOS), 2021. 
+ Ref: Reserve Bank - Integrated Ombudsman Scheme (RB-IOS), 2021 
+ 5 
+ Non Bank Prepaid Payment Instrument Issuer 
+ "Non- bank Prepaid Payment Instruments Issuer" means a company, as defined in the Companies Act, 2013 (18 of 2013), which has been granted a Certificate of Authorisation by the Reserve Bank of India under Section 7(1) of the Payment and Settlement Systems Act, 2007 (51 of 2007) to operate as a Prepaid Payment Instrument Issuer (PPI) 
+ 6 
+ Internal Ombudsman (Banks) 
+ Internal Ombudsman - Internal Ombudsman means any person appointed under para 5 of the Master Direction - Reserve Bank of India (Internal Ombudsman for regulated Entities) Directions, 2023 dated December 29, 2023 , which reads as &quot;The Internal Ombudsman shall either be a retired or serving officer, in the rank equivalent to a General Manager of another bank / Financial Sector Regulatory Body /Non Bank System Participant / NBFC / CIC, having necessary skills and experience of minimum seven years of working in areas such as banking, non-banking finance, regulation, supervision, payment and settlement systems, credit information or consumer protection.&quot; 
+ 7 
+ Internal Ombudsman (NBFCs) 
+ 8 
+ Internal Ombudsman (Non-Bank System Participants) 
+ 9 
+ Internal Ombudsman (Credit Information Companies) 
+ 10 
+ Customer 
+ "Customer" means a person who uses, or is an applicant for, a service provided by an Regulated Entity. 
+ 11 
+ Customer Contact Point 
+ "Customer Contact Point" means any location/channel through which a bank (directly or through staff/agents) conducts business or interacts with customers, including branches, Banking Correspondent (BC) outlets, ATMs, call centres, websites and mobile applications. 
+ 12 
+ Deputy Internal Ombudsman 
+ Deputy Internal Ombudsman means any person appointed under para 6 of the Master Direction - Reserve Bank of India (Internal Ombudsman for regulated Entities) Directions, 2023 dated December 29, 2023 , which reads as &quot;The Deputy Internal Ombudsman shall either be a retired or serving officer, not below the rank of Deputy General Manager of another bank / Financial Sector Regulatory Body / NBSP / NBFC / CIC, having necessary skills and experience of minimum five years of working in areas such as banking, non-banking finance, regulation, supervision, payment and settlement systems, credit information or consumer protection.&quot; 
+ 13 
+ Financial Sector Regulatory Body 
+ "Financial Sector Regulatory Body" means regulatory body for financial sector entities and includes: 
+ (i) The Reserve Bank of India established under the Reserve Bank of India Act, 1934; 
+ (ii) The Securities and Exchange Board of India established under the Securities and Exchange Board of India Act, 1992; 
+ (iii) The Insurance Regulatory and Development Authority of India established under the Insurance Regulatory and Development Authority of India Act, 1999; 
+ (iv) The Pension Fund Regulatory and Development Authority established under the Pension Fund Regulatory and Development Authority Act, 2013 
+ 14 
+ Resolved Complaint 
+ "Resolved complaint" means a complaint where the grievance has been accepted and redressed in full, including (where applicable) compensation, reversal/correction of entries, or provision of service originally due. 
+ 15 
+ Rejected Complaint 
+ "Rejected complaint" means a complaint which, after due examination, is not acceded to by the bank, either wholly or partially, and is formally declined with reasons recorded and communicated. 
+ External Sector (Updated as on February 27, 2026) 
+ In the event of difference / variation between the definitions of a term provided in technical guidance note vis-&agrave;-vis the statutory/accounting/regulatory definition (provided in the relevant circulars), the latter would prevail. 
+ S. No. 
+ Data Elements 
+ Definitions 
+ 1 
+ External Commercial Borrowings 
+ “External Commercial Borrowing(ECB)” means borrowing by an eligible borrower from a recognised lender in accordance with Schedule I of FEMA 3(R) i.e., Foreign Exchange Management (Borrowing and Lending) Regulations, 2018 (as updated from time to time). 
+ 2 
+ External Commercial Lending 
+ “External Commercial Lending(ECL)” means lending by a person resident in India to a person resident outside India in accordance with Schedule III of FEMA 3(R) i.e., Foreign Exchange Management (Borrowing and Lending) Regulations, 2018 (as updated from time to time). 
+ 3 
+ Foreign Currency Convertible Bonds (FCCBs) 
+ It refers to foreign currency denominated instruments which are issued in accordance with the Issue of Foreign Currency Convertible Bonds (FCCBs) and Ordinary Shares (Through Depositary Receipt Mechanism) Scheme, 1993, as amended from time to time. Issuance of FCCBs shall also conform to other applicable regulations. Further, FCCBs should be without any warrants attached. 
+ 4 
+ Foreign Currency Exchangeable Bonds (FCEBs) 
+ It refers to foreign currency denominated instruments which are issued in accordance with the Issue of Foreign Currency Exchangeable Bonds (FCEBs) Scheme, 2008, as amended from time to time. FCEBs are exchangeable into equity share of another company, to be called the Offered Company, in any manner, either wholly, or partly or on the basis of any equity related warrants attached to debt instruments. Issuance of FCEBs shall also conform to other applicable regulations. 
+ 5 
+ Trade Credit 
+ Trade Credit (TC) refers to the credit extended by the overseas supplier, bank, financial institution, and other permitted recognised lenders for maturity, as prescribed in TC framework, for imports of capital/non-capital goods permissible under the Foreign Trade Policy of the Government of India. TC can be raised in any freely convertible foreign currency (FCY) or Indian Rupee. Depending on the source of finance, such TCs include suppliers' credit and buyers' credit from recognised lenders. Suppliers' credit relates to credit for imports into India extended by the overseas supplier. Buyers' credit refers to loans for payment of imports into India arranged by the importer from a bank or financial institution outside India. 
+ 6 
+ External Commercial Borrowing (ECB) liability-Equity ratio 
+ For the purpose of External Commercial Borrowing (ECB) liability-equity ratio, ECB amount will include all outstanding amount of all ECBs (other than INR denominated ECBs) and the proposed one (only outstanding ECB amounts in case of refinancing) while equity will include the paid-up capital and free reserves (including the share premium received in foreign currency) as per the latest audited balance sheet. Both ECB and equity amounts will be calculated with respect to the foreign equity holder. Where there is more than one foreign equity holder in the borrowing company, the portion of the share premium in foreign currency brought in by the lender(s) concerned shall only be considered for calculating the ratio. The ratio will be calculated as per latest audited balance sheet. 
+ 7 
+ All-in-cost (for External Commercial Borrowing/Trade Credit) 
+ All-in-cost includes rate of interest, other fees, expenses, charges, guarantee fees, Export Credit Agency (ECA) charges, whether paid in foreign currency or Indian Rupee (INR) but will not include commitment fees and withholding tax payable in INR. In the case of fixed rate loans, the swap cost plus spread should not be more than the floating rate plus the applicable spread. Additionally, for Foreign Currency Convertible Bonds (FCCBs), the issue related expenses should not exceed 4 per cent of the issue size and in case of private placement, these expenses should not exceed 2 per cent of the issue size. Under Trade Credit Framework, all-in-cost shall include rate of interest, other fees, expenses, charges, guarantee fees whether paid in foreign currency or INR. Withholding tax payable in INR shall not be a part of all-in-cost. 
+ 8 
+ Benchmark rate (for External Commercial Borrowing/Trade Credit) 
+ Benchmark rate in case of Foreign Currency (FCY) External Commercial Borrowing/Trade Credit (ECB/TC) refers to any widely accepted interbank rate or Alternative Reference Rate (ARR) of 6-month tenor, applicable to the currency of borrowing. Benchmark rate in case of Rupee denominated ECB/TC will be prevailing yield of the Government of India securities of corresponding maturity. 
+ 9 
+ Designated Authorised Dealer (AD) Category I Bank 
+ A designated AD Category I Bank is the bank branch which is designated by the External Commercial Borrowing (ECB)/Trade Credit (TC) borrower for meeting the reporting requirements including obtaining a unique identification number for ECB/TC from the Reserve Bank, exercising the delegated powers under the extant guidelines, and monitoring of ECB/TC transactions. 
+ 10 
+ Foreign Equity Holder 
+ Foreign Equity Holder means (a) direct foreign equity holder with minimum 25 per cent direct equity holding in the borrowing entity, (b) indirect equity holder with minimum indirect equity holding of 51 per cent or (c) group company with common overseas parent. 
+ 11 
+ Convertible Note 
+ Convertible Note means an instrument issued by a start-up company acknowledging receipt of money initially as debt, repayable at the option of the holder, or which is convertible into such number of equity shares of that company, within a period not exceeding five years from the date of issue of the convertible note, upon occurrence of specified events as per other terms and conditions agreed and indicated in the instrument. 
+ 12 
+ Depository Receipt 
+ Depository Receipt means a foreign currency denominated instrument, whether listed on an international exchange or not, issued by a foreign depository in a permissible jurisdiction on the back of eligible securities issued or transferred to that foreign depository and deposited with a domestic custodian and includes 'global depository receipt' as defined in the Companies Act, 2013. 
+ 13 
+ Foreign Portfolio Investment 
+ Foreign Portfolio Investment is any investment made by a person resident outside India through equity instruments where such investment is less than 10 per cent of the post issue paid-up share capital on a fully diluted basis of a listed Indian company or less than ten percent of the paid-up value of each series of equity instrument of a listed Indian company. 
+ 14 
+ Foreign Direct Investment (FDI) 
+ Foreign Direct Investment (FDI) is the investment through equity instruments by a person resident outside India in an unlisted Indian company; or in 10 per cent or more of the post issue paid-up equity capital on a fully diluted basis of a listed Indian company. In case an existing investment by a person resident outside India in equity instruments of a listed Indian company falls to a level below ten percent, of the post issue paid-up equity capital on a fully diluted basis, the investment shall continue to be treated as FDI. Fully diluted basis means the total number of shares that would be outstanding if all possible sources of conversion are exercised. 
+ 15 
+ Indian Depository Receipts (IDRs) 
+ Indian Depository Receipts (IDRs) indicate any instrument in the form of a depository receipt created by a domestic depository in India and authorised by a company incorporated outside India making an issue of such depository receipts. 
+ 16 
+ Investment Vehicle 
+ Investment Vehicle is an entity registered and regulated under the regulations framed by the Securities and Exchange Board of India or any other authority designated for that purpose and shall include (i) Real Estate Investment Trusts (REITs) governed by the Securities and Exchange Board of India (REITs) Regulations, 2014; (ii) Infrastructure Investment Trusts (InvIts) governed by the Securities and Exchange Board of India (InvIts) Regulations, 2014; and (iii) Alternative Investment Funds (AIFs) governed by the Securities and Exchange Board of India (AIFs) Regulations, 2012. 
+ 17 
+ Sectoral cap (as per FDI policy) 
+ Sectoral cap is the maximum investment including both foreign investment on a repatriation basis by persons resident outside India in equity instruments of a company or the capital of a Limited Liability Partnership, a partnership formed and registered under the Limited Liability Partnership Act, 2008, as the case may be, and indirect foreign investment, unless provided otherwise. This shall be the composite limit for the investee Indian entity. 
+ 18 
+ Foreign Venture Capital Investor (FVCI) 
+ Foreign Venture Capital Investor means an investor incorporated and established outside India and registered with the Securities and Exchange Board of India under the Securities and Exchange Board of India (Foreign Venture Capital Investors) Regulations, 2000. 
+ 19 
+ Non-Debt Instruments 
+ Non-Debt Instruments as determined by Central Government by Gazette Notification S.O. 3722 (E) dated October 16, 2019, means the following instruments; namely: all investments in equity instruments in incorporated entities: public, private, listed and unlisted; capital participation in Limited Liability Partnership; all instruments of investment recognised in the Foreign Direct Investment (FDI) policy notified from time to time; investment in units of Alternative Investment Funds (AIFs), Real Estate Investment Trust (REITs) and Infrastructure Investment Trusts (InvITs); investment in units of mutual funds or Exchange-Traded Fund (ETFs) which invest more than fifty per cent in equity; junior-most layer (i.e. equity tranche) of securitisation structure; acquisition, sale or dealing directly in immovable property; contribution to trusts; and depository receipts issued against equity instruments. 
+ Financial Markets (Updated as on July 17, 2023) 
+ In the event of difference / variation between the definitions of a term provided in technical guidance note vis-&agrave;-vis the statutory/accounting/regulatory definition (provided in the relevant circulars), the latter would prevail. 
+ S. No. 
+ Data Elements 
+ Definitions 
+ 1 
+ Primary Dealer 
+ Primary Dealers (PDs) are financial intermediaries authorised by the Reserve Bank of India with the objective to strengthen the infrastructure in Government Security (G-Sec) market, widening the investor base for G-Secs and to improve the liquidity in the secondary market. There are two types of PDs viz., Bank PDs and Standalone PDs. Bank PDs undertake PD business departmentally. 
+ 2 
+ Standalone Primary Dealer 
+ Standalone Primary Dealer means a Non-Banking Financial Company (NBFC) under Section 45-IA of RBI Act, 1934, that holds a valid letter of authorisation as a Primary Dealer issued by the Reserve Bank, in terms of the &quot;Operational Guidelines for Primary Dealer&quot; dated July 01, 2016 (as amended from time to time). 
+ 3 
+ Forex swap 
+ Foreign exchange swap means an over-the counter (OTC) derivative involving the actual exchange of two currencies (principal amount only) on a specified date (the short leg) and a reverse exchange of the same two currencies at a date further in the future (the long leg), at rates agreed at the time of the contract. 
+ 4 
+ Money Market Instruments (MMI) 
+ Money market instruments include call or notice money, term money, repo, reverse repo, certificate of deposit, commercial usance bill, commercial paper and such other debt instrument of original or initial maturity up to one year as the Bank may specify from time to time. 
+ 5 
+ Repurchase agreement (repo) 
+ Repo means an instrument for borrowing funds by selling securities with an agreement to repurchase the securities on a mutually agreed future date at an agreed price which includes interest for the funds borrowed. 
+ 6 
+ Reverse Repurchase agreement (reverse repo) 
+ Reverse Repo means an instrument for lending funds by purchasing securities with an agreement to resell the securities on a mutually agreed future date at an agreed price which includes interest for the funds lent. 
+ 7 
+ Call, Notice and Term Money 
+ Call Money' means borrowing or lending in unsecured funds on overnight basis; 'Notice Money' means borrowing or lending in unsecured funds for tenors up to and inclusive of 14 days excluding overnight borrowing or lending; 'Term Money' means borrowing or lending in unsecured funds for periods exceeding 14 days and up to one year. 
+ 8 
+ Convertible Bond 
+ A bond giving the investor the option to convert the bond into equity at a fixed conversion price or as per a pre-determined pricing formula. 
+ 9 
+ Option 
+ An option is a contract which grants the buyer the right, but not the obligation, to buy (call option) or sell (put option) an asset, commodity, currency or financial instrument at an agreed rate (exercise price) on or before an agreed date (expiry or settlement date). The buyer pays the seller an amount called the premium in exchange for this right. This premium is the price of the option. 
+ 10 
+ Debentures 
+ Bonds issued by a company bearing a fixed rate of interest usually payable half yearly on specific dates and principal amount repayable on a particular date on redemption of the debentures. 
+ 11 
+ Derivatives 
+ Derivative shall have the same meaning as assigned to it in section 45U(a) of the Reserve Bank of India Act, 1934. 
+ 12 
+ Modified Duration 
+ The modified duration or volatility of an interest bearing security is its Macaulay duration divided by one plus the bond's yield to maturity (YTM) per period. It represents the percentage change in a securities' price for a 100 basis points change in yield. It is generally accurate for only small changes in the yield. 
+ 13 
+ Non-Convertible Debentures (NCDs) 
+ Non-Convertible Debenture (NCD) means a debt instrument issued by a corporate (including NBFCs) with original or initial maturity up to one year and issued by way of private placement. 
+ 'Corporate' means a company as defined in the Companies Act, 2013 (including NBFCs) and a corporation established by an act of any Legislature. 
+ Payment Systems (Updated as on July 17, 2023) 
+ In the event of difference / variation between the definitions of a term provided in technical guidance note vis-&agrave;-vis the statutory/accounting/regulatory definition (provided in the relevant circulars), the latter would prevail. 
+ S. No. 
+ Data Elements 
+ Definitions 
+ 1 
+ Prepaid Payment Instruments (PPIs) 
+ Prepaid Payment Instruments are payment instruments that facilitate purchase of goods and services, financial services, remittance facilities, etc., against the value stored therein. 
+ 2 
+ Closed System Pre-paid Payment Instruments 
+ Closed System Pre-paid Payment Instruments are issued by an entity for facilitating the purchase of goods and services from that entity only and do not permit cash withdrawal. As these instruments cannot be used for payments or settlement for third party services, the issuance and operation of such instruments is not classified as payment system requiring approval / authorisation by the RBI. 
+ 3 
+ Full Know Your Customer (KYC) Pre-paid Payment Instruments 
+ These are Pre-paid Payment Instruments (PPIs) issued by banks and non-banks after completing Know Your Customer (KYC) of the PPI holder and can be used for purchase of goods and services, funds transfer or cash withdrawal. 
+ 4 
+ Small Prepaid Payment Instruments 
+ Small Prepaid Payment Instruments are issued by banks and non-banks after obtaining minimum details of the Prepaid Payment Instrument (PPI) holder, which can be used only for purchase of goods and services. Funds transfer or cash withdrawal from such PPIs shall not be permitted. Small PPIs can be used at a group of clearly identified merchant locations / establishments which have a specific contract with the issuer (or contract through a payment aggregator / payment gateway) to accept the PPIs as payment instruments. 
+ 5 
+ Credit Card 
+ Credit Card is a physical or virtual payment instrument containing a means of identification, issued with a pre-approved revolving credit limit, that can be used to purchase goods and services or draw cash advances, subject to prescribed terms and conditions. 
+ 6 
+ Debit Card 
+ Debit Card is a physical or virtual payment instrument containing a means of identification, linked to a Saving Bank/Current Account which can be used to withdraw cash, make online payments, do Point of sale (PoS) terminal/Quick Response (QR) code transactions, fund transfer, etc. subject to prescribed terms and conditions. 
+ 7 
+ Merchants 
+ These are establishments who have a specific contract to accept the Pre-paid Payment Instruments (PPIs) of the PPI issuer (or contract through a payment aggregator / payment gateway) against the sale of goods and services, financial services, etc. 
+ Top 
+ Back to previous page 
+ More Links : 
+ Bank Holidays 
+ Banking Glossary 
+ Citizen's Charter 
+ Complaints 
+ Contact Us 
+ COVID-19 Measures 
+ E-LMS 
+ Events 
+ FAQs 
+ Financial Education 
+ Forms 
+ IFSC/MICR Codes 
+ Important Websites 
+ Opportunities @ RBI 
+ RBI Clarifications 
+ RBI Kehta Hai 
+ RBI’s Vision and Values (652 KB) 
+ Right to Information Act 
+ Tenders 
+ Follow RBI 
+ RSS 
+ Twitter
+ YouTube 
+ Instagram
+ Facebook 
+ LinkedIn
+ &copy; Reserve Bank of India. All Rights Reserved. 
+ Sitemap | Disclaimer 
+ Website owned and managed by Reserve Bank of India. Contact us on helpdoc[at]rbi[dot]org[dot]in 
+ Website last updated date: Sep 11, 2026 
+ Web Information Manager 
+ Accessibility Statement
+ (133 KB)
+ | Screen Reader and Accessibility Help 
+ Supports: Google Chrome 147+ | Firefox 150+ | Microsoft Edge Version 147+ | Safari 17+
