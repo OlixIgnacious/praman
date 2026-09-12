@@ -2,7 +2,7 @@
 
 Quick status view across the full build, all phases in one place. Update the checkbox and the phase status line as work lands; `plan.md` still holds the folder layout and file-level detail, `architecture.md` holds the day-by-day rationale — this file is just "what's done vs. not," nothing more.
 
-**Overall:** 6 of 8 phases done. Currently in **Days 9–12** — blocking spike not yet run.
+**Overall:** 6 of 8 phases done, 1 in progress. Currently in **Days 9–12** — spike confirmed, building out the agent(s).
 
 ---
 
@@ -29,9 +29,10 @@ Quick status view across the full build, all phases in one place. Update the che
 - [x] Deterministic detector logic — `ZSCORE` UDF + `TRANSACTION_SIGNALS` + `GL_OUTLIER_SIGNALS` deployed to Snowflake (`sql/detectors/`)
 - [x] All four `SKILL.md` files written: `signal-query`, `circular-interpret`, `assure-return`, `narrative-draft`
 
-## Days 9–12 — Backend + review UI ⬜ NOT STARTED — plan changed, spike first
-- [ ] **Blocking spike:** create a real Cortex Agent over `TRANSACTIONS_SV`, connect to CoWork, ask it a live question — waiting on the Semantic Views existing in Snowflake first (`NOTES.md`)
-- [ ] Then either: Cortex Agent(s) + CoWork (custom backend scoped to `AUDIT_LOG` + Stage 1/3 orchestration only) — or, if the spike fails, the original custom `backend/` + `ui/` build
+## Days 9–12 — Backend + review UI 🔶 IN PROGRESS — spike confirmed, building out
+- [x] **Spike confirmed:** `PRAMAN.CORE.TRANSACTIONS_AGENT` live, CoWork-connected, correct live answers — Cortex Agent + CoWork replaces most of the originally-planned custom backend/UI
+- [ ] Extend to `POSITIONS_SV`, `CREDIT_EXPOSURE_SV`, `RULE_CORPUS_SEARCH` as tools; decide one-agent-many-tools vs. one-agent-per-stage first
+- [ ] Custom backend scoped to `AUDIT_LOG` writes + Stage 1/3 orchestration only (no native `AUDIT_LOG` hook confirmed yet)
 - [ ] Wire every Skill call to write an `AUDIT_LOG` row
 
 ## Days 12–15 — Wire the four stages end-to-end ⬜ NOT STARTED

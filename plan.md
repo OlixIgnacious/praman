@@ -49,10 +49,11 @@ brand/            logo assets — populated
 
 ## Days 9–12 — Backend + review UI
 
-- [ ] **Spike first, blocks everything else here:** create one real Cortex Agent over `TRANSACTIONS_SV`, connect to CoWork, ask it a live question end-to-end. Blocked on the Semantic Views existing in Snowflake (`NOTES.md`). See `architecture.md`'s new platform-capability note — a native Cortex Agent + CoWork may replace most of the custom backend/UI below; not yet live-verified.
-- [ ] If the spike holds: Cortex Agent(s) over the three Semantic Views + `RULE_CORPUS_SEARCH`, connected to CoWork; custom backend scoped down to `AUDIT_LOG` writes + Stage 1/3's bespoke orchestration only
-- [ ] If the spike fails: fall back to the original plan — `backend/` (Agent SDK host, keypair auth, one endpoint per stage) + `ui/` (one screen per stage: ask/answer, findings list, gap analysis, lineage + narrative)
-- [ ] Wire every Skill call to write an `AUDIT_LOG` row (whichever path above)
+- [x] **Spike:** create one real Cortex Agent over `TRANSACTIONS_SV`, connect to CoWork, ask it a live question end-to-end. **Done — holds up.** `PRAMAN.CORE.TRANSACTIONS_AGENT` (spec: `cortex_project/TRANSACTIONS_AGENT.agent.yaml`) live at `ai.snowflake.com`, correct answer to "What is the total transaction amount by channel?" with a generated chart. Quirk noted: generated SQL sometimes falls back to inline `SUM(amount)` instead of referencing the `total_amount` metric by name — worth watching once guarded metrics (semi-additive, trailing-window) are in play.
+- [ ] Proceeding on Cortex Agent + CoWork: extend to `POSITIONS_SV`, `CREDIT_EXPOSURE_SV` (as additional `cortex_analyst_text_to_sql` tools) and `RULE_CORPUS_SEARCH` (as a `cortex_search` tool); distill each `SKILL.md`'s workflow into the agent's `instructions.orchestration`/`instructions.response`
+- [ ] Open design call before extending further: one agent with multiple tools, or one agent per stage — see `architecture.md`'s Days 9–12 item 18
+- [ ] Scope remaining custom backend to what CoWork can't do declaratively: `AUDIT_LOG` writes per invocation (no native hook confirmed yet), Stage 1/3's bespoke orchestration (circular ingestion, lineage-to-narrative)
+- [ ] Wire every Skill call to write an `AUDIT_LOG` row
 
 ## Days 12–15 — Wire the four stages end-to-end
 
