@@ -28,7 +28,8 @@ These four stages are four different traversals over one governed data model, no
 - **`INJECTED_CASES` (the eval answer key) is schema-isolated** from every role a Skill runs as, so a bug can't let the agent see what it's being scored against.
 - **Every rule citation points at RBI's own numbered paragraph**, not an arbitrary chunk boundary — see [`ingest/README.md`](ingest/README.md) for the chunking approach.
 - **Synthetic data is exactly reconciled, not sampled.** The generator builds a GL/position/counterparty book from scratch that sums, to the decimal, to HDFC Bank's real disclosed Pillar 3 figures — enforced by the test suite, not just eyeballed.
-- **Platform assumptions are checked against live Snowflake behavior, not just docs**, and corrected in `architecture.md` when they don't hold (e.g. Cortex Search's PDF-parsing requirement, native lineage's edition requirement, a native Cortex Agent/CoWork capability that may replace much of the originally-planned custom backend+UI).
+- **Platform assumptions are checked against live Snowflake behavior, not just docs**, and corrected in `architecture.md` when they don't hold (e.g. Cortex Search's PDF-parsing requirement, native lineage's edition requirement, and the original custom-backend-plus-UI plan, superseded by a native Cortex Agent + CoWork once a live spike confirmed it).
+- **No custom backend at all.** `PRAMAN.CORE.SIGNAL_ASSURE_AGENT` is a native `CREATE AGENT` object (Stage 0 + Stage 2, six tools) connected to Snowflake's own chat surface, CoWork (`ai.snowflake.com`) — there's no externally-hosted service and no standing credential to secure. `backend/`/`ui/` stay empty scaffolds. See `CLAUDE.md`'s "Review UI is a native Cortex Agent + CoWork" section.
 
 Full design, RBAC model, eval architecture, and day-by-day build plan: [`architecture.md`](architecture.md).
 
@@ -60,11 +61,13 @@ SQL (table DDL, RBAC, Semantic Views, detectors, seeds) lives under `sql/` and r
 | `generator/` | Synthetic GL/position/counterparty/transaction data generator, bottom-up from real disclosed figures |
 | `ingest/` | Circular → citable `RULE_CORPUS` row chunking pipeline |
 | `skills/` | The four `SKILL.md` files, one per stage |
+| `cortex_project/` | `SIGNAL_ASSURE_AGENT.agent.yaml` — the live Cortex Agent spec (Stage 0 + Stage 2, six tools) |
 | `data/raw/` | Real sourced documents — circulars, Pillar 3 disclosure, divergence disclosures, penalty disclosures |
 | `data/synthetic/` | Generator output |
 | `data/processed/` | Ingest pipeline output (chunked rule corpus, ready to load) |
-| `eval/` | Eval harness and injected-case catalogue (not yet built) |
-| `backend/`, `ui/` | Review UI hosting — plan is mid-pivot, see `architecture.md` |
+| `eval/` | Eval harness and injected-case catalogue — `run_eval.md` (12-case runbook), `results.md` (11/12, one fix pending) |
+| `demos/` | Worked Stage 1 gap-analysis and Stage 3 lineage walkthroughs, run against real project data |
+| `backend/`, `ui/` | Empty scaffolds — superseded by the native Cortex Agent + CoWork, see above |
 | `tests/` | Local pytest suite — generator reconciliation + chunker correctness |
 | `notebooks/` | RBI scraping technique notebook |
 

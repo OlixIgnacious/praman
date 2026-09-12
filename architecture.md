@@ -17,7 +17,7 @@ Corrections to the problem statement's platform assumptions, found by checking c
 - **Cortex Analyst accuracy degrades with schema complexity** — build one Semantic View per bounded domain (transactions, positions, exposures) rather than one giant model. New **Semantic Views** (native, RBAC-integrated) are the recommended path over the legacy YAML-on-stage approach, though the latter is faster to iterate solo. 9 regions currently supported (AWS/Azure) — confirm target jurisdiction's data-residency requirement against this list once jurisdiction is picked.
 - **"Data never leaves the account" needs a precise caveat.** Cross-region inference routing exists (same-cloud: Snowflake's private backbone; cross-cloud: public internet with mTLS) — still inside Snowflake's security perimeter, never a third-party SaaS, but not literally single-region-contained. State this precisely in the pitch rather than as an absolute.
 - No evidence Snowpark Container Services is required — Cortex Analyst, Cortex Search, Coco Skills, and the Agent SDK cover the full stack. Only the external web frontend needs hosting outside Snowflake.
-- **A native "Cortex Agent" object replaces most of the custom backend + review UI — confirmed by live spike.** `PRAMAN.CORE.TRANSACTIONS_AGENT` created via the `agent-studio` skill (`cortex_project/TRANSACTIONS_AGENT.agent.yaml` — a `cortex_analyst_text_to_sql` tool over `TRANSACTIONS_SV`, `COMPUTE_WH`), auto-discovered by CoWork with zero extra SQL, granted to `ACCOUNTADMIN`/`ANALYST_READ`. Live test question ("What is the total transaction amount by channel?") returned correct, formatted results with a generated chart at `ai.snowflake.com`. One quirk worth tracking: the agent's SQL-generation trace fell back to inline `SUM(amount)` rather than referencing the `total_amount` metric by name — same numeric answer, but it suggests the generated query isn't always going through the Semantic View's `SEMANTIC_VIEW(...)` metric syntax, which matters once queries lean on the guarded metrics (`POSITIONS_SV.total_notional`'s `NON ADDITIVE BY`, the trailing-window metrics) rather than a plain `SUM`. Watch for this once Stage 0 is wired for real (Days 12–15) rather than treating every agent answer as having gone through the governed metric definitions. Distinct from the Coco/Agent SDK this plan originally assumed a custom host was needed for: a Cortex Agent is a declarative Snowflake object (`CREATE AGENT`) configured with tools — our Semantic Views and Cortex Search services attach directly, no custom orchestration code — callable via `cortex agents run` or a REST API. **CoWork** (`ai.snowflake.com`, formerly "Snowflake Intelligence") is a Snowflake-hosted end-user chat UI that connects to an agent automatically, no extra SQL on most accounts — a candidate for the entire "thin review UI" this plan assumed would need custom hosting. Found via the bundled `agent-studio` skill's routing docs (`cortex skill add Snowflake-Labs/coco-skills`-adjacent bundled skill, not fetched from the internet); **not yet confirmed by a real spike** — blocked on the Semantic Views actually existing in Snowflake (pending manual run as of this writing). If a real spike (create one agent over `TRANSACTIONS_SV`, connect to CoWork, ask it a live question) holds up, Days 9–12 shrinks to: create Cortex Agent(s) over the three Semantic Views + `RULE_CORPUS_SEARCH`, connect to CoWork, and build custom backend logic only for what CoWork can't do declaratively (`AUDIT_LOG` writes per invocation; Stage 1/3's more bespoke multi-step orchestration — circular ingestion, lineage tracing). Treat this as the same kind of correction as the lineage/Cortex Search entries above, one step earlier in the verification process — documented before the spike, not after, so the plan doesn't silently commit to custom-backend effort a five-minute spike might rule out.
+- **A native "Cortex Agent" object replaced the custom backend + review UI entirely — confirmed live, not just spiked.** `PRAMAN.CORE.SIGNAL_ASSURE_AGENT` (spec: `cortex_project/SIGNAL_ASSURE_AGENT.agent.yaml`) is a declarative Snowflake object (`CREATE AGENT`) with six tools — three `cortex_analyst_text_to_sql` tools over the Semantic Views, `line_item_map_lookup` (the Stage 2 governance gate), `rule_corpus_search`, and `write_audit_log` (a `generic` tool wrapping a stored procedure) — connected to **CoWork** (`ai.snowflake.com`) with zero custom hosting. The "one agent vs. one per stage" question this note originally left open (and the Days 9–12 build plan below once posed as pending) is **decided and built**: one combined agent for Stage 0 + Stage 2, since both share the same Semantic Views, detector views, and `ANALYST_READ` role (full pros/cons: `.claude/plans/lets-decide-what-would-rippling-lighthouse.md`). The original `TRANSACTIONS_AGENT` spike object was retired after `SIGNAL_ASSURE_AGENT` passed verification. Real platform limitations found deploying it, not assumed: a `generic` tool's `input_schema` doesn't support `array`-typed properties (worked around with a comma-delimited `VARCHAR` + `SPLIT()`), and the agent silently drops arguments it treats as optional, which breaks positional stored-procedure calls unless every parameter is marked `required`. This is the same kind of platform-assumption correction as the lineage/Cortex Search entries above — verified against live behavior, not the plan's original assumption of a custom Python/TS backend.
 
 ---
 
@@ -34,19 +34,16 @@ flowchart TB
         D[Signing Officer]
     end
 
-    subgraph frontend["Review UI — thin web client, hosted separately"]
-        UI[Web frontend]
-    end
-
-    subgraph backend["Backend service — server-side, holds Snowflake conn"]
-        SVC[Agent SDK host<br/>Python/TS]
+    subgraph cowork["CoWork — ai.snowflake.com, Snowflake-hosted chat UI"]
+        UI[Chat client]
     end
 
     subgraph snowflake["Customer's own Snowflake account — trust boundary"]
+        AGENT[SIGNAL_ASSURE_AGENT<br/>native Cortex Agent object]
         CA[Cortex Analyst<br/>Semantic Views: txn/position/exposure]
         CS[Cortex Search<br/>indexed rule corpus]
-        SK[Coco Skills<br/>stage-specific markdown procedures]
-        GOV[Governance Skills<br/>native lineage / GET_LINEAGE]
+        LIM[LINE_ITEM_MAP lookup<br/>governance gate tool]
+        SP[write_audit_log<br/>generic tool → stored proc]
         DATA[(Synthetic transaction/<br/>position/counterparty data)]
         RULES[(Versioned rule store +<br/>line-item-to-field map)]
         AUDIT[(Append-only audit log)]
@@ -60,16 +57,15 @@ flowchart TB
     end
 
     A & B & C & D -->|ask questions, review outputs| UI
-    UI <--> SVC
-    SVC <--> CA
-    SVC <--> CS
-    SVC <--> SK
-    SVC <--> GOV
+    UI <--> AGENT
+    AGENT <--> CA
+    AGENT <--> CS
+    AGENT <--> LIM
+    AGENT <--> SP
     CA --> DATA
     CS --> RULES
-    GOV --> DATA
-    GOV --> RULES
-    SVC --> AUDIT
+    LIM --> RULES
+    SP --> AUDIT
 
     PDF -->|PARSE_DOCUMENT then index| CS
     FILINGS --> RULES
@@ -79,7 +75,7 @@ flowchart TB
     D -->|final sign-off, never automated| AUDIT
 ```
 
-Everything reasoning- and data-related lives inside the customer's own Snowflake account; the only thing outside the boundary is the thin review UI, which holds no data of its own — every request round-trips through the backend into Snowflake.
+Everything — reasoning, data, and the chat UI itself — lives inside the customer's own Snowflake account or Snowflake-hosted surface (CoWork). There is no externally-hosted component and no separate credential-holding backend: `SIGNAL_ASSURE_AGENT` is a declarative `CREATE AGENT` object, and CoWork connects to it natively. This superseded the originally-planned thin-web-frontend-plus-backend-service design once the Cortex Agent + CoWork spike confirmed it wasn't needed — see the Platform capability notes above.
 
 ---
 
@@ -200,37 +196,32 @@ erDiagram
 
 ```mermaid
 flowchart LR
-    subgraph browser["Analyst's browser"]
-        UI[Review UI]
+    subgraph cowork["CoWork — ai.snowflake.com"]
+        UI[Chat client<br/>user's own Snowflake login]
     end
 
-    subgraph backend_zone["Backend zone — network-restricted"]
-        SVC[Agent SDK host<br/>service-account keypair auth]
-        VAULT[(Secrets vault<br/>keypair, rotated)]
-    end
-
-    subgraph sf["Snowflake account — network policy: backend IP only"]
+    subgraph sf["Snowflake account — trust boundary"]
         direction TB
+        AGENT[["SIGNAL_ASSURE_AGENT<br/>runs as the caller's role"]]
         R1[["Role: ANALYST_READ<br/>read RULE_CORPUS, LINE_ITEM_MAP,<br/>query via Cortex Analyst"]]
         R2[["Role: GOVERNANCE_WRITE<br/>approve LINE_ITEM_MAP changes,<br/>commit rule versions"]]
         R3[["Role: AUDIT_INSERT<br/>insert-only on AUDIT_LOG<br/>(no update/delete grant to anyone)"]]
         R4[["Role: OFFICER_SIGNOFF<br/>record maker-checker decision"]]
     end
 
-    UI -->|HTTPS, session auth| SVC
-    SVC -->|keypair| VAULT
-    SVC -->|Snowflake connector,<br/>keypair auth| R1
-    SVC --> R2
-    SVC --> R3
-    SVC --> R4
+    UI -->|native session, no separate auth hop| AGENT
+    AGENT --> R1
+    AGENT --> R2
+    AGENT --> R3
+    AGENT --> R4
 ```
 
-- **Compute placement.** Cortex Analyst, Cortex Search, and Coco Skills run on Snowflake-managed compute, billed per-message/warehouse — no Snowpark Container Services needed. The deterministic detectors (outlier/structuring scoring) run as Snowflake SQL/Python stored procs or scheduled tasks, so they're inside the perimeter too. The only component outside Snowflake is the backend service hosting the Agent SDK — it's the one place holding a live credential, so it's the one place that needs its own hardening (network allow-list, keypair in a secrets vault, least-privilege service role).
+- **Compute placement.** Cortex Analyst, Cortex Search, and the Cortex Agent itself all run on Snowflake-managed compute, billed per-message/warehouse — no Snowpark Container Services needed. The deterministic detectors (`ZSCORE` UDF, `TRANSACTION_SIGNALS`/`GL_OUTLIER_SIGNALS`/`CREDIT_EXPOSURE_SV`'s outlier metrics) run as Snowflake SQL, so they're inside the perimeter too. **There is no component outside Snowflake at all** — no backend service, no separate credential to vault or rotate. This is stronger than the original design's "backend holds one hardened credential" posture, not just simpler.
 - **RBAC boundary.** Four roles is enough to separate the concerns that matter for audit-readiness: read access to the rule store and map (broad — every analyst), write/approve access to `LINE_ITEM_MAP` (governance only), insert-only on `AUDIT_LOG` (no role, including admin, gets update/delete — that's what makes "append-only" an enforced grant, not a policy statement), and sign-off recording (officer only). This maps directly onto the maker-checker requirement in the Audit section of the problem statement.
-- **Frontend holds no credentials.** The review UI talks only to the backend service over an authenticated session; it never connects to Snowflake directly, so a compromised browser session can't reach the data.
+- **No standing service credential.** `SIGNAL_ASSURE_AGENT` executes under the calling user's own session/role via CoWork, not a shared service account — a compromised CoWork session is bounded by that user's own grants, the same as if they'd run SQL directly.
 - **Region/residency.** Confirm the chosen jurisdiction's data-residency requirement against Snowflake's current Cortex Analyst region list (9 regions, AWS/Azure, as of this research) before committing to that jurisdiction — this was an open item in the problem statement and is now a concrete pre-flight check, not just a note.
 - **Cross-region inference caveat carries through here too:** if cross-region inference is enabled on the account, LLM calls can route over Snowflake's private backbone (same-cloud) or the public internet with mTLS (cross-cloud) — still inside Snowflake's perimeter, never third-party, but worth disabling or scoping explicitly if the pitch states a hard single-region guarantee.
-- **Prototype vs. roadmap.** For the hackathon build, the backend + frontend can run centrally (a dev VM or simple hosted service) since they hold no data of their own — every request is a pass-through to Snowflake. A production deployment would put the backend inside the customer's own network too, not just the data in their Snowflake account; call this out explicitly as roadmap alongside the other scope cuts, so it isn't mistaken for a design gap during the demo.
+- **Production note.** Because there's no external component at all in this design, "runs inside the customer's own Snowflake account" already holds for the hackathon build, not just the roadmap — nothing about a real deployment changes this boundary.
 
 ---
 
@@ -314,25 +305,26 @@ Solo build, ~18 days (13–30 Sept). Day numbers are relative to Day 1 = Sept 13
 13. Author `signal-query`, `circular-interpret`, `assure-return` as `SKILL.md` files.
 14. Author or extend the lineage/`narrative-draft` skill for Stage 3, per the Day 1 spike result.
 
-### Days 9–12 — Backend + review UI
+### Days 9–12 — Backend + review UI ✅ Done
 15. ~~**Spike first:** create one real Cortex Agent over `TRANSACTIONS_SV`, connect it to CoWork, ask it a live question end-to-end.~~ **Done — holds up.** `PRAMAN.CORE.TRANSACTIONS_AGENT` live, CoWork-connected, correct answers with citations back to the semantic view. See the platform-capability note above for the one quirk found (metric-name fallback in generated SQL).
-16. **Proceeding on the Cortex Agent + CoWork path.** Extend `TRANSACTIONS_AGENT` (or add sibling agents — one per stage vs. one agent with multiple tools is still an open call, see below) to cover `POSITIONS_SV` and `CREDIT_EXPOSURE_SV` as additional `cortex_analyst_text_to_sql` tools, and `RULE_CORPUS_SEARCH` as a `cortex_search` tool for Stage 1/2's citation needs. Distill each `SKILL.md`'s workflow/escalation rules into the agent's `instructions.orchestration`/`instructions.response` fields — the YAML instructions are this project's equivalent of the skill files for whatever runs inside CoWork.
-17. **Scope the remaining custom backend down to what CoWork can't do declaratively:** writing `AUDIT_LOG` rows per invocation (no native hook confirmed yet — investigate whether agent observability events can drive this, or whether a thin service still needs to sit in front of CoWork for this one thing), and Stage 1/3's more bespoke multi-step orchestration (circular ingestion pipeline, lineage-trace-to-narrative). `backend/`/`ui/` scope shrinks to just these, not a full request-routing service for all four stages.
-18. Open design question before building further: **one Cortex Agent with several tools, or one agent per stage?** A single agent's `orchestration` instructions would need to route between Stage 0/1/2/3 tool sets; separate agents map more directly onto the four `SKILL.md` files but fragment the CoWork experience into four chat entry points instead of one. Decide before extending `TRANSACTIONS_AGENT` further rather than defaulting into either shape.
+16. ~~Extend to cover `POSITIONS_SV`/`CREDIT_EXPOSURE_SV` and `RULE_CORPUS_SEARCH`; distill each `SKILL.md` into the agent's `instructions.orchestration`/`instructions.response`.~~ **Done.** `TRANSACTIONS_AGENT` retired; `PRAMAN.CORE.SIGNAL_ASSURE_AGENT` built in its place with six tools (three `cortex_analyst_text_to_sql` over the three Semantic Views, `line_item_map_lookup`, `rule_corpus_search`, `write_audit_log`), covering Stage 0 + Stage 2.
+17. ~~Scope the remaining custom backend down to what CoWork can't do declaratively.~~ **Done — the answer turned out to be "nothing."** `write_audit_log` is a `generic` Cortex Agent tool wrapping `SP_WRITE_AUDIT_LOG`, so `AUDIT_LOG` writes happen per-invocation with no custom service in front of CoWork at all. No `backend/`/`ui/` code was needed for Stage 0/2.
+18. ~~Open design question: one Cortex Agent with several tools, or one agent per stage?~~ **Decided and built: one agent for Stage 0 + Stage 2** (they share Semantic Views, detector views, and `ANALYST_READ`). Full pros/cons in `.claude/plans/lets-decide-what-would-rippling-lighthouse.md`.
 
-### Days 12–15 — Wire the four stages end-to-end
-18. Stage 0 live: NL question → answer.
-19. Stage 2 live: draft return → ranked findings with citations.
-20. Stage 1 slice: the one real circular → gap analysis, change spec, test cases.
-21. Stage 3 scripted walkthrough: one injected break → lineage trace → root cause + narrative.
+### Days 12–15 — Wire the four stages end-to-end ✅ Done
+18. ~~Stage 0 live: NL question → answer.~~ **Done** — covered by `SIGNAL_ASSURE_AGENT`.
+19. ~~Stage 2 live: draft return → ranked findings with citations.~~ **Done**, after fixing a real gap: the agent had no tool to query `LINE_ITEM_MAP` at all, so its "no approved mapping" answers were a hardcoded default, not a real `STATUS` check. Added `LINE_ITEM_MAP_SV` + `line_item_map_lookup` as a mandatory first step; re-tested clean.
+20. ~~Stage 1 slice: the one real circular → gap analysis, change spec, test cases.~~ **Done** — `demos/stage1_circular_415_gap_analysis.md`.
+21. ~~Stage 3 scripted walkthrough: one injected break → lineage trace → root cause + narrative.~~ **Done** — `demos/stage3_lineage_walkthrough.md`, real live `cortex lineage` trace applied to an explicitly-labeled illustrative scenario (no real injected lineage break exists yet).
 
-### Days 15–17 — Eval
-22. Build the `INJECTED_CASES` catalogue (named error/signal types), in its isolated schema with no grant to the Skills' runtime role, and the `EVAL_RESULTS` table (see Evaluation architecture above).
-23. Run the eval slice against held-out cases — divergence disclosures (Stage 2), taxonomy diff (Stage 1), injected catalogue (Stage 0/2) — through the same Skills as production, tagged `IS_EVAL=TRUE`; report precision/recall **per error type** via `GROUP BY ERROR_TYPE` on `EVAL_RESULTS`, not aggregate.
-24. Build the evidence-pack export from `AUDIT_LOG`.
+### Days 15–17 — Eval 🔶 In progress (11/12, fix #5 pending re-test)
+22. ~~Build the `INJECTED_CASES` catalogue and `EVAL_RESULTS` table.~~ **Done** — 9 injected cases + 3 divergence-disclosure ground-truth rows, isolated in `PRAMAN.EVAL`, no grant to the agent's runtime role.
+23. ~~Run the eval slice, report per error type.~~ **Done, twice.** v1: 7/12 correct, every miss root-caused (governance-gate overreach on basic integrity checks, wrong dedup key, missing column, one instruction-wording gap). v2, after 5 fixes: **11/12**, zero regressions. Full detail: `eval/results.md`.
+24. ~~Build the evidence-pack export from `AUDIT_LOG`.~~ **Done** — `AUDIT_EVIDENCE_PACK`, granted to `GOVERNANCE_WRITE`, 7 rows returned on verify.
+25. **Remaining:** fix #5 (per-counterparty scale baseline for the last `correct_but_anomalous` false positive) is written — `CREDIT_EXPOSURE_SV` gained `entry_scale_zscore`/`is_entry_scale_outlier` as a third consumer of the shared `ZSCORE` UDF, plus a `CONCENTRATION_GROUP` cross-reference in orchestration — but not yet redeployed or re-tested. Exact commands queued in `NOTES.md`; target 12/12.
 
-### Days 17–18 — Rehearse & submit
-25. Dry-run the live path judges will actually see (Stage 0 + Stage 2) repeatedly — that's what's live, protect it over polish elsewhere.
-26. Finalize pitch deck (penalty-disclosure impact framing) and submit.
+### Days 17–18 — Rehearse & submit ⬜ Not started
+26. Dry-run the live path judges will actually see (Stage 0 + Stage 2) repeatedly — that's what's live, protect it over polish elsewhere.
+27. Finalize pitch deck (penalty-disclosure impact framing) and submit.
 
 **Single biggest risk to this schedule:** if Day 1's jurisdiction pick turns up gaps in any of the five real-data requirements (step 1), everything downstream slips — don't start Day 2 sourcing until all five are confirmed to exist for the chosen jurisdiction, even if that means spending part of Day 1 checking two candidate jurisdictions before committing.
