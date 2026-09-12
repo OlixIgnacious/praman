@@ -1,19 +1,7 @@
 ---
 name: circular-interpret
-title: Circular Interpret — Stage 1
+description: "Interpret a new regulatory circular, Master Direction, or taxonomy version against a governed line-item map (LINE_ITEM_MAP), producing a gap analysis, change spec, and test cases -- human-approved before anything commits. Use when a new circular/taxonomy arrives and needs mapping onto report line items, or when asked what a specific rule paragraph changes or requires. Triggers: new circular, taxonomy update, gap analysis, change spec, what does this circular change, impacted line items, map this rule, RULE_CORPUS ingestion, does this regulation affect our reporting."
 summary: Ingest a new circular or taxonomy version, map its requirements onto report line items, and produce a gap analysis, change spec, and test cases — human-approved before anything commits to the spine.
-description: "Use when a new circular, Master Direction, or taxonomy version arrives and needs to be interpreted against the current LINE_ITEM_MAP. Triggers: new circular, taxonomy update, gap analysis, change spec, what does this circular change, impacted line items."
-tools:
-  - snowflake_sql_execute
-  - Read
-  - Bash
-  # TODO(backend, Days 9-12): confirm the exact Cortex Search query tool name;
-  # this skill retrieves via PRAMAN.CORE.RULE_CORPUS_SEARCH, not hand-written
-  # full-text SQL against RULE_CORPUS.
-language: en
-status: Draft
-author: Team Single Entry
-type: snowflake
 ---
 
 # Circular Interpret — Stage 1
@@ -22,7 +10,7 @@ type: snowflake
 
 Stage 1 of the four-stage lifecycle. A new circular arrives; this skill's job is to say precisely what changed and which report line items it touches — not to silently update anything. Every output here is a **proposal**: `LINE_ITEM_MAP` rows this skill writes are `STATUS = 'proposed'`, and only a human `GOVERNANCE_WRITE` approval commits them (`sql/ddl/02_line_item_map.sql`'s column comment; `sql/seed_line_item_map.sql` follows the same discipline for the initial seed).
 
-This is the one stage with an extra pipeline step the others don't have: a new circular isn't queryable until it's ingested. If it's already scraped text (see `ingest/README.md` — most RBI Master Directions are), run `ingest/chunk_circular.py` against it, then `sql/load_rule_corpus.sql`, before this skill can retrieve anything from it. If it's a raw PDF, `PARSE_DOCUMENT`/`AI_PARSE_DOCUMENT` runs first (`architecture.md`'s platform notes — Cortex Search does not parse PDFs itself).
+This is the one stage with an extra pipeline step the others don't have: a new circular isn't queryable until it's ingested. If it's already scraped text (see `ingest/README.md` — most RBI Master Directions are), run `ingest/chunk_circular.py` against it, then `sql/load_rule_corpus.sql`, before this skill can retrieve anything from it. If it's a raw PDF, `PARSE_DOCUMENT`/`AI_PARSE_DOCUMENT` runs first (`architecture.md`'s platform notes — Cortex Search does not parse PDFs itself). If the circular is from a different regulator than the one `ingest/chunk_circular.py` was built for, its `PREAMBLE_END_MARKERS`/`CHAPTER_RE`/`SUBSECTION_RE` assume a specific document structure — check `jurisdiction_agnostic_analysis.md` before assuming the existing parser applies unchanged.
 
 ## Data this skill reads and writes
 

@@ -1,18 +1,7 @@
 ---
 name: signal-query
-title: Signal Query — Stage 0
+description: "Answer a natural-language risk, fraud, liquidity, or credit-exposure question over Praman's transaction/position/exposure data (PRAMAN.CORE), with structuring/velocity flags routed to compliance review rather than resolved automatically. Use when asked to check risk/fraud/liquidity signals, investigate a counterparty, or query TRANSACTIONS_SV/POSITIONS_SV/CREDIT_EXPOSURE_SV/TRANSACTION_SIGNALS in a Praman-style schema. Triggers: signal, flag, why did, which counterparties, concentration limit, structuring, velocity, exposure, liquidity, LCR, risk query, fraud check, AML-adjacent, suspicious transaction pattern."
 summary: Answer a natural-language risk/fraud/liquidity question over PRAMAN's transaction, position, and exposure data, with structuring/velocity flags routed to compliance instead of resolved automatically.
-description: "Use when an analyst asks a natural-language question about live risk, fraud, liquidity, or credit signals — e.g. 'why did our liquidity coverage ratio move 3pp this week', 'which counterparties look like structuring', 'flag credit exposures approaching concentration limits'. Triggers: signal, flag, why did, which counterparties, concentration, structuring, exposure, liquidity, LCR."
-tools:
-  - snowflake_sql_execute
-  # TODO(backend, Days 9-12): confirm the exact Cortex Analyst query tool name
-  # once the Agent SDK host is wired up — this skill queries the semantic
-  # views below via Cortex Analyst, not by hand-writing SQL against the base
-  # tables, but the concrete tool identifier isn't settled yet.
-language: en
-status: Draft
-author: Team Single Entry
-type: snowflake
 ---
 
 # Signal Query — Stage 0
@@ -25,7 +14,7 @@ Stage 0 of the four-stage lifecycle (`architecture.md`). An analyst asks a plain
 
 - **`PRAMAN.CORE.TRANSACTIONS_SV`** — transaction volume/count/channel questions. Fully additive; safe to sum across any dimension.
 - **`PRAMAN.CORE.POSITIONS_SV`** — exposure/concentration questions. `total_notional` is semi-additive (`NON ADDITIVE BY as_of_date`) — never sum it across dates. `pct_of_total_notional` is the concentration-limit metric.
-- **`PRAMAN.CORE.CREDIT_EXPOSURE_SV`** — industry exposure / NPA / asset-quality questions.
+- **`PRAMAN.CORE.CREDIT_EXPOSURE_SV`** — industry exposure / NPA / asset-quality questions, plus row-level `entry_id`/`account_code`/`amount`/`position_id` for ledger-integrity checks and `counterparty_account_baseline_mean`/`_stddev`/`_count` for per-counterparty scale anomalies (compute the z-score yourself from these three — they're window metrics, not a pre-named `entry_scale_zscore` metric, since Snowflake rejects a metric referencing another window-function metric).
 - **`PRAMAN.CORE.TRANSACTION_SIGNALS`** — the structuring/velocity detector (`sql/detectors/`). `STRUCTURING_SCORE` and `IS_CANDIDATE_STRUCTURING` are pre-computed per counterparty per day; query this directly rather than re-deriving z-scores in an ad-hoc query.
 
 Query via Cortex Analyst against the Semantic Views for anything a Semantic View covers — that's the point of building them (`sql/semantic_views/README.md`). Fall back to direct SQL against `TRANSACTION_SIGNALS`/`GL_OUTLIER_SIGNALS` only for the detector outputs, which aren't (and shouldn't be) modeled as Semantic View metrics — they're already-scored signals, not raw aggregates.
@@ -46,7 +35,8 @@ Per `architecture.md`'s stage table, Stage 0's citation type is **query + data l
 
 - **AML-adjacent flags never auto-resolve, never auto-file.** Compliance queue only, per `architecture.md`'s System context ("tipping-off risk and STR liability stay entirely with the human reviewer").
 - **Low-confidence structuring signals** (`STRUCTURING_SCORE` between 3 and 4, or `BASELINE_DAYS_OBSERVED` just over the 30-day minimum) should be presented with that caveat, not flattened into a flat yes/no.
-- **A counterparty with `BASELINE_DAYS_OBSERVED < 30`** has no signal at all (`TRANSACTION_SIGNALS` won't flag them) — say "not enough history to assess," don't imply "clean."
+- **A counterparty with `BASELINE_DAYS_OBSERVED < 30`** has no signal at all (`TRANSACTION_SIGNALS` won't flag them) — say "not enough history to assess," don't imply "clean." Same discipline applies to `CREDIT_EXPOSURE_SV.counterparty_account_baseline_count < 3` for scale-anomaly questions.
+- **A statistical outlier is not a presumptive defect.** Before calling a large or unusual entry a likely error, check `COUNTERPARTIES.CONCENTRATION_GROUP` — a counterparty already flagged `LARGE_EXPOSURE_TOP5PCT` being large is corroborating evidence of legitimacy, not a defect signal (a real false positive found and fixed during eval, `eval/results.md`).
 
 ## Audit logging
 

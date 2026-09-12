@@ -60,7 +60,7 @@ SQL (table DDL, RBAC, Semantic Views, detectors, seeds) lives under `sql/` and r
 | `sql/detectors/` | The shared outlier/structuring detector (one UDF, two consuming views) |
 | `generator/` | Synthetic GL/position/counterparty/transaction data generator, bottom-up from real disclosed figures |
 | `ingest/` | Circular → citable `RULE_CORPUS` row chunking pipeline |
-| `skills/` | The four `SKILL.md` files, one per stage |
+| `skills/` | Four real, loadable Coco skills, one per stage — each its own directory (`skills/<name>/SKILL.md`), verified locally with `cortex skill add`. Installable by anyone directly from this GitHub repo. |
 | `cortex_project/` | `SIGNAL_ASSURE_AGENT.agent.yaml` — the live Cortex Agent spec (Stage 0 + Stage 2, six tools) |
 | `data/raw/` | Real sourced documents — circulars, Pillar 3 disclosure, divergence disclosures, penalty disclosures |
 | `data/synthetic/` | Generator output |
