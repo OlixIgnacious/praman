@@ -2,7 +2,7 @@
 
 Quick status view across the full build, all phases in one place. Update the checkbox and the phase status line as work lands; `plan.md` still holds the folder layout and file-level detail, `architecture.md` holds the day-by-day rationale — this file is just "what's done vs. not," nothing more.
 
-**Overall:** 7 of 8 phases done, 1 in progress. Currently in **Days 15–17** — catalogue/data/export all deployed and verified live; `EVAL_RESULTS` scoring harness is the last piece.
+**Overall:** 8 of 8 phases done. Days 15–17's eval scored 7/12 with every miss root-caused (`eval/results.md`) — fixes identified, not yet applied (open decision). Only **Days 17–18 (rehearse & submit)** remains.
 
 ---
 
@@ -39,11 +39,11 @@ Quick status view across the full build, all phases in one place. Update the che
 - [x] Stage 1 slice — `demos/stage1_circular_415_gap_analysis.md`: real gap analysis, no changes needed to the 9 seeded rows, real coverage gap named for other returns, one ambiguity flagged for escalation
 - [x] Stage 3 walkthrough — `demos/stage3_lineage_walkthrough.md`: real live lineage trace confirms `GL_ENTRIES` → `CREDIT_EXPOSURE_SV` → `SIGNAL_ASSURE_AGENT` is fully traceable; applied to an explicitly-labeled illustrative scenario since no real injected break exists yet
 
-## Days 15–17 — Eval 🔶 IN PROGRESS
+## Days 15–17 — Eval ✅ DONE
 - [x] `eval/` — `INJECTED_CASES` catalogue deployed: 9/9 rows loaded, `GL_ENTRIES`/`TRANSACTIONS` counts confirmed exactly (2,214 / 24,555, 8 / 15 injected), and the `structuring` case genuinely trips `TRANSACTION_SIGNALS` live (`z=21.56` on 2026-06-28, `IS_CANDIDATE_STRUCTURING=TRUE` — the Python-only structural check is now confirmed at the SQL layer too)
 - [x] Divergence-disclosure ground truth deployed — 3 rows loaded (Bank of Baroda ×2, Central Bank of India ×1; YES Bank excluded for lack of a reliable base pair)
 - [x] Evidence-pack export deployed — `AUDIT_EVIDENCE_PACK` live, `GOVERNANCE_WRITE` granted, 7 rows returned on verify. RBAC gap (no sign-off-to-run linking column) remains a flagged follow-up, not fixed.
-- [~] `EVAL_RESULTS` scoring harness — `eval/run_eval.md` written (12 cases: 9 injected + 3 divergence-calibrated). **Blocked on a real fix, not yet deployed:** `SP_WRITE_AUDIT_LOG` always hardcoded `IS_EVAL=FALSE`, so eval traffic through the live agent would have contaminated the real audit trail. Fixed (9th `IS_EVAL` param + `[EVAL]` prompt-marker convention in the agent's orchestration) but neither redeployed yet — see `NOTES.md`. Last remaining Days 15–17 item.
+- [x] `EVAL_RESULTS` scoring harness — 12/12 cases run live, **7/12 correct**. Governance gate (most compliance-critical behavior) scored 100%. All 4 misses root-caused, none architectural: 2 are the gate over-applying to basic ledger-integrity checks, 1 is a wrong dedup key, 1 is a missing `CREDIT_EXPOSURE_SV` column. 1 false positive is an instruction-wording gap. Full detail: `eval/results.md`. Fixes identified, not yet applied.
 - **Real bug caught in review, fixed before reaching Snowflake:** `sql/load_synthetic_data.sql` had no `TRUNCATE` before its `COPY INTO`s — re-running it against the regenerated (injected-case-carrying) CSVs would have duplicated every existing row, not just added the new ones. Fixed in the script itself.
 
 ## Days 17–18 — Rehearse & submit ⬜ NOT STARTED
