@@ -17,18 +17,18 @@
 -- that yet — building it now would be automation with no pipeline to hang
 -- it on.
 --
--- KNOWN GAP, not fixed here (out of scope for this file, flagged for a
--- human decision): sql/rbac/04_officer_signoff.sql's own header comment
--- describes a sign-off as "a new row... RUN_ID referencing the run being
--- signed off on" — but RUN_ID is AUDIT_LOG's primary key, so a sign-off row
--- cannot both have its own unique RUN_ID and store the original run's
--- RUN_ID in that same column. There is no separate linking column (e.g. a
--- SIGNOFF_FOR_RUN_ID) today, and no procedure yet writes a sign-off row at
--- all (only SP_WRITE_AUDIT_LOG exists, owned by AUDIT_INSERT, and it always
--- leaves HUMAN_DECISION/SIGNOFF_BY/SIGNOFF_AT NULL). This view surfaces
--- those three columns as-is; today, every real row has them NULL. Don't
--- read a populated-looking sign-off join into this view — there isn't one
--- yet to join against.
+-- GAP CLOSED, not open anymore: sql/rbac/04_officer_signoff.sql's own header
+-- comment describes a sign-off as "a new row... RUN_ID referencing the run
+-- being signed off on" — but RUN_ID is AUDIT_LOG's primary key, so a
+-- sign-off row can't both have its own unique RUN_ID and store the original
+-- run's RUN_ID there. AUDIT_LOG.SIGNOFF_FOR_RUN_ID (sql/ddl/09_audit_log.sql)
+-- is the actual linking column that comment assumed existed, and
+-- SP_RECORD_SIGNOFF (sql/procedures/02_*.sql) is what finally writes a
+-- sign-off row. A sign-off is a SEPARATE row from the run it applies to, so
+-- this view LEFT JOINs the two back together for a reviewer, rather than
+-- expecting one row to carry both — and takes only the most recent sign-off
+-- per run in case a run is ever signed off more than once (e.g. escalated,
+-- then reconsidered).
 
 USE DATABASE PRAMAN;
 USE SCHEMA CORE;
@@ -50,6 +50,16 @@ WITH cited AS (
   JOIN RULE_CORPUS rc ON rc.CHUNK_ID = f.VALUE::VARCHAR
   WHERE a.IS_EVAL = FALSE
   GROUP BY a.RUN_ID
+),
+signoff AS (
+  SELECT
+    SIGNOFF_FOR_RUN_ID,
+    HUMAN_DECISION,
+    SIGNOFF_BY,
+    SIGNOFF_AT,
+    ROW_NUMBER() OVER (PARTITION BY SIGNOFF_FOR_RUN_ID ORDER BY SIGNOFF_AT DESC) AS RN
+  FROM AUDIT_LOG
+  WHERE SIGNOFF_FOR_RUN_ID IS NOT NULL AND IS_EVAL = FALSE
 )
 SELECT
   a.RUN_ID,
@@ -60,13 +70,15 @@ SELECT
   a.MODEL_VERSION,
   a.QUERY_SNAPSHOT_ID,
   a.OUTPUT,
-  a.HUMAN_DECISION,
-  a.SIGNOFF_BY,
-  a.SIGNOFF_AT,
+  s.HUMAN_DECISION,
+  s.SIGNOFF_BY,
+  s.SIGNOFF_AT,
   COALESCE(c.CITATIONS, ARRAY_CONSTRUCT()) AS CITATIONS
 FROM AUDIT_LOG a
 LEFT JOIN cited c ON c.RUN_ID = a.RUN_ID
+LEFT JOIN signoff s ON s.SIGNOFF_FOR_RUN_ID = a.RUN_ID AND s.RN = 1
 WHERE a.IS_EVAL = FALSE
+  AND a.SIGNOFF_FOR_RUN_ID IS NULL -- exclude sign-off rows themselves from appearing as separate "runs" in the pack
 ORDER BY a.STAGE, a.RUN_TIMESTAMP;
 
 -- No role can currently read AUDIT_LOG at all (ANALYST_READ/GOVERNANCE_WRITE
