@@ -42,7 +42,7 @@ The four share one spine: a **versioned rule store**, a **line-item-to-data-fiel
 
 ## Where the model is, and is not
 
-| Deterministic | LLM (via Coco, model-garden: Claude Opus / GPT / Snowflake-native) |
+| Deterministic | LLM (via Coco's model garden — multiple foundation model options plus Snowflake-native models) |
 |---|---|
 | Cross-footing, arithmetic, unit checks | Circular interpretation (Cortex Search over rule corpus) |
 | Published validation rule sets (DPM, MDRM edits) | Impact reasoning over schema |
@@ -151,7 +151,7 @@ Per-jurisdiction rule ingestion is one-time plus circular deltas. The per-custom
 
 Resolved against the hackathon's own Coco Starter workshops (Sept 2026) — Coco (formerly "Cortex Code") is not just dev-workflow tooling wrapped around a bring-your-own LLM. It's a data-native agent with its own reasoning layer, and most of our architecture maps onto existing Snowflake primitives rather than custom build:
 
-- **Reasoning layer:** Coco's built-in model garden (Claude Opus, GPT, Snowflake-native models), hosted inside Snowflake — data and context never leave the account, which is a clean answer to the "customer's own environment" guardrail below.
+- **Reasoning layer:** Coco's built-in model garden (multiple foundation model options plus Snowflake-native models), hosted inside Snowflake — data and context never leave the account, which is a clean answer to the "customer's own environment" guardrail below.
 - **Stage 0 (Signal):** Cortex Analyst — semantic layer over structured data, NL question in, structured insight out.
 - **Stage 1 & Stage 2 rule/document retrieval:** Cortex Search — managed RAG over unstructured PDFs (circulars, rule text), with native citation back to source.
 - **Stage 3 (Explain):** Coco's native lineage tracing, prompted directly ("show lineage from source table to downstream report") rather than a lineage engine we build.

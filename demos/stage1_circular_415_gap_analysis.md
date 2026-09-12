@@ -46,7 +46,7 @@ INSERT INTO PRAMAN.CORE.AUDIT_LOG
   (RUN_ID, APP_USER, STAGE, PROMPT_OR_QUESTION, MODEL_VERSION, RETRIEVED_RULE_CHUNK_IDS, OUTPUT, HUMAN_DECISION, IS_EVAL)
 VALUES
   (UUID_STRING(), CURRENT_USER(), '1', 'Stage 1 slice: gap analysis of RBI/DoS/2026-27/415 against seeded LINE_ITEM_MAP',
-   'claude-sonnet-5',
+   'manual-analysis-v1',
    ARRAY_CONSTRUCT('RBI/DoS/2026-27/415#21', 'RBI/DoS/2026-27/415#22', 'RBI/DoS/2026-27/415#23'),
    'See demos/stage1_circular_415_gap_analysis.md -- no LINE_ITEM_MAP changes proposed; flagged the filing-timeline/penalty requirement category as needing a schema decision before it can be modeled.',
    NULL, FALSE);

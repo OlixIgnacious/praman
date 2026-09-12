@@ -29,7 +29,7 @@ These four stages are four different traversals over one governed data model, no
 - **Every rule citation points at RBI's own numbered paragraph**, not an arbitrary chunk boundary — see [`ingest/README.md`](ingest/README.md) for the chunking approach.
 - **Synthetic data is exactly reconciled, not sampled.** The generator builds a GL/position/counterparty book from scratch that sums, to the decimal, to HDFC Bank's real disclosed Pillar 3 figures — enforced by the test suite, not just eyeballed.
 - **Platform assumptions are checked against live Snowflake behavior, not just docs**, and corrected in `architecture.md` when they don't hold (e.g. Cortex Search's PDF-parsing requirement, native lineage's edition requirement, and the original custom-backend-plus-UI plan, superseded by a native Cortex Agent + CoWork once a live spike confirmed it).
-- **No custom backend at all.** `PRAMAN.CORE.SIGNAL_ASSURE_AGENT` is a native `CREATE AGENT` object (Stage 0 + Stage 2, six tools) connected to Snowflake's own chat surface, CoWork (`ai.snowflake.com`) — there's no externally-hosted service and no standing credential to secure. `backend/`/`ui/` stay empty scaffolds. See `CLAUDE.md`'s "Review UI is a native Cortex Agent + CoWork" section.
+- **No custom backend at all.** `PRAMAN.CORE.SIGNAL_ASSURE_AGENT` is a native `CREATE AGENT` object (Stage 0 + Stage 2, six tools) connected to Snowflake's own chat surface, CoWork (`ai.snowflake.com`) — there's no externally-hosted service and no standing credential to secure. `backend/`/`ui/` stay empty scaffolds.
 
 Full design, RBAC model, eval architecture, and day-by-day build plan: [`architecture.md`](architecture.md).
 
@@ -84,6 +84,5 @@ Every real document this prototype depends on, with sourcing status, is tracked 
 | `jurisdiction_agnostic_analysis.md` | Code-level audit of what's genuinely jurisdiction-agnostic vs. India/RBI-coupled, plus the checklist for validating a second jurisdiction |
 | `production_deployment_analysis.md` | Code-level audit of what it would actually take to deploy against a real institution's own schema — separate question from jurisdiction-agnosticism |
 | `data-sources.md` | Provenance/status of every real sourced document |
-| `CLAUDE.md` | Guidance for Claude Code when working in this repo |
 
-`plan.md`/`TRACKER.md`/`NOTES.md` (day-by-day TODOs, quick status, pending manual Snowflake runs) are gitignored local working files for the build process — not shipped in this repo.
+`plan.md`/`TRACKER.md`/`NOTES.md`/`CLAUDE.md` (day-by-day TODOs, quick status, pending manual Snowflake runs, dev-tooling guidance) are gitignored local working files for the build process — not shipped in this repo.

@@ -9,7 +9,7 @@ Run per `role_verification.md` against live Snowflake, 2026-09-13. This tests th
 | `AUDIT_LOG` | `ACCOUNTADMIN` |
 | `LINE_ITEM_MAP` | `ACCOUNTADMIN` |
 
-**Caveat, as the runbook flagged in advance:** `ACCOUNTADMIN` retains implicit full privilege over both tables through Snowflake ownership, independent of any explicit grant. `CLAUDE.md`'s "no role, including admin, gets update/delete" is **verified true for every functional/analyst-facing role** (`ANALYST_READ`/`GOVERNANCE_WRITE`/`AUDIT_INSERT`/`OFFICER_SIGNOFF`) — confirmed live below — but not literally true for the account's top-level admin, which is inherent to how Snowflake ownership works, not a gap in this project's design. State the claim with this precision in pitch material: "no operational role can modify the audit log," not "no one, including admins, can."
+**Caveat, as the runbook flagged in advance:** `ACCOUNTADMIN` retains implicit full privilege over both tables through Snowflake ownership, independent of any explicit grant. `architecture.md`'s "no role, including admin, gets update/delete" is **verified true for every functional/analyst-facing role** (`ANALYST_READ`/`GOVERNANCE_WRITE`/`AUDIT_INSERT`/`OFFICER_SIGNOFF`) — confirmed live below — but not literally true for the account's top-level admin, which is inherent to how Snowflake ownership works, not a gap in this project's design. State the claim with this precision in pitch material: "no operational role can modify the audit log," not "no one, including admins, can."
 
 ## Sections 1–4 — per-role checks, 22/22 pass
 

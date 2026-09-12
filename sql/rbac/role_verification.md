@@ -21,7 +21,7 @@ SHOW GRANTS ON TABLE PRAMAN.CORE.AUDIT_LOG;
 SHOW GRANTS ON TABLE PRAMAN.CORE.LINE_ITEM_MAP;
 ```
 
-Read the `OWNER` grant in the output. Whichever role owns a table gets full privileges on it *through ownership*, independent of any explicit `GRANT UPDATE`/`GRANT DELETE` — this is inherent to how Snowflake ownership works, not a gap in this project's RBAC design. If `ACCOUNTADMIN` (or `SYSADMIN`) owns `AUDIT_LOG`, then `CLAUDE.md`'s "no role, including admin, gets update/delete" claim needs an honest caveat for the pitch: true for every functional/analyst-facing role, not literally true for the account's top-level admin, which retains implicit override the way it would over any Snowflake object. Note the actual owner here before running section 3 below, so a denial or success there is interpreted correctly.
+Read the `OWNER` grant in the output. Whichever role owns a table gets full privileges on it *through ownership*, independent of any explicit `GRANT UPDATE`/`GRANT DELETE` — this is inherent to how Snowflake ownership works, not a gap in this project's RBAC design. If `ACCOUNTADMIN` (or `SYSADMIN`) owns `AUDIT_LOG`, then `architecture.md`'s "no role, including admin, gets update/delete" claim needs an honest caveat for the pitch: true for every functional/analyst-facing role, not literally true for the account's top-level admin, which retains implicit override the way it would over any Snowflake object. Note the actual owner here before running section 3 below, so a denial or success there is interpreted correctly.
 
 ## 1. `ANALYST_READ` — read-only, `CORE` only
 
