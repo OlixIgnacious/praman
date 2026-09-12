@@ -23,6 +23,12 @@ Originally designed with `AUDIT_LOG.RETRIEVED_RULE_CHUNK_IDS`'s native `ARRAY` t
 
 Empty/NULL input is treated as "no chunks cited" (`ARRAY_CONSTRUCT()`), not an error — Stage 0 calls always pass an empty string here since Stage 0's citation type is query + data lineage, not a rule chunk.
 
+## `IS_EVAL` — a 9th parameter, added for the Days 15–17 eval harness
+
+`architecture.md`'s Evaluation architecture requires eval traffic to write `AUDIT_LOG.IS_EVAL = TRUE` so it never contaminates what a compliance reviewer sees (`AUDIT_EVIDENCE_PACK`, `sql/exports/`, explicitly excludes `IS_EVAL = TRUE` rows). The original procedure hardcoded `FALSE`. Since `SIGNAL_ASSURE_AGENT` calls `write_audit_log` unconditionally every turn, running eval questions through the live agent without this fix would have written them into the real audit trail as if they were live analyst traffic — the exact contamination `architecture.md` says must not happen. Fixed by adding `IS_EVAL VARCHAR` (`'TRUE'`/`'FALSE'`, same non-native-type reasoning as `RETRIEVED_RULE_CHUNK_IDS` above), sourced by the agent's orchestration from a `[EVAL]` prompt marker (`cortex_project/SIGNAL_ASSURE_AGENT.agent.yaml`) — see `eval/run_eval.md` for the actual eval questions.
+
+**Re-deploying this procedure requires an explicit `DROP` first**, not just `CREATE OR REPLACE`: Snowflake identifies a procedure by name *and* argument signature, so adding a 9th parameter creates a second overload rather than replacing the 8-arg one. The file drops the old signature explicitly. Also runs as `ACCOUNTADMIN` now, not `SECURITYADMIN` — dropping an object already owned by `AUDIT_INSERT` is a different privilege question than the original `MANAGE GRANTS`-based ownership transfer, and `ACCOUNTADMIN` removes the ambiguity.
+
 ## Run
 
-Deployed. See `NOTES.md`'s "Done" section for what was verified, and `01_sp_write_audit_log.sql`'s header comment for the full ownership-transfer rationale.
+Deployed (8-arg version). The `IS_EVAL` 9th-parameter update is written but not yet re-run — see `NOTES.md`. `01_sp_write_audit_log.sql`'s header comment has the full ownership-transfer rationale.

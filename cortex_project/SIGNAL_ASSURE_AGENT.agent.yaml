@@ -47,7 +47,11 @@ tools:
           output:
             type: string
             description: "The full answer (Stage 0) or ranked findings list (Stage 2) returned to the user."
-        required: [run_id, app_user, stage, prompt_or_question, model_version, retrieved_rule_chunk_ids, query_snapshot_id, output]
+          is_eval:
+            type: string
+            enum: ["TRUE", "FALSE"]
+            description: "\"TRUE\" if this question began with the literal marker \"[EVAL]\" (a held-out eval case, not live analyst traffic); \"FALSE\" for every other question."
+        required: [run_id, app_user, stage, prompt_or_question, model_version, retrieved_rule_chunk_ids, query_snapshot_id, output, is_eval]
 
 tool_resources:
   transaction_analytics:
@@ -91,6 +95,8 @@ instructions:
     Never validate a draft return line item against a LINE_ITEM_MAP row that is not STATUS='approved' -- report it as "no approved mapping / pending governance approval."
 
   orchestration: |
+    EVAL MARKER (check before ROUTING): if the question begins with the literal text "[EVAL]", this is a held-out evaluation case being scored against known ground truth, not live analyst traffic. Strip the marker, then answer the underlying question exactly as normal in every other respect (same tools, same guardrails, same output shape) -- the only difference is is_eval="TRUE" in the write_audit_log call at the end, instead of "FALSE". This keeps eval runs on the exact same path as real usage, tagged only so they never get counted as real analyst activity.
+
     ROUTING (decide first, before picking any tool): classify the question as Stage 0 (a live signal/risk/fraud/liquidity question about current data -- "why did", "which counterparties", "flag exposures") or Stage 2 (validating a specific draft return or line item before filing -- "assure this return", "check before filing", "validate draft"). If genuinely ambiguous, ask which is intended rather than guessing -- the two stages below have different, non-interchangeable guardrails.
 
     STAGE 0 (Signal):
@@ -100,7 +106,7 @@ instructions:
     - Low-confidence structuring signals (STRUCTURING_SCORE between 3 and 4, or a counterparty with BASELINE_DAYS_OBSERVED just over the 30-day minimum) get that caveat stated explicitly, not flattened into a flat yes/no.
     - A counterparty with BASELINE_DAYS_OBSERVED < 30 has no usable signal -- say "not enough history to assess," never imply "clean."
     - Never sum position_analytics' total_notional across as_of_date -- it is a point-in-time balance, not a transaction sum.
-    - After answering: call write_audit_log with stage="0", query_snapshot_id set, retrieved_rule_chunk_ids as an empty string.
+    - After answering: call write_audit_log with stage="0", query_snapshot_id set, retrieved_rule_chunk_ids as an empty string, is_eval per the EVAL MARKER rule above.
 
     STAGE 2 (Assure):
     - Tools: line_item_map_lookup, position_analytics, credit_exposure_analytics, rule_corpus_search.
@@ -109,6 +115,6 @@ instructions:
     - For each line item with an approved mapping: compute its value per TRANSFORM_LOGIC, compare to the draft value, and check whether the corresponding ACCOUNT_CODE shows an outlier via credit_exposure_analytics/the underlying detector views -- a mismatch corroborated by an outlier flag ranks higher severity than a mismatch alone.
     - Every finding needs its own citation: retrieve the rule paragraph via rule_corpus_search for the RULE_CHUNK_ID backing that line item's mapping.
     - Genuinely uncertain findings are marked abstained, not forced into a confident direction.
-    - After answering: call write_audit_log with stage="2", retrieved_rule_chunk_ids populated with every CHUNK_ID cited across all findings, query_snapshot_id omitted.
+    - After answering: call write_audit_log with stage="2", retrieved_rule_chunk_ids populated with every CHUNK_ID cited across all findings, query_snapshot_id as an empty string, is_eval per the EVAL MARKER rule above.
 
-    SHARED: never skip the write_audit_log call, even for a short or simple answer. Call it exactly once per turn, after every other tool call for that turn, not before.
+    SHARED: never skip the write_audit_log call, even for a short or simple answer. Call it exactly once per turn, after every other tool call for that turn, not before. All eight remaining fields (run_id, app_user, stage, prompt_or_question, model_version, retrieved_rule_chunk_ids, query_snapshot_id, output) plus is_eval are required on every call -- never omit one, pass an empty string "" instead when a field doesn't apply.
