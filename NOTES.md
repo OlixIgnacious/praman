@@ -4,13 +4,20 @@ Snowflake changes written but not yet executed — non-interactive `cortex exec`
 
 ## Done
 
-- Semantic Views, the shared detector, `SP_WRITE_AUDIT_LOG`, and **`SIGNAL_ASSURE_AGENT`** — all deployed and verified live. 5/5 test questions passed (3 Stage 0, 2 Stage 2), including the two that mattered most: the AML-adjacent question correctly flagged for compliance review rather than a verdict, and the `LINE_ITEM_MAP` validation question correctly returned "no approved mapping / pending governance approval" instead of silently computing a value. `AUDIT_LOG` got exactly one correct row per test. `TRANSACTIONS_AGENT` (the spike) has been dropped from Snowflake and its local artifacts removed. Days 9–12's Cortex Agent work is done.
+- Semantic Views, the shared detector, `SIGNAL_ASSURE_AGENT` (all Days 9–12 work), and the Stage 1/Stage 3 demo walkthroughs (`demos/`) — all deployed/complete. See `TRACKER.md`/`plan.md` for detail.
 
-Three real Cortex Agent platform limitations found and fixed during this deployment (now reflected in the source files, not just here):
-1. **`generic` tool `input_schema` doesn't support `array` types** in practice — `retrieved_rule_chunk_ids` changed from `ARRAY` to a comma-delimited `VARCHAR`, parsed back to an array inside `SP_WRITE_AUDIT_LOG` via `SPLIT()`.
-2. **`ARRAY_CONSTRUCT()`/`SPLIT()` aren't valid inside a plain `VALUES` clause** in this context — the procedure's `INSERT` switched from `VALUES` to `INSERT ... SELECT`.
-3. **The agent drops tool-call arguments it considers optional**, which breaks positional-signature matching on an 8-argument procedure call — fixed by making all 8 `input_schema` properties `required` (Stage-inapplicable fields get an explicit empty-string convention instead of being omitted).
+## Pending — one thing, to finish Stage 2's demo
 
-## Nothing currently pending
+Every seeded `LINE_ITEM_MAP` row is still `STATUS='proposed'`, so `SIGNAL_ASSURE_AGENT`'s Stage 2 tool has only ever been tested against the "no approved mapping" refusal path — the "compute value, compare to draft, ranked findings with a citation" happy path has never actually run. To demo that, approve at least one row as `GOVERNANCE_WRITE`, after reviewing the citation caveat already written into `sql/seed_line_item_map.sql` (all 9 rows cite `RBI/DoS/2026-27/415#21`, which names the return but not the underlying disclosure-format rule — an honest, not ideal, citation):
 
-Next up per `plan.md` (Days 12–15): wire Stage 0 and Stage 2 as the two "live" paths for the demo, plus start on Stage 1's ingestion-pipeline-backed slice and Stage 3's scripted lineage walkthrough — both still custom-backend territory, not CoWork/Cortex Agent.
+```sql
+UPDATE PRAMAN.CORE.LINE_ITEM_MAP
+SET STATUS = 'approved', APPROVED_BY = CURRENT_USER(), APPROVED_AT = CURRENT_TIMESTAMP()
+WHERE LINE_ITEM_ID = 'PILLAR3.IND_NPA.GROSS';  -- or whichever row(s) you want to approve
+```
+
+Then a live question like *"Validate the gross NPA figure for [an industry] against approved rules"* against `SIGNAL_ASSURE_AGENT` in CoWork should show the full ranked-findings path instead of the refusal. Tell me the result and I'll close out Stage 2's checklist item.
+
+## Also optional
+
+`demos/stage1_circular_415_gap_analysis.md` includes a real `AUDIT_LOG` insert for that analysis run — not executed, since the analysis itself needed no live Snowflake access. Run it if you want that Stage 1 slice logged for real; otherwise it's fine as a standalone artifact.

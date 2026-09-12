@@ -60,10 +60,11 @@ brand/            logo assets — populated
 
 ## Days 12–15 — Wire the four stages end-to-end
 
-- [ ] Stage 0 live: NL question → answer
-- [ ] Stage 2 live: draft return → ranked findings with citations
-- [ ] Stage 1 slice: the sourced circular → gap analysis, change spec, test cases
-- [ ] Stage 3 scripted walkthrough: one injected break → lineage trace → root cause + narrative
+- [x] Stage 0 live: NL question → answer. **Done** — covered by `SIGNAL_ASSURE_AGENT`'s Days 9–12 verification (3/3 Stage 0 test questions passed, including the AML-adjacent case).
+- [~] Stage 2 live: draft return → ranked findings with citations. **Partially done.** The "no approved mapping" refusal path is verified (`SIGNAL_ASSURE_AGENT` correctly refuses to validate against a `proposed` row). The "computed value vs. draft value, ranked findings with a rule citation" happy path is **not yet demonstrated** — every seeded `LINE_ITEM_MAP` row is still `proposed`, so there's nothing approved to compute against. Needs: a `GOVERNANCE_WRITE` session approving at least one of the 9 `PILLAR3.*` rows (the `UPDATE` from earlier in this project), then a live test question exercising that row.
+- [x] Stage 1 slice: the sourced circular → gap analysis, change spec, test cases. **Done.** `demos/stage1_circular_415_gap_analysis.md` — real gap analysis against all 30 chunks of circular 415 vs. the 9 seeded `LINE_ITEM_MAP` rows. Finding: no changes needed to the 9 existing rows (citation confirmed unchanged); real, named coverage gap for ~two dozen other returns in para 21's table (expected — synthetic data only reconciles to Pillar 3 figures); one genuine ambiguity flagged for escalation rather than force-resolved (per-return filing deadlines/penalties don't fit `LINE_ITEM_MAP`'s schema, needs a human design decision).
+- [x] Stage 3 scripted walkthrough: one injected break → lineage trace → root cause + narrative. **Done.** `demos/stage3_lineage_walkthrough.md` — real, live `cortex lineage` trace (`GL_ENTRIES` → `CREDIT_EXPOSURE_SV` → `SIGNAL_ASSURE_AGENT`, confirming the full chain from source ledger to the actual deployed Cortex Agent is traceable), applied to an explicitly-labeled illustrative scenario (no real injected break exists yet — that's Days 15–17's `INJECTED_CASES` catalogue). Found a real CLI limitation along the way: `cortex lineage` can't start from a Semantic View object, only from a table/view — must trace from the base table and read its downstream.
+- [ ] **Stage 2's "happy path" still not demoed** — only the "no approved mapping" refusal path is verified. Needs a `GOVERNANCE_WRITE` session approving at least one of the 9 `PILLAR3.*` rows before a live question can show computed-value-vs-draft-value ranked findings with a citation.
 
 ## Days 15–17 — Eval
 
