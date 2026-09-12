@@ -44,6 +44,24 @@ CREATE OR REPLACE SEMANTIC VIEW CREDIT_EXPOSURE_SV
     gl_entries.posting_date AS POSTING_DATE
       WITH SYNONYMS ('posting date', 'GL date'),
 
+    -- Row-level fields, added after a real eval miss: Stage 2's basic
+    -- ledger-integrity checks (sign/scale/duplicate/referential-integrity --
+    -- see cortex_project/SIGNAL_ASSURE_AGENT.agent.yaml's STAGE 2b) need to
+    -- see individual entries, not just the aggregated METRICS below.
+    -- entry_id/account_code/amount/position_id were previously only reachable
+    -- inside METRICS' SUM(CASE...) expressions -- invisible to a question
+    -- asking about one specific entry. POSITION_ID specifically: its absence
+    -- here meant the agent could not check GL_ENTRIES against POSITIONS for
+    -- a stale/orphaned reference at all (eval/results.md's stale_ref miss).
+    gl_entries.entry_id AS ENTRY_ID
+      WITH SYNONYMS ('entry id', 'GL entry', 'ledger entry'),
+    gl_entries.account_code AS ACCOUNT_CODE
+      WITH SYNONYMS ('account code', 'GL account'),
+    gl_entries.amount AS AMOUNT
+      WITH SYNONYMS ('entry amount', 'posted amount'),
+    gl_entries.position_id AS POSITION_ID
+      WITH SYNONYMS ('position id', 'position reference'),
+
     -- Categorical view of ACCOUNT_CODE — mirrors LINE_ITEM_MAP's PILLAR3.*
     -- line items so an analyst can ask "gross NPA by classification" instead
     -- of knowing the raw account code convention.
@@ -110,6 +128,6 @@ CREATE OR REPLACE SEMANTIC VIEW CREDIT_EXPOSURE_SV
 
   COMMENT = 'Industry exposure and asset-quality (NPA) view over GL_ENTRIES, mirroring the Pillar 3 line items in LINE_ITEM_MAP. Read by Stage 0 (signal queries) and Stage 2 (assure-return peer/history benchmarks).'
 
-  AI_SQL_GENERATION 'Use fund_based_exposure/nonfund_based_exposure for industry credit exposure questions, grouped by counterparties.sector. Use gross_npa grouped by gl_entries.npa_classification for the Substandard/Doubtful_1/Doubtful_2/Doubtful_3/Loss split — this matches LINE_ITEM_MAP.PILLAR3.NPA_CLASS.*. Use npa_ratio and provision_coverage_ratio for asset-quality questions; both are decimals, not pre-multiplied percentages. Do NOT sum fund_based_exposure and nonfund_based_exposure into a single "gross exposure" figure unless explicitly asked for a combined total — RBI disclosure and this project''s LINE_ITEM_MAP both treat them as separate line items.';
+  AI_SQL_GENERATION 'Use fund_based_exposure/nonfund_based_exposure for industry credit exposure questions, grouped by counterparties.sector. Use gross_npa grouped by gl_entries.npa_classification for the Substandard/Doubtful_1/Doubtful_2/Doubtful_3/Loss split — this matches LINE_ITEM_MAP.PILLAR3.NPA_CLASS.*. Use npa_ratio and provision_coverage_ratio for asset-quality questions; both are decimals, not pre-multiplied percentages. Do NOT sum fund_based_exposure and nonfund_based_exposure into a single "gross exposure" figure unless explicitly asked for a combined total — RBI disclosure and this project''s LINE_ITEM_MAP both treat them as separate line items. For ledger-integrity questions (sign errors, scale/unit anomalies, duplicate postings, orphaned position references), query entry_id/account_code/amount/position_id directly at row grain rather than through the aggregate METRICS above — e.g. WHERE account_code IN (''ADVANCES_FUND'',''ADVANCES_NONFUND'') AND amount < 0 for a sign check, or grouping by counterparty/position/account_code/amount together to surface duplicates.';
 
 GRANT SELECT ON SEMANTIC VIEW CREDIT_EXPOSURE_SV TO ROLE ANALYST_READ;
