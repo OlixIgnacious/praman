@@ -148,17 +148,28 @@ Stage 0–3's actual end-user question-asking flow doesn't change and isn't redr
 
 ## 5. Build sequence, from an empty Snowflake account
 
-| Phase | What | New or reuse |
-|---|---|---|
-| 0 | Canonical schema formalized as a versioned contract (`plug_and_play_architecture.md` §1, priority #1) | Mostly documentation of what exists |
-| 1 | Package `sql/ddl`, `sql/rbac`, `sql/semantic_views`, `sql/detectors`, `sql/procedures`, `cortex_project/`, `skills/` as one repeatable installer — the `cortex skill publish --from-git` mechanism already set up (`NOTES.md`) is a real candidate vehicle for this, not a separate new one | Reuse + repackage |
-| 2 | `DISCOVERED_DOCUMENTS` + `ALLOWED_SOURCES` tables, `CONTENT_WATCHER` role (insert-only, mirrors `AUDIT_INSERT`'s existing pattern) | New |
-| 3 | The scheduled Task + `NETWORK RULE`/`EXTERNAL ACCESS INTEGRATION` scoped to the allow-list | New |
-| 4 | A curator review surface for the `DISCOVERED_DOCUMENTS` queue — a genuinely good fit for the Streamlit app already on the CoCo-lifecycle to-do list (`plan.md` item 8), rather than a second, unrelated build | New, but reuses already-planned work |
-| 5 | `RULE_CORPUS.SOURCE_AUTHORITY`/`ORIGINAL_LANGUAGE` columns + the bilingual-review gate (§3) | New |
-| 6 | Data adaptor conformance-check procedure (validates a new institution's landed data against the canonical contract before anything downstream runs) | New |
-| 7 | Threshold calibration pipeline (`plug_and_play_architecture.md` §3) | New |
-| 8 | Jurisdiction content packaging (`plug_and_play_architecture.md` §2) | Mechanical repackaging of existing seed scripts |
-| 9 | Go-live: agent + skills, unmodified | Pure reuse |
+**Sequencing caveat, added after external review:** Phase 1 below ("package as a repeatable installer") is exactly the ad-hoc distribution model `plug_and_play_architecture.md`'s `[FIX #1]` addresses — the decision there is to adopt Snowflake Native Apps as the target, with real versioning and an actual upgrade-consumers mechanism, pending a scoped spike on two named open questions (RBAC grants under the app framework; where `AUDIT_LOG` and `LINE_ITEM_MAP` live). Run that spike (Priority item 1 in that doc) *before* committing real effort to Phase 1 as written; if it holds up, Phase 1 becomes "build the Native App manifest/setup script," not "write a shell installer script."
+
+| Phase | What | New or reuse | Tooling |
+|---|---|---|---|
+| **spike** | Native Apps evaluation (`plug_and_play_architecture.md` `[FIX #1]`, Priority item 1) — do this first | Investigation | `native-app-provider` skill (routes to `setup-app`, `app-version-release`, `request-external-access-integration`) |
+| 0 | Canonical schema formalized as a versioned contract | Mostly documentation | `dcm` skill's `DEFINE TABLE`/manifest model gives real, diffable schema versioning across jurisdiction extensions instead of hand-consolidated DDL comments — evaluate before writing this as a plain doc |
+| 1 | Package `sql/ddl`, `sql/rbac`, `sql/semantic_views`, `sql/detectors`, `sql/procedures`, `cortex_project/`, `skills/` as one repeatable installer | Reuse + repackage | If the Native Apps spike holds up: `native-app-provider`'s `setup-app`. If not: the `cortex skill publish --from-git` mechanism already queued in `NOTES.md` |
+| 2 | `DISCOVERED_DOCUMENTS` + `ALLOWED_SOURCES` tables, `CONTENT_WATCHER` role (insert-only, mirrors `AUDIT_INSERT`) | New | Plain DDL/RBAC, same pattern as everything in `sql/rbac/` today |
+| 3 | The scheduled Task + `NETWORK RULE`/`EXTERNAL ACCESS INTEGRATION` scoped to the allow-list | New | `snowflake-tasks` skill for the schedule; `integrations`/network-security patterns for the EAI + network rule. **Real caveat, not routine setup** (`plug_and_play_architecture.md` fault #8): granting `CREATE EXTERNAL ACCESS INTEGRATION` inside a regulated institution's account is a security-team approval per institution, not a config value this phase can just set |
+| 4 | A curator review surface for the `DISCOVERED_DOCUMENTS` queue | New, reuses planned work | The Streamlit app already on the CoCo-lifecycle to-do list (`plan.md` item 8) — same build, not a second one. A **Slack MCP server** is a good fit *here specifically* (curator gets a digest/alert of new discoveries) — see the MCP note below for why it's not a fit for the pipeline's actual scheduled execution |
+| 5 | `RULE_CORPUS.SOURCE_AUTHORITY`/`ORIGINAL_LANGUAGE` columns + the bilingual-review gate | New | `data-governance` skill for tagging/enforcing provenance at the policy level rather than as plain, unenforced columns |
+| 6 | Data adaptor conformance-check procedure | New | `data-quality` skill's DMF patterns — enforce the canonical-schema contract (types, nullability, `ACCOUNT_CODE` taxonomy membership) as a monitored check at ingestion, not hoped-for adaptor discipline |
+| 7 | Threshold calibration pipeline (revised design, with cold-start + versioning fixed) | New | `snowflake-tasks` for the quarterly re-run; `data-quality`'s SLA-alerting workflow to catch calibration drift or a stalled recalibration |
+| 8 | Jurisdiction content packaging | Mechanical repackaging | Existing seed scripts, no new tooling needed |
+| 9 | Go-live: agent + skills, unmodified | Pure reuse | — |
+
+### On MCP specifically — narrower fit than first suggested
+
+Correcting an earlier answer: **MCP is not a fit for this design's core problem** (schema/pipeline/distribution architecture) — that's entirely intra-Snowflake, and an external-tool-integration protocol doesn't address any of it. Where it *does* fit, narrowly: Phase 4's curator-facing notification/review surface (a Slack MCP server so the agent can post a discovery digest; a Google Drive MCP server if a curator would rather review PDFs there than in a Streamlit queue). Both are optional UX conveniences for a human-facing step, not part of the unattended pipeline itself — the `notification` skill's native `SYSTEM$SEND_SNOWFLAKE_NOTIFICATION` path covers the same need without an external dependency, and is the simpler default.
+
+### Additional RBAC hardening worth revisiting
+
+`CLAUDE.md`'s own framing of `PRAMAN.EVAL` isolation is "enforced via grants, not convention" — true today because someone wrote the grants correctly by hand, verified live (`sql/rbac/verification_results.md`, 22/22). A templated per-customer deployment (Phase 1) is a new place that discipline could slip if the template itself has a typo. The `rbac` skill's access-role patterns are worth a pass specifically to make that isolation structurally hard to get wrong in a templated install, not just correct in the one account it's been verified against so far.
 
 Not required before hackathon submission — same status as its two companion docs. Phases 2–4 (the content-acquisition pipeline) are the most self-contained piece to build first if this gets picked up, since they don't require a real second institution or jurisdiction to exist first, only the `ALLOWED_SOURCES` list for RBI itself — meaning it could even be exercised against this project's *existing* jurisdiction as a proof of concept before ever onboarding anyone new.
