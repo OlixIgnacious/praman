@@ -82,6 +82,7 @@ Every real document this prototype depends on, with sourcing status, is tracked 
 | `regulatory-reporting-problem-statement.md` | The hackathon brief |
 | `architecture.md` | Full design, platform-capability notes, data model, RBAC, eval architecture, day-by-day build plan (the source of truth for build status) |
 | `jurisdiction_agnostic_analysis.md` | Code-level audit of what's genuinely jurisdiction-agnostic vs. India/RBI-coupled, plus the checklist for validating a second jurisdiction |
+| `production_deployment_analysis.md` | Code-level audit of what it would actually take to deploy against a real institution's own schema — separate question from jurisdiction-agnosticism |
 | `data-sources.md` | Provenance/status of every real sourced document |
 | `CLAUDE.md` | Guidance for Claude Code when working in this repo |
 
