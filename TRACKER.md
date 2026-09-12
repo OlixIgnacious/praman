@@ -2,7 +2,7 @@
 
 Quick status view across the full build, all phases in one place. Update the checkbox and the phase status line as work lands; `plan.md` still holds the folder layout and file-level detail, `architecture.md` holds the day-by-day rationale — this file is just "what's done vs. not," nothing more.
 
-**Overall:** 7 of 8 phases done, 1 in progress. Currently in **Days 12–15** — Stage 0/1/3 done, Stage 2's happy path needs a governance approval to demo.
+**Overall:** 7 of 8 phases done, 1 in progress. Currently in **Days 12–15** — all four stages demoed live; one small doc cleanup left (commit `LINE_ITEM_MAP_SV`'s DDL).
 
 ---
 
@@ -35,7 +35,7 @@ Quick status view across the full build, all phases in one place. Update the che
 
 ## Days 12–15 — Wire the four stages end-to-end 🔶 IN PROGRESS
 - [x] Stage 0 live — covered by `SIGNAL_ASSURE_AGENT`'s Days 9–12 verification
-- [~] Stage 2 live — "no approved mapping" refusal path verified; happy path (computed value vs. draft, ranked findings) **not yet demoed** — needs a `GOVERNANCE_WRITE` approval of at least one `LINE_ITEM_MAP` row first
+- [x] Stage 2 live — happy path demoed after fixing a real bug: the agent had no tool to query `LINE_ITEM_MAP` at all, so its earlier "refusal" result was a hardcoded default, not a real `STATUS` check. Added `LINE_ITEM_MAP_SV` + `line_item_map_lookup` tool (mandatory first step in Stage 2 now); re-tested — correctly computed approved gross NPA with citation, correctly flagged the still-`proposed` classification sub-items in the same response
 - [x] Stage 1 slice — `demos/stage1_circular_415_gap_analysis.md`: real gap analysis, no changes needed to the 9 seeded rows, real coverage gap named for other returns, one ambiguity flagged for escalation
 - [x] Stage 3 walkthrough — `demos/stage3_lineage_walkthrough.md`: real live lineage trace confirms `GL_ENTRIES` → `CREDIT_EXPOSURE_SV` → `SIGNAL_ASSURE_AGENT` is fully traceable; applied to an explicitly-labeled illustrative scenario since no real injected break exists yet
 

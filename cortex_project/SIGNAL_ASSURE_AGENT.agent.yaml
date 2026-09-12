@@ -12,6 +12,10 @@ tools:
       name: credit_exposure_analytics
       description: "Queries CREDIT_EXPOSURE_SV. Industry exposure, gross/net NPA, provisions, npa_ratio/provision_coverage_ratio. Used by Stage 0 (asset-quality questions) and Stage 2 (computing Pillar 3 line-item values, GL_OUTLIER_SIGNALS-corroborated findings)."
   - tool_spec:
+      type: cortex_analyst_text_to_sql
+      name: line_item_map_lookup
+      description: "Queries LINE_ITEM_MAP_SV. The governance gate for Stage 2: check STATUS, TRANSFORM_LOGIC, RULE_CHUNK_ID for a given LINE_ITEM_ID before computing any value. Must be called FIRST in every Stage 2 flow to determine whether the mapping is approved."
+  - tool_spec:
       type: cortex_search
       name: rule_corpus_search
       description: "Searches RULE_CORPUS for the rule paragraph backing a Stage 2 finding's citation. NOT used by Stage 0 -- Stage 0's citation type is query + data lineage, not rule text."
@@ -61,6 +65,11 @@ tool_resources:
       type: warehouse
       warehouse: COMPUTE_WH
     semantic_view: PRAMAN.CORE.CREDIT_EXPOSURE_SV
+  line_item_map_lookup:
+    execution_environment:
+      type: warehouse
+      warehouse: COMPUTE_WH
+    semantic_view: PRAMAN.CORE.LINE_ITEM_MAP_SV
   rule_corpus_search:
     name: PRAMAN.CORE.RULE_CORPUS_SEARCH
     max_results: 5
@@ -94,8 +103,8 @@ instructions:
     - After answering: call write_audit_log with stage="0", query_snapshot_id set, retrieved_rule_chunk_ids as an empty string.
 
     STAGE 2 (Assure):
-    - Tools: position_analytics, credit_exposure_analytics, rule_corpus_search.
-    - Hard gate, checked for every line item before computing anything against it: what is LINE_ITEM_MAP.STATUS for this line item? If STATUS is not 'approved' (this is true for every line item seeded in this project so far), the finding for that line item IS "no approved mapping / pending governance approval" -- never silently compute a value against an unapproved mapping and present it as if it were validated.
+    - Tools: line_item_map_lookup, position_analytics, credit_exposure_analytics, rule_corpus_search.
+    - FIRST STEP for every Stage 2 question: call line_item_map_lookup to retrieve the LINE_ITEM_MAP row(s) for the line item(s) in question. Check STATUS. If STATUS is not 'approved', the finding for that line item IS "no approved mapping / pending governance approval" -- never silently compute a value against an unapproved mapping and present it as if it were validated. If STATUS IS 'approved', read TRANSFORM_LOGIC and RULE_CHUNK_ID from the result to know how to compute and what to cite.
     - Output is always a ranked list of findings, one per line item -- never a single pass/fail sentence for the whole return.
     - For each line item with an approved mapping: compute its value per TRANSFORM_LOGIC, compare to the draft value, and check whether the corresponding ACCOUNT_CODE shows an outlier via credit_exposure_analytics/the underlying detector views -- a mismatch corroborated by an outlier flag ranks higher severity than a mismatch alone.
     - Every finding needs its own citation: retrieve the rule paragraph via rule_corpus_search for the RULE_CHUNK_ID backing that line item's mapping.

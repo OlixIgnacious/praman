@@ -1,23 +1,19 @@
 # Pending manual runs
 
-Snowflake changes written but not yet executed — non-interactive `cortex exec` auto-denies mutating SQL, so these run in an interactive `cortex` session instead, where you approve each statement.
-
 ## Done
 
-- Semantic Views, the shared detector, `SIGNAL_ASSURE_AGENT` (all Days 9–12 work), and the Stage 1/Stage 3 demo walkthroughs (`demos/`) — all deployed/complete. See `TRACKER.md`/`plan.md` for detail.
+All of Days 9–12 and Days 12–15 — see `TRACKER.md`/`plan.md`. Stage 2's happy path is now genuinely demoed (not just the refusal path) after fixing a real bug: the agent had no tool to query `LINE_ITEM_MAP` at all, so every earlier "no approved mapping" result had been a hardcoded default, not an actual `STATUS` check. Fixed with a new `LINE_ITEM_MAP_SV` Semantic View + `line_item_map_lookup` tool, now the mandatory first step of every Stage 2 flow.
 
-## Pending — one thing, to finish Stage 2's demo
+## One small thing pending — committing `LINE_ITEM_MAP_SV`'s DDL
 
-Every seeded `LINE_ITEM_MAP` row is still `STATUS='proposed'`, so `SIGNAL_ASSURE_AGENT`'s Stage 2 tool has only ever been tested against the "no approved mapping" refusal path — the "compute value, compare to draft, ranked findings with a citation" happy path has never actually run. To demo that, approve at least one row as `GOVERNANCE_WRITE`, after reviewing the citation caveat already written into `sql/seed_line_item_map.sql` (all 9 rows cite `RBI/DoS/2026-27/415#21`, which names the return but not the underlying disclosure-format rule — an honest, not ideal, citation):
+`LINE_ITEM_MAP_SV` was created live in Snowflake but there's no matching source file in `sql/semantic_views/` yet — every other Semantic View in this repo has one. Run this and paste back the result:
 
-```sql
-UPDATE PRAMAN.CORE.LINE_ITEM_MAP
-SET STATUS = 'approved', APPROVED_BY = CURRENT_USER(), APPROVED_AT = CURRENT_TIMESTAMP()
-WHERE LINE_ITEM_ID = 'PILLAR3.IND_NPA.GROSS';  -- or whichever row(s) you want to approve
+```
+cortex -c reg_reporting_agent "Run SELECT GET_DDL('SEMANTIC_VIEW', 'PRAMAN.CORE.LINE_ITEM_MAP_SV'); and show the full DDL text."
 ```
 
-Then a live question like *"Validate the gross NPA figure for [an industry] against approved rules"* against `SIGNAL_ASSURE_AGENT` in CoWork should show the full ranked-findings path instead of the refusal. Tell me the result and I'll close out Stage 2's checklist item.
+I'll turn that into `sql/semantic_views/04_line_item_map_sv.sql` and update `sql/semantic_views/README.md` to match, so the repo matches what's actually live.
 
-## Also optional
+## Next up
 
-`demos/stage1_circular_415_gap_analysis.md` includes a real `AUDIT_LOG` insert for that analysis run — not executed, since the analysis itself needed no live Snowflake access. Run it if you want that Stage 1 slice logged for real; otherwise it's fine as a standalone artifact.
+Days 15–17 — Eval: `INJECTED_CASES` catalogue, `EVAL_RESULTS`, evidence-pack export from `AUDIT_LOG`. Nothing else is currently pending your approval.
