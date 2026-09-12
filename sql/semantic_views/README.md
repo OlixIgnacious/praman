@@ -4,10 +4,10 @@ Four Cortex Analyst Semantic Views: three per bounded domain (`architecture.md`:
 
 1. `01_transactions_sv.sql` — `TRANSACTIONS_SV`
 2. `02_positions_sv.sql` — `POSITIONS_SV`
-3. `03_credit_exposure_sv.sql` — `CREDIT_EXPOSURE_SV`
+3. `03_credit_exposure_sv.sql` — `CREDIT_EXPOSURE_SV`. **Run `sql/detectors/01_zscore_udf.sql` first** — its `entry_scale_zscore` metric calls the shared `ZSCORE` UDF (added after `eval/results.md`'s `correct_but_anomalous` fix, see below). The other three views have no such dependency.
 4. `04_line_item_map_sv.sql` — `LINE_ITEM_MAP_SV`
 
-Independent of each other — any order works, listed in dependency-free numeric order for consistency with `sql/ddl/`.
+Otherwise independent of each other and of `sql/detectors/`'s other two views — any order works among the rest, listed in dependency-free numeric order for consistency with `sql/ddl/`.
 
 ## `LINE_ITEM_MAP_SV` — added after a real bug, not part of the original three
 
@@ -21,7 +21,7 @@ Per `architecture.md`'s Build plan ("Fork as starting template, don't author fro
 |---|---|---|
 | `TRANSACTIONS_SV` | `entity_facts` (counterparty as shared dimension), `window_metrics` (trailing-window aggregates) | Transactions are event-level facts — fully additive. Rolling 7-day count/volume are raw structuring-signal building blocks (the actual detector logic is separate — see `plan.md`'s "deterministic detector" item). |
 | `POSITIONS_SV` | `semi_additive_metric` (point-in-time balances), a whole-table `OVER()` ratio for concentration | `NOTIONAL` is a snapshot, not a transaction — additive across counterparties on one `AS_OF_DATE`, not across dates. `pct_of_total_notional` directly supports the Stage 0 "concentration limits" example query. |
-| `CREDIT_EXPOSURE_SV` | `derived_metrics` (ratio metrics referencing other metrics by name), `entity_facts` (CASE-derived categorical dimensions) | Mirrors the Pillar 3 line items seeded into `LINE_ITEM_MAP` (`sql/seed_line_item_map.sql`) — same aggregation logic, expressed as live Cortex Analyst metrics instead of `TRANSFORM_LOGIC` text. Keep both in sync if either changes. Also carries row-level `entry_id`/`account_code`/`amount`/`position_id` dimensions (added after `eval/results.md`'s `stale_ref` miss — `POSITION_ID` wasn't queryable at all before, so a referential-integrity check against `POSITIONS` was structurally impossible) for Stage 2's ledger-integrity checks, which read individual entries rather than the aggregate `METRICS`. |
+| `CREDIT_EXPOSURE_SV` | `derived_metrics` (ratio metrics referencing other metrics by name), `entity_facts` (CASE-derived categorical dimensions), `window_metrics` (trailing per-counterparty baseline) | Mirrors the Pillar 3 line items seeded into `LINE_ITEM_MAP` (`sql/seed_line_item_map.sql`) — same aggregation logic, expressed as live Cortex Analyst metrics instead of `TRANSFORM_LOGIC` text. Keep both in sync if either changes. Also carries row-level `entry_id`/`account_code`/`amount`/`position_id` dimensions (added after `eval/results.md`'s `stale_ref` miss) for Stage 2's ledger-integrity checks, plus `entry_scale_zscore`/`is_entry_scale_outlier` (added after the `correct_but_anomalous` false positive — a per-counterparty, per-`ACCOUNT_CODE` trailing baseline via the same shared `ZSCORE` UDF `sql/detectors/` uses, so a legitimately large counterparty's own large entries aren't compared against the whole book's average). |
 | `LINE_ITEM_MAP_SV` | Plain single-table dimensions, one trivial `COUNT` metric — no pattern needed | Exists purely so a Cortex Agent tool can query `LINE_ITEM_MAP.STATUS` before Stage 2 computes anything — added after a real deployment bug, see below, not part of the original three-domain design. |
 
 ## Things that would silently produce wrong numbers if missed
@@ -29,3 +29,4 @@ Per `architecture.md`'s Build plan ("Fork as starting template, don't author fro
 - **`POSITIONS_SV.total_notional` is `NON ADDITIVE BY (as_of_date)`.** The synthetic book currently has exactly one `AS_OF_DATE`, so this costs nothing today — but the moment a second snapshot date is loaded, summing `total_notional` without grouping by date would silently double-count. The guard is there before it's needed, not after.
 - **`CREDIT_EXPOSURE_SV.npa_ratio` divides by `fund_based_exposure`, not a combined fund+non-fund total.** The generator never applies NPA classification to the non-fund book ("non-fund book: no NPA overlay" — `generate_synthetic_data.py`). A combined denominator would understate the ratio.
 - **Window metrics in `TRANSACTIONS_SV` reference the base metric by its bare name** (`SUM(total_amount) OVER (...)`, not `SUM(AMOUNT) OVER (...)`), and `AMOUNT` is deliberately **not** declared under `FACTS` — this follows the `window_metrics` pattern's own documented gotcha (`PARTITION BY EXCLUDING` fails on any metric built directly from a `FACTS` column).
+- **`CREDIT_EXPOSURE_SV.is_entry_scale_outlier` requires `counterparty_account_baseline_count >= 3`** before trusting the z-score — a counterparty with only 1-2 prior entries for that `ACCOUNT_CODE` has no meaningful baseline and is never flagged, same minimum-history discipline as `TRANSACTION_SIGNALS`/`GL_OUTLIER_SIGNALS`. Querying `entry_scale_zscore` without checking this count first can surface a wild z-score off a near-empty baseline.
