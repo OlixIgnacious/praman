@@ -31,8 +31,9 @@ Quick status view across the full build, all phases in one place. Update the che
 
 ## Days 9–12 — Backend + review UI 🔶 IN PROGRESS — spike confirmed, building out
 - [x] **Spike confirmed:** `PRAMAN.CORE.TRANSACTIONS_AGENT` live, CoWork-connected, correct live answers — Cortex Agent + CoWork replaces most of the originally-planned custom backend/UI
-- [ ] Extend to `POSITIONS_SV`, `CREDIT_EXPOSURE_SV`, `RULE_CORPUS_SEARCH` as tools; decide one-agent-many-tools vs. one-agent-per-stage first
-- [ ] Custom backend scoped to `AUDIT_LOG` writes + Stage 1/3 orchestration only (no native `AUDIT_LOG` hook confirmed yet)
+- [x] **Decided:** one combined agent for Stage 0 + Stage 2 (not one per stage) — rationale in `.claude/plans/lets-decide-what-would-rippling-lighthouse.md`
+- [~] `SIGNAL_ASSURE_AGENT` (5 tools, supersedes `TRANSACTIONS_AGENT`) + `SP_WRITE_AUDIT_LOG` written; **not yet deployed** — run commands + verification checklist in `NOTES.md`
+- [ ] Remaining custom backend scoped to Stage 1/3 orchestration only (audit logging now handled via the agent's own procedure tool, pending verification it's reliably called)
 - [ ] Wire every Skill call to write an `AUDIT_LOG` row
 
 ## Days 12–15 — Wire the four stages end-to-end ⬜ NOT STARTED

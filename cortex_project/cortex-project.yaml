@@ -5,3 +5,11 @@ artifacts:
     targets:
       default:
         object: PRAMAN.CORE.TRANSACTIONS_AGENT
+  # Spike, superseded by SIGNAL_ASSURE_AGENT below (covers Stage 0 + Stage 2
+  # together -- see NOTES.md/plan.md). Retire this entry and DROP the object
+  # once the new agent passes its verification checklist.
+  - path: SIGNAL_ASSURE_AGENT.agent.yaml
+    type: cortex_agent
+    targets:
+      default:
+        object: PRAMAN.CORE.SIGNAL_ASSURE_AGENT
