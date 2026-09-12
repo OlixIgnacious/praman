@@ -8,21 +8,25 @@ Everything through the full 7/12 eval pass (`eval/results.md`) is deployed and v
 
 ### 1. Redeploy `CREDIT_EXPOSURE_SV` with row-level dimensions
 
+Simple, deterministic "run this file" — cheaper model:
 ```
-cortex -c reg_reporting_agent "Read and execute sql/semantic_views/03_credit_exposure_sv.sql."
+cortex -m claude-sonnet-4-6 -c reg_reporting_agent "Read and execute sql/semantic_views/03_credit_exposure_sv.sql."
 ```
 
 Adds `entry_id`/`account_code`/`amount`/`position_id` as queryable dimensions (previously only reachable inside aggregate `METRICS`) — fixes the `stale_ref` miss, where the agent couldn't see `POSITION_ID` at all.
 
 ### 2. Redeploy `SIGNAL_ASSURE_AGENT` with the Stage 2a/2b split
 
+A known, documented workflow (agent-studio's edit/deploy flow) — not novel debugging this time, so still the cheaper model:
 ```
-cortex -c reg_reporting_agent "Using the agent-studio skill, redeploy the agent spec at cortex_project/SIGNAL_ASSURE_AGENT.agent.yaml to PRAMAN.CORE.SIGNAL_ASSURE_AGENT."
+cortex -m claude-sonnet-4-6 -c reg_reporting_agent "Using the agent-studio skill, redeploy the agent spec at cortex_project/SIGNAL_ASSURE_AGENT.agent.yaml to PRAMAN.CORE.SIGNAL_ASSURE_AGENT."
 ```
 
 Splits Stage 2 into **2a** (line-item value validation — unchanged, still gated by `line_item_map_lookup`/`STATUS`) and **2b** (basic ledger integrity checks — sign, scale, duplicate, referential-integrity — no longer gated by `LINE_ITEM_MAP` approval, since a raw-data sanity check isn't "computing an approved line item's value"). Also fixes the duplicate-detection key (counterparty+position+account_code+amount, not date) and adds the "a statistical outlier isn't a presumptive defect" caveat.
 
 ### 3. Re-run the 5 previously-wrong cases (same `[EVAL]`-prefixed questions as `eval/run_eval.md`)
+
+Judging whether each answer is actually correct is the part that matters here — leave the model at default rather than forcing the cheap tier for this step. If you're driving these through an interactive `cortex` session for the read-AUDIT_LOG-and-judge work, `-m claude-sonnet-4-6` is still a reasonable default; only reach for the top tier again if an answer is genuinely ambiguous to judge.
 
 - `INJ-SIGN-01`, `INJ-UNIT_SCALE-01`, `INJ-DOUBLE_COUNTING-01`, `INJ-STALE_REF-01` — expect `true_positive` now (were `false_negative`)
 - `INJ-CORRECT_BUT_ANOMALOUS-01` — expect the agent to note the anomaly without calling it a likely defect (were `false_positive`)
