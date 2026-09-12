@@ -84,6 +84,7 @@ Every real document this prototype depends on, with sourcing status, is tracked 
 | `jurisdiction_agnostic_analysis.md` | Code-level audit of what's genuinely jurisdiction-agnostic vs. India/RBI-coupled, plus the checklist for validating a second jurisdiction |
 | `production_deployment_analysis.md` | Code-level audit of what it would actually take to deploy against a real institution's own schema — separate question from jurisdiction-agnosticism |
 | `plug_and_play_architecture.md` | Design for a genuinely reusable deployment: canonical schema contract, per-jurisdiction/per-institution adaptor boundaries, the domain-coverage limit (credit risk vs. e.g. securities trading), and the data-pipeline layer this project doesn't have yet |
+| `regulatory_landscape_research.md` | Cross-market research (US/UK/EU, Singapore/Hong Kong/Australia, Japan) backing the plug-and-play design — real report identifiers, schema-fit findings, and the translation-as-citation-risk finding |
 | `data-sources.md` | Provenance/status of every real sourced document |
 
 `plan.md`/`TRACKER.md`/`NOTES.md`/`CLAUDE.md` (day-by-day TODOs, quick status, pending manual Snowflake runs, dev-tooling guidance) are gitignored local working files for the build process — not shipped in this repo.
