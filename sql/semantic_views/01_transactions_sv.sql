@@ -79,4 +79,4 @@ CREATE OR REPLACE SEMANTIC VIEW TRANSACTIONS_SV
 
   AI_SQL_GENERATION 'Use total_amount/txn_count for plain volume questions. Use total_amount_trailing_7d/txn_count_trailing_7d ONLY alongside transactions.txn_date (or a coarser date dimension) in the query — they are rolling windows and are meaningless without a date axis. Group by counterparties.sector or counterparties.concentration_group to check sector/large-exposure concentration in transaction activity. These trailing metrics surface raw structuring/velocity signal inputs; they are not a fraud verdict on their own — pair with counterparties.risk_rating and channel for context before treating a spike as a flag.';
 
-GRANT USAGE ON SEMANTIC VIEW TRANSACTIONS_SV TO ROLE ANALYST_READ;
+GRANT SELECT ON SEMANTIC VIEW TRANSACTIONS_SV TO ROLE ANALYST_READ;

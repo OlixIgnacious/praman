@@ -1,6 +1,6 @@
 # Semantic Views — run order and design
 
-Three Cortex Analyst Semantic Views, one per bounded domain (`architecture.md`: "build one Semantic View per bounded domain... rather than one giant model"). Run after `sql/ddl/` and the synthetic data load — each `CREATE OR REPLACE SEMANTIC VIEW` reads live table shapes, and each ends with a `GRANT USAGE ... TO ROLE ANALYST_READ` (which must already exist — see `sql/rbac/`).
+Three Cortex Analyst Semantic Views, one per bounded domain (`architecture.md`: "build one Semantic View per bounded domain... rather than one giant model"). Run after `sql/ddl/` and the synthetic data load — each `CREATE OR REPLACE SEMANTIC VIEW` reads live table shapes, and each ends with a `GRANT SELECT ... TO ROLE ANALYST_READ` (which must already exist — see `sql/rbac/`). `SELECT`, not `USAGE` — `USAGE` isn't a valid privilege on a Semantic View, found while actually deploying these.
 
 1. `01_transactions_sv.sql` — `TRANSACTIONS_SV`
 2. `02_positions_sv.sql` — `POSITIONS_SV`

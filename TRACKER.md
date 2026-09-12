@@ -2,7 +2,7 @@
 
 Quick status view across the full build, all phases in one place. Update the checkbox and the phase status line as work lands; `plan.md` still holds the folder layout and file-level detail, `architecture.md` holds the day-by-day rationale — this file is just "what's done vs. not," nothing more.
 
-**Overall:** 5 of 8 phases done, 1 in progress. Currently in **Days 6–9**.
+**Overall:** 6 of 8 phases done. Currently in **Days 9–12** — blocking spike not yet run.
 
 ---
 
@@ -24,9 +24,9 @@ Quick status view across the full build, all phases in one place. Update the che
 - [x] Ingest circular 415 into `RULE_CORPUS` — 30 chunks loaded, `RULE_CORPUS_SEARCH` Cortex Search Service created and granted to `ANALYST_READ`
 - [x] Seed `LINE_ITEM_MAP` — 9 rows loaded (`sql/seed_line_item_map.sql`), `STATUS='proposed'` pending governance approval
 
-## Days 6–9 — Semantic layer, detectors, Skills 🔶 IN PROGRESS
-- [~] `sql/semantic_views/` — `TRANSACTIONS_SV`, `POSITIONS_SV`, `CREDIT_EXPOSURE_SV` written (forked from `semantic-view-patterns`); **not yet run against Snowflake**
-- [~] Deterministic detector logic — `ZSCORE` UDF + `TRANSACTION_SIGNALS` + `GL_OUTLIER_SIGNALS` written (`sql/detectors/`); **not yet run against Snowflake**
+## Days 6–9 — Semantic layer, detectors, Skills ✅ DONE
+- [x] `sql/semantic_views/` — `TRANSACTIONS_SV`, `POSITIONS_SV`, `CREDIT_EXPOSURE_SV` deployed to Snowflake (forked from `semantic-view-patterns`). Fixed during deployment: `LIKE ... ESCAPE` → `STARTSWITH(...)`, `GRANT USAGE ON SEMANTIC VIEW` → `GRANT SELECT ON SEMANTIC VIEW` (the correct privilege for this object type)
+- [x] Deterministic detector logic — `ZSCORE` UDF + `TRANSACTION_SIGNALS` + `GL_OUTLIER_SIGNALS` deployed to Snowflake (`sql/detectors/`)
 - [x] All four `SKILL.md` files written: `signal-query`, `circular-interpret`, `assure-return`, `narrative-draft`
 
 ## Days 9–12 — Backend + review UI ⬜ NOT STARTED — plan changed, spike first

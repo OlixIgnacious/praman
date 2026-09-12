@@ -56,7 +56,7 @@ CREATE OR REPLACE SEMANTIC VIEW POSITIONS_SV
     -- denominator is always the full book, regardless of how the numerator
     -- is grouped.
     positions.pct_of_total_notional AS
-      total_notional / SUM(total_notional) OVER ()
+      SUM(NOTIONAL) / SUM(SUM(NOTIONAL)) OVER ()
       WITH SYNONYMS ('concentration percentage', 'share of total exposure', 'exposure concentration')
       COMMENT = 'Each group''s share of total book notional (same AS_OF_DATE). Group by counterparties.name or counterparties.concentration_group to check single-name or group concentration limits.'
   )
@@ -65,4 +65,4 @@ CREATE OR REPLACE SEMANTIC VIEW POSITIONS_SV
 
   AI_SQL_GENERATION 'total_notional is a snapshot balance, not a transaction sum — ALWAYS include positions.as_of_date as a dimension or filter; summing across dates double-counts. Use pct_of_total_notional grouped by counterparties.name for single-counterparty concentration, or by counterparties.concentration_group for large-exposure-group concentration (the synthetic book flags the top 5% of counterparties by exposure as LARGE_EXPOSURE_TOP5PCT). Use positions.exposure_class for Basel risk-weight bucket breakdowns — note this field is a documented approximation (book-wide sampled proportions, not reconciled to a per-industry disclosure; see generator/anchors.py).';
 
-GRANT USAGE ON SEMANTIC VIEW POSITIONS_SV TO ROLE ANALYST_READ;
+GRANT SELECT ON SEMANTIC VIEW POSITIONS_SV TO ROLE ANALYST_READ;

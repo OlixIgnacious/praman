@@ -52,7 +52,7 @@ CREATE OR REPLACE SEMANTIC VIEW CREDIT_EXPOSURE_SV
         WHEN ACCOUNT_CODE = 'ADVANCES_FUND'    THEN 'PERFORMING_FUND'
         WHEN ACCOUNT_CODE = 'ADVANCES_NONFUND' THEN 'NONFUND'
         WHEN ACCOUNT_CODE = 'NPA_PROVISION'    THEN 'NPA_PROVISION'
-        WHEN ACCOUNT_CODE LIKE 'NPA\_%' ESCAPE '\' THEN 'NPA'
+        WHEN STARTSWITH(ACCOUNT_CODE, 'NPA_')  THEN 'NPA'
         ELSE ACCOUNT_CODE
       END
     )
@@ -60,7 +60,7 @@ CREATE OR REPLACE SEMANTIC VIEW CREDIT_EXPOSURE_SV
 
     gl_entries.npa_classification AS (
       CASE
-        WHEN ACCOUNT_CODE LIKE 'NPA\_%' ESCAPE '\' AND ACCOUNT_CODE <> 'NPA_PROVISION'
+        WHEN STARTSWITH(ACCOUNT_CODE, 'NPA_') AND ACCOUNT_CODE <> 'NPA_PROVISION'
           THEN REPLACE(ACCOUNT_CODE, 'NPA_', '')
         ELSE NULL
       END
@@ -73,7 +73,7 @@ CREATE OR REPLACE SEMANTIC VIEW CREDIT_EXPOSURE_SV
     -- PILLAR3.IND_NPA.GROSS/PROVISIONS in LINE_ITEM_MAP exactly.
     gl_entries.fund_based_exposure AS
       SUM(CASE WHEN ACCOUNT_CODE = 'ADVANCES_FUND'
-                 OR (ACCOUNT_CODE LIKE 'NPA\_%' ESCAPE '\' AND ACCOUNT_CODE <> 'NPA_PROVISION')
+                 OR (STARTSWITH(ACCOUNT_CODE, 'NPA_') AND ACCOUNT_CODE <> 'NPA_PROVISION')
                THEN AMOUNT ELSE 0 END)
       WITH SYNONYMS ('fund-based exposure', 'fund based credit exposure')
       COMMENT = 'Performing (ADVANCES_FUND) + non-performing (NPA_*) fragments of the same fund-based book. Matches LINE_ITEM_MAP.PILLAR3.IND_EXPOSURE.FUND.',
@@ -84,7 +84,7 @@ CREATE OR REPLACE SEMANTIC VIEW CREDIT_EXPOSURE_SV
       COMMENT = 'Matches LINE_ITEM_MAP.PILLAR3.IND_EXPOSURE.NONFUND. No NPA overlay applies to this book.',
 
     gl_entries.gross_npa AS
-      SUM(CASE WHEN ACCOUNT_CODE LIKE 'NPA\_%' ESCAPE '\' AND ACCOUNT_CODE <> 'NPA_PROVISION'
+      SUM(CASE WHEN STARTSWITH(ACCOUNT_CODE, 'NPA_') AND ACCOUNT_CODE <> 'NPA_PROVISION'
                THEN AMOUNT ELSE 0 END)
       WITH SYNONYMS ('gross NPA', 'non-performing assets', 'bad loans')
       COMMENT = 'Matches LINE_ITEM_MAP.PILLAR3.IND_NPA.GROSS. Group by gl_entries.npa_classification for the Substandard/Doubtful/Loss split.',
@@ -112,4 +112,4 @@ CREATE OR REPLACE SEMANTIC VIEW CREDIT_EXPOSURE_SV
 
   AI_SQL_GENERATION 'Use fund_based_exposure/nonfund_based_exposure for industry credit exposure questions, grouped by counterparties.sector. Use gross_npa grouped by gl_entries.npa_classification for the Substandard/Doubtful_1/Doubtful_2/Doubtful_3/Loss split — this matches LINE_ITEM_MAP.PILLAR3.NPA_CLASS.*. Use npa_ratio and provision_coverage_ratio for asset-quality questions; both are decimals, not pre-multiplied percentages. Do NOT sum fund_based_exposure and nonfund_based_exposure into a single "gross exposure" figure unless explicitly asked for a combined total — RBI disclosure and this project''s LINE_ITEM_MAP both treat them as separate line items.';
 
-GRANT USAGE ON SEMANTIC VIEW CREDIT_EXPOSURE_SV TO ROLE ANALYST_READ;
+GRANT SELECT ON SEMANTIC VIEW CREDIT_EXPOSURE_SV TO ROLE ANALYST_READ;
