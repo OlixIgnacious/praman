@@ -4,7 +4,11 @@
 
 **Prerequisite:** re-run `01_analyst_read.sql` through `04_officer_signoff.sql` first if you haven't since this file was written — they now each grant `USAGE ON WAREHOUSE COMPUTE_WH`, a real gap found while writing this runbook (none of the four roles could execute *any* query at all before this, since Snowflake requires warehouse access to run a query regardless of table-level grants).
 
-Run everything below as `ACCOUNTADMIN` (or another role that can `USE ROLE` into all four — they're reachable transitively since `00_roles.sql` grants all four to `SYSADMIN`). Switching `USE ROLE` mid-session correctly narrows your active privileges to exactly that role's own grants for every statement that follows, regardless of what other roles your user also holds — that's what makes this a valid test of each role in isolation, not a workaround.
+Run everything below as `ACCOUNTADMIN` (or another role that can `USE ROLE` into all four — they're reachable transitively since `00_roles.sql` grants all four to `SYSADMIN`).
+
+**Critical: run `USE SECONDARY ROLES NONE;` alongside every `USE ROLE <role>;` below, or the results are invalid.** By default, a Snowflake session activates *all* of a user's granted roles as secondary roles alongside whatever `USE ROLE` sets as primary — so an `ACCOUNTADMIN` user who runs `USE ROLE ANALYST_READ;` without also disabling secondary roles still has `ACCOUNTADMIN`'s (and every other role's) privileges active in the background. This produced false passes the first time this runbook actually ran (2026-09-13) — a denial that should have failed instead silently succeeded via `ACCOUNTADMIN`'s ownership bleeding through as a secondary role — until `USE SECONDARY ROLES NONE;` was added. Each block below now includes it; don't drop it if you adapt this file.
+
+Every `USE ROLE`/`USE SECONDARY ROLES` pair below must run in the **same session as the statements that follow it** — some Snowflake clients reset the session back to its connection default role between separate statement submissions, which silently undoes the isolation this runbook depends on. Run each numbered section as one multi-statement batch, not as separate calls.
 
 ## Format
 
@@ -23,6 +27,7 @@ Read the `OWNER` grant in the output. Whichever role owns a table gets full priv
 
 ```sql
 USE ROLE ANALYST_READ;
+USE SECONDARY ROLES NONE;
 USE WAREHOUSE COMPUTE_WH;
 
 -- 1a. Expected: succeed
@@ -44,6 +49,7 @@ SELECT COUNT(*) FROM PRAMAN.EVAL.INJECTED_CASES;
 
 ```sql
 USE ROLE GOVERNANCE_WRITE;
+USE SECONDARY ROLES NONE;
 USE WAREHOUSE COMPUTE_WH;
 
 -- 2a. Expected: succeed -- INSERT a harmless, clearly-tagged test row, then
@@ -71,6 +77,7 @@ SELECT COUNT(*) FROM PRAMAN.EVAL.INJECTED_CASES;
 
 ```sql
 USE ROLE AUDIT_INSERT;
+USE SECONDARY ROLES NONE;
 USE WAREHOUSE COMPUTE_WH;
 
 -- 3a. Expected: succeed
@@ -91,6 +98,7 @@ UPDATE PRAMAN.CORE.LINE_ITEM_MAP SET STATUS = 'approved' WHERE LINE_ITEM_ID = 'P
 
 ```sql
 USE ROLE OFFICER_SIGNOFF;
+USE SECONDARY ROLES NONE;
 USE WAREHOUSE COMPUTE_WH;
 
 -- 4a. Expected: succeed
@@ -118,11 +126,11 @@ Confirm: zero rows reference `PRAMAN.EVAL` for any of the four (the eval-isolati
 ## 6. Cleanup
 
 ```sql
-USE ROLE GOVERNANCE_WRITE;
-DELETE FROM PRAMAN.CORE.LINE_ITEM_MAP WHERE LINE_ITEM_ID = 'RBAC_TEST.ROW'; -- expected to fail (2b already proved this) -- use ACCOUNTADMIN instead
 USE ROLE ACCOUNTADMIN;
 DELETE FROM PRAMAN.CORE.LINE_ITEM_MAP WHERE LINE_ITEM_ID = 'RBAC_TEST.ROW';
 ```
+
+(2b already proved `GOVERNANCE_WRITE` itself can't `DELETE` even a row it inserted -- no need to re-prove it here, just clean up as `ACCOUNTADMIN`, which owns the table per section 0.)
 
 The three `RBAC-TEST-*` rows left in `AUDIT_LOG` (3a, 4a) are expected to stay forever — that's the point of testing an append-only table. They're `IS_EVAL = TRUE`, so `AUDIT_EVIDENCE_PACK` already excludes them from anything a reviewer would see; no cleanup needed or possible.
 

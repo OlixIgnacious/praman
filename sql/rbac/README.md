@@ -28,3 +28,5 @@ Four roles, per `architecture.md`'s "Deployment & security" section:
 ## Verifying these grants actually hold
 
 `role_verification.md` — the RBAC boundaries above were written and applied but never actually tested by attempting a denied operation and watching Snowflake reject it. That runbook does exactly that: per-role SQL to run, expected outcome, and what a mismatch means. Run it after any change to the four grant scripts here, not just once.
+
+**Verified live, 2026-09-13 — 22/22 checks pass, zero design findings.** Full results, including the one expected caveat (`ACCOUNTADMIN` owns both `AUDIT_LOG` and `LINE_ITEM_MAP`, so it retains implicit privilege through Snowflake ownership — true only of the account's top-level admin, not any of the four functional roles) and a methodological gotcha worth knowing before re-running this (Snowflake's default secondary-roles behavior produces false passes unless `USE SECONDARY ROLES NONE;` runs alongside every `USE ROLE`): `verification_results.md`.
