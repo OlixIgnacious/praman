@@ -53,7 +53,7 @@ The shared spine is `RULE_CORPUS` → `LINE_ITEM_MAP` → `GL_ENTRIES`/`POSITION
 
 `PRAMAN.CORE` (runtime tables Skills read/write) and `PRAMAN.EVAL` (`INJECTED_CASES`, `EVAL_RESULTS`). **`INJECTED_CASES` must never be reachable from a Skill's runtime role** — it's the eval answer key. This isolation is enforced via RBAC grants (`sql/rbac/`) — none of the four roles (`ANALYST_READ`, `GOVERNANCE_WRITE`, `AUDIT_INSERT`, `OFFICER_SIGNOFF`) is ever granted anything on `PRAMAN.EVAL`. Any RBAC change must preserve that.
 
-`AUDIT_LOG` is append-only **by grant, not convention**: no role, anywhere, is ever granted `UPDATE`/`DELETE` on it. A maker-checker sign-off is recorded as a *new* `AUDIT_LOG` row (`OFFICER_SIGNOFF` role), never an `UPDATE` of the original run's row — preserve this if you touch sign-off logic.
+`AUDIT_LOG` is append-only **by grant, not convention**: no role, anywhere, is ever granted `UPDATE`/`DELETE` on it. A maker-checker sign-off is recorded as a *new* `AUDIT_LOG` row (`OFFICER_SIGNOFF` role), never an `UPDATE` of the original run's row — preserve this if you touch sign-off logic. This claim (and the rest of the RBAC design) was written and applied but never live-tested until `sql/rbac/role_verification.md` — including whether whoever *owns* `AUDIT_LOG` retains implicit override through Snowflake's ownership model, which would need an honest caveat on "no role, including admin" if so. Check that file's results before repeating this claim unqualified in pitch material.
 
 ### LINE_ITEM_MAP: proposed vs. approved is a real, currently-relevant gate
 

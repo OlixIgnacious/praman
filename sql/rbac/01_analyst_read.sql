@@ -11,6 +11,14 @@ USE ROLE SECURITYADMIN;
 GRANT USAGE ON DATABASE PRAMAN TO ROLE ANALYST_READ;
 GRANT USAGE ON SCHEMA PRAMAN.CORE TO ROLE ANALYST_READ;
 
+-- Real gap found doing RBAC role-boundary verification, not caught earlier:
+-- COMPUTE_WH is this account's actual warehouse (confirmed via SHOW WAREHOUSES,
+-- see sql/create_rule_corpus_search.sql), and no role anywhere had USAGE on it.
+-- Without this, ANALYST_READ cannot execute any query at all -- not raw SQL,
+-- and not a Cortex Analyst/Agent-generated query either, since that still runs
+-- as the calling role against real compute.
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE ANALYST_READ;
+
 GRANT SELECT ON TABLE PRAMAN.CORE.RULE_CORPUS TO ROLE ANALYST_READ;
 GRANT SELECT ON TABLE PRAMAN.CORE.LINE_ITEM_MAP TO ROLE ANALYST_READ;
 GRANT SELECT ON TABLE PRAMAN.CORE.COUNTERPARTIES TO ROLE ANALYST_READ;
