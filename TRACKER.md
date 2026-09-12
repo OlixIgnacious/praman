@@ -2,7 +2,7 @@
 
 Quick status view across the full build, all phases in one place. Update the checkbox and the phase status line as work lands; `plan.md` still holds the folder layout and file-level detail, `architecture.md` holds the day-by-day rationale — this file is just "what's done vs. not," nothing more.
 
-**Overall:** 7 of 8 phases done, 1 in progress. Currently in **Days 15–17** — catalogue/data/export all written, none yet run against Snowflake; `EVAL_RESULTS` scoring harness still to build.
+**Overall:** 7 of 8 phases done, 1 in progress. Currently in **Days 15–17** — catalogue/data/export all deployed and verified live; `EVAL_RESULTS` scoring harness is the last piece.
 
 ---
 
@@ -40,10 +40,10 @@ Quick status view across the full build, all phases in one place. Update the che
 - [x] Stage 3 walkthrough — `demos/stage3_lineage_walkthrough.md`: real live lineage trace confirms `GL_ENTRIES` → `CREDIT_EXPOSURE_SV` → `SIGNAL_ASSURE_AGENT` is fully traceable; applied to an explicitly-labeled illustrative scenario since no real injected break exists yet
 
 ## Days 15–17 — Eval 🔶 IN PROGRESS
-- [~] `eval/` — `INJECTED_CASES` catalogue written (9 cases, one per `TYPE`, purely additive on top of the exactly-reconciled book — `test_injection_preserves_exact_reconciliation` proves it); **not yet run against Snowflake**
-- [~] Divergence-disclosure ground truth (Bank of Baroda + Central Bank of India, YES Bank excluded for lack of a reliable base pair) written to `sql/load_divergence_disclosures.sql`; **not yet run**
-- [~] Evidence-pack export (`AUDIT_EVIDENCE_PACK` view, citations resolved, granted to `GOVERNANCE_WRITE`) written to `sql/exports/01_audit_evidence_pack.sql`; **not yet run** — surfaced a real RBAC gap (no column links a sign-off row back to its run) as a flagged follow-up, not fixed
-- [ ] `EVAL_RESULTS` scoring harness — actually running Stage 0/2 against the above and writing `MATCH_STATUS`/`GROUP BY ERROR_TYPE` results. Not started; needs the three items above loaded first.
+- [x] `eval/` — `INJECTED_CASES` catalogue deployed: 9/9 rows loaded, `GL_ENTRIES`/`TRANSACTIONS` counts confirmed exactly (2,214 / 24,555, 8 / 15 injected), and the `structuring` case genuinely trips `TRANSACTION_SIGNALS` live (`z=21.56` on 2026-06-28, `IS_CANDIDATE_STRUCTURING=TRUE` — the Python-only structural check is now confirmed at the SQL layer too)
+- [x] Divergence-disclosure ground truth deployed — 3 rows loaded (Bank of Baroda ×2, Central Bank of India ×1; YES Bank excluded for lack of a reliable base pair)
+- [x] Evidence-pack export deployed — `AUDIT_EVIDENCE_PACK` live, `GOVERNANCE_WRITE` granted, 7 rows returned on verify. RBAC gap (no sign-off-to-run linking column) remains a flagged follow-up, not fixed.
+- [ ] `EVAL_RESULTS` scoring harness — actually running Stage 0/2 against the above and writing `MATCH_STATUS`/`GROUP BY ERROR_TYPE` results. Last remaining Days 15–17 item.
 - **Real bug caught in review, fixed before reaching Snowflake:** `sql/load_synthetic_data.sql` had no `TRUNCATE` before its `COPY INTO`s — re-running it against the regenerated (injected-case-carrying) CSVs would have duplicated every existing row, not just added the new ones. Fixed in the script itself.
 
 ## Days 17–18 — Rehearse & submit ⬜ NOT STARTED
