@@ -15,9 +15,16 @@
 -- fund-based book (generator note: "non-fund book: no NPA overlay") — so
 -- npa_ratio divides by fund_based_exposure, not a combined total.
 --
--- Depends on sql/detectors/01_zscore_udf.sql existing first (entry_scale_zscore
--- calls the shared ZSCORE UDF) — run detectors before this file if deploying
--- from scratch; already true in this project's existing run order.
+-- The per-counterparty scale baseline below (counterparty_account_baseline_*)
+-- was originally meant to also expose entry_scale_zscore/is_entry_scale_outlier
+-- as named metrics calling the shared ZSCORE UDF (sql/detectors/01_zscore_udf.sql),
+-- matching the "one detector, N consumers" pattern TRANSACTION_SIGNALS and
+-- GL_OUTLIER_SIGNALS already use. Snowflake rejected that at deploy time: a
+-- Semantic View metric cannot reference another metric that is itself a
+-- window function. So only the three baseline window metrics (mean/stddev/
+-- count) are defined here; the z-score and outlier judgment are computed by
+-- the agent at query time from those three, per AI_SQL_GENERATION below —
+-- functionally the same formula, just not a pre-named metric.
 
 USE DATABASE PRAMAN;
 USE SCHEMA CORE;
@@ -168,21 +175,11 @@ CREATE OR REPLACE SEMANTIC VIEW CREDIT_EXPOSURE_SV
             ORDER BY gl_entries.posting_date
             ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING)
       WITH SYNONYMS ('counterparty baseline entry count')
-      COMMENT = 'Number of prior entries the baseline above is built from. Require >= 3 before trusting entry_scale_zscore -- a counterparty with only 1-2 other entries has no meaningful baseline (same minimum-history discipline as TRANSACTION_SIGNALS/GL_OUTLIER_SIGNALS).',
-
-    gl_entries.entry_scale_zscore AS
-      ZSCORE(entry_amount, counterparty_account_baseline_mean, counterparty_account_baseline_stddev)
-      WITH SYNONYMS ('entry scale anomaly score', 'per-counterparty scale z-score')
-      COMMENT = 'How many standard deviations this entry is from THIS counterparty''s own typical entry size for this account type. Use this, not a book-wide magnitude comparison, to judge scale anomalies -- only meaningful when counterparty_account_baseline_count >= 3.',
-
-    gl_entries.is_entry_scale_outlier AS
-      counterparty_account_baseline_count >= 3 AND ABS(entry_scale_zscore) >= 3
-      WITH SYNONYMS ('is scale anomaly', 'per-counterparty scale flag')
-      COMMENT = 'TRUE only with >=3 prior entries of baseline AND |z| >= 3 against THIS counterparty''s own norm. A counterparty with too little history is never flagged, same as TRANSACTION_SIGNALS/GL_OUTLIER_SIGNALS.'
+      COMMENT = 'Number of prior entries the baseline above is built from. Require >= 3 before trusting a z-score computed from it -- a counterparty with only 1-2 other entries has no meaningful baseline (same minimum-history discipline as TRANSACTION_SIGNALS/GL_OUTLIER_SIGNALS). entry_scale_zscore/is_entry_scale_outlier are NOT defined as metrics here -- Snowflake rejects a metric referencing another window-function metric -- so the agent computes ZSCORE(entry_amount, counterparty_account_baseline_mean, counterparty_account_baseline_stddev) and the |z|>=3 outlier judgment itself from these three, per AI_SQL_GENERATION below.'
   )
 
   COMMENT = 'Industry exposure and asset-quality (NPA) view over GL_ENTRIES, mirroring the Pillar 3 line items in LINE_ITEM_MAP. Read by Stage 0 (signal queries) and Stage 2 (assure-return peer/history benchmarks).'
 
-  AI_SQL_GENERATION 'Use fund_based_exposure/nonfund_based_exposure for industry credit exposure questions, grouped by counterparties.sector. Use gross_npa grouped by gl_entries.npa_classification for the Substandard/Doubtful_1/Doubtful_2/Doubtful_3/Loss split — this matches LINE_ITEM_MAP.PILLAR3.NPA_CLASS.*. Use npa_ratio and provision_coverage_ratio for asset-quality questions; both are decimals, not pre-multiplied percentages. Do NOT sum fund_based_exposure and nonfund_based_exposure into a single "gross exposure" figure unless explicitly asked for a combined total — RBI disclosure and this project''s LINE_ITEM_MAP both treat them as separate line items. For ledger-integrity questions (sign errors, duplicate postings, orphaned position references), query entry_id/account_code/amount/position_id directly at row grain rather than through the aggregate METRICS above — e.g. WHERE account_code IN (''ADVANCES_FUND'',''ADVANCES_NONFUND'') AND amount < 0 for a sign check, or grouping by counterparty/position/account_code/amount together to surface duplicates. For scale/unit-anomaly questions specifically, use entry_scale_zscore/is_entry_scale_outlier (per-counterparty, per-account-code baseline) — NOT a book-wide magnitude comparison, which cannot tell a legitimately large counterparty''s own large entries apart from a genuine units error. Only trust these when counterparty_account_baseline_count >= 3; say so explicitly when it is not. A TRUE is_entry_scale_outlier alongside counterparties.concentration_group = ''LARGE_EXPOSURE_TOP5PCT'' is more likely a legitimately large position than a defect — corroborate with concentration_group before calling a scale outlier a probable error.';
+  AI_SQL_GENERATION 'Use fund_based_exposure/nonfund_based_exposure for industry credit exposure questions, grouped by counterparties.sector. Use gross_npa grouped by gl_entries.npa_classification for the Substandard/Doubtful_1/Doubtful_2/Doubtful_3/Loss split — this matches LINE_ITEM_MAP.PILLAR3.NPA_CLASS.*. Use npa_ratio and provision_coverage_ratio for asset-quality questions; both are decimals, not pre-multiplied percentages. Do NOT sum fund_based_exposure and nonfund_based_exposure into a single "gross exposure" figure unless explicitly asked for a combined total — RBI disclosure and this project''s LINE_ITEM_MAP both treat them as separate line items. For ledger-integrity questions (sign errors, duplicate postings, orphaned position references), query entry_id/account_code/amount/position_id directly at row grain rather than through the aggregate METRICS above — e.g. WHERE account_code IN (''ADVANCES_FUND'',''ADVANCES_NONFUND'') AND amount < 0 for a sign check, or grouping by counterparty/position/account_code/amount together to surface duplicates. For scale/unit-anomaly questions specifically, query counterparty_account_baseline_mean/_stddev/_count (per-counterparty, per-account-code baseline) — NOT a book-wide magnitude comparison, which cannot tell a legitimately large counterparty''s own large entries apart from a genuine units error. Compute ABS((entry_amount - counterparty_account_baseline_mean) / NULLIF(counterparty_account_baseline_stddev, 0)) as the z-score, and only call an entry a scale outlier when counterparty_account_baseline_count >= 3 AND that z-score >= 3 — say explicitly when there is not enough history to judge. A qualifying outlier alongside counterparties.concentration_group = ''LARGE_EXPOSURE_TOP5PCT'' is more likely a legitimately large position than a defect — corroborate with concentration_group before calling a scale outlier a probable error.';
 
 GRANT SELECT ON SEMANTIC VIEW CREDIT_EXPOSURE_SV TO ROLE ANALYST_READ;

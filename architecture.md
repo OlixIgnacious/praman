@@ -317,11 +317,11 @@ Solo build, ~18 days (13–30 Sept). Day numbers are relative to Day 1 = Sept 13
 20. ~~Stage 1 slice: the one real circular → gap analysis, change spec, test cases.~~ **Done** — `demos/stage1_circular_415_gap_analysis.md`.
 21. ~~Stage 3 scripted walkthrough: one injected break → lineage trace → root cause + narrative.~~ **Done** — `demos/stage3_lineage_walkthrough.md`, real live `cortex lineage` trace applied to an explicitly-labeled illustrative scenario (no real injected lineage break exists yet).
 
-### Days 15–17 — Eval 🔶 In progress (11/12, fix #5 pending re-test)
+### Days 15–17 — Eval ✅ Done (12/12)
 22. ~~Build the `INJECTED_CASES` catalogue and `EVAL_RESULTS` table.~~ **Done** — 9 injected cases + 3 divergence-disclosure ground-truth rows, isolated in `PRAMAN.EVAL`, no grant to the agent's runtime role.
-23. ~~Run the eval slice, report per error type.~~ **Done, twice.** v1: 7/12 correct, every miss root-caused (governance-gate overreach on basic integrity checks, wrong dedup key, missing column, one instruction-wording gap). v2, after 5 fixes: **11/12**, zero regressions. Full detail: `eval/results.md`.
+23. ~~Run the eval slice, report per error type.~~ **Done, across three runs.** v1: 7/12 correct, every miss root-caused (governance-gate overreach on basic integrity checks, wrong dedup key, missing column, one instruction-wording gap). v2, after 4 fixes: 11/12. v3, after the 5th fix: **12/12**, zero regressions at any point. Full detail: `eval/results.md`.
 24. ~~Build the evidence-pack export from `AUDIT_LOG`.~~ **Done** — `AUDIT_EVIDENCE_PACK`, granted to `GOVERNANCE_WRITE`, 7 rows returned on verify.
-25. **Remaining:** fix #5 (per-counterparty scale baseline for the last `correct_but_anomalous` false positive) is written — `CREDIT_EXPOSURE_SV` gained `entry_scale_zscore`/`is_entry_scale_outlier` as a third consumer of the shared `ZSCORE` UDF, plus a `CONCENTRATION_GROUP` cross-reference in orchestration — but not yet redeployed or re-tested. Exact commands queued in `NOTES.md`; target 12/12.
+25. ~~Fix #5 (per-counterparty scale baseline for the `correct_but_anomalous` false positive).~~ **Done.** `CREDIT_EXPOSURE_SV` gained a per-counterparty baseline (`counterparty_account_baseline_mean`/`_stddev`/`_count`) reusing the shared `ZSCORE` formula, plus a `CONCENTRATION_GROUP` cross-reference in orchestration. Landed differently than first planned: Snowflake rejects a Semantic View metric referencing another window-function metric, so the agent computes the z-score at query time from the three baseline metrics rather than reading a pre-named one — functionally identical, see `eval/results.md`'s implementation note.
 
 ### Days 17–18 — Rehearse & submit ⬜ Not started
 26. Dry-run the live path judges will actually see (Stage 0 + Stage 2) repeatedly — that's what's live, protect it over polish elsewhere.

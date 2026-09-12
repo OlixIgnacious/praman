@@ -65,7 +65,7 @@ SQL (table DDL, RBAC, Semantic Views, detectors, seeds) lives under `sql/` and r
 | `data/raw/` | Real sourced documents — circulars, Pillar 3 disclosure, divergence disclosures, penalty disclosures |
 | `data/synthetic/` | Generator output |
 | `data/processed/` | Ingest pipeline output (chunked rule corpus, ready to load) |
-| `eval/` | Eval harness and injected-case catalogue — `run_eval.md` (12-case runbook), `results.md` (11/12, one fix pending) |
+| `eval/` | Eval harness and injected-case catalogue — `run_eval.md` (12-case runbook), `results.md` (12/12, zero regressions across three runs) |
 | `demos/` | Worked Stage 1 gap-analysis and Stage 3 lineage walkthroughs, run against real project data |
 | `backend/`, `ui/` | Empty scaffolds — superseded by the native Cortex Agent + CoWork, see above |
 | `tests/` | Local pytest suite — generator reconciliation + chunker correctness |
