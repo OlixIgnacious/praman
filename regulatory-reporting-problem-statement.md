@@ -99,7 +99,18 @@ Tune for recall. A missed error or signal costs a penalty or a missed fraud loss
 
 ## Audit and reproducibility
 
-Append-only run log: prompt, model version, retrieved rule text with version (or query + data snapshot for Stage 0), output, human decision. Model and rule versions pinned so a 2026 assessment re-runs identically later. Maker-checker sign-off recorded. Exportable evidence pack for inspection. Framed against BCBS 239, which is explicitly about accuracy and lineage in risk and regulatory reporting.
+Append-only run log: prompt, model version, retrieved rule text with version (or query + data snapshot for Stage 0), output, human decision. Model and rule versions pinned so a 2026 assessment re-runs identically later. Maker-checker sign-off recorded. Exportable evidence pack for inspection.
+
+**Framed against BCBS 239 with a real column-to-principle mapping, not just a citation.** BCBS 239 (Principles for effective risk data aggregation and risk reporting) names four risk-data-aggregation principles the audit log directly satisfies:
+
+| BCBS 239 principle | `AUDIT_LOG` column(s) |
+|---|---|
+| Accuracy and integrity — data can be validated and traced to source | `RUN_ID` (unique per run), `MODEL_VERSION` and `QUERY_SNAPSHOT_ID`/`RETRIEVED_RULE_CHUNK_IDS` (pin the exact model and data/rule version an output came from, so it can be independently re-verified) |
+| Completeness — capture substantially all material risk data | Every Skill invocation writes a row (enforced by `AUDIT_INSERT`'s grant, not a logging convention an engineer could forget) — `PROMPT_OR_QUESTION`, `OUTPUT`, and the retrieved evidence are captured for every run, not a sample |
+| Timeliness — data can be generated and reported promptly | `RUN_TIMESTAMP`, defaulted at write time — every run is timestamped at the moment it happened, supporting on-demand reporting without a separate reconciliation step |
+| Adaptability — flexible, ad hoc risk data aggregation for a range of reporting needs | `STAGE` separates Signal/Interpret/Assure/Explain, so a reviewer can query by stage, date range, or user directly against `AUDIT_LOG`/`AUDIT_EVIDENCE_PACK` rather than needing a bespoke report for each request |
+
+`HUMAN_DECISION`/`SIGNOFF_BY`/`SIGNOFF_AT` additionally support BCBS 239's governance principles (senior management/board oversight of risk reporting) by recording who signed off and when, as a new row rather than an edit — which is also what makes the log itself tamper-evident, the accuracy/integrity property applied to the log's own construction.
 
 ## Markets
 
@@ -109,7 +120,26 @@ The product is jurisdiction-agnostic by design: the versioned rule store and the
 
 ## Impact
 
-Rather than inventing hour-savings, aggregate the chosen jurisdiction's regulator's published monetary penalty disclosures by year and by cause — in every major regime this data is public, and a large share of penalties are explicitly reporting non-compliance, with a meaningful share fraud/AML-adjacent. That reframes the pitch from "saves analyst time" to "avoids penalties and regulator censure," which is what actually moves budget and maps directly onto the judging criterion of real-world relevance — and the same argument holds no matter which regulator's numbers we pull.
+Rather than inventing hour-savings, aggregate the chosen jurisdiction's regulator's published monetary penalty disclosures by year and by cause. This reframes the pitch from "saves analyst time" to "avoids penalties and regulator censure," which is what actually moves budget and maps directly onto the judging criterion of real-world relevance — and the same argument holds no matter which regulator's numbers we pull.
+
+**Done, not just proposed — real RBI enforcement data, sourced and aggregated (`data-sources.md` item 6):**
+
+RBI took **79 enforcement actions** against banks/NBFCs in FY24-25, totaling **₹32.9 crore** (₹3,291.5 lakhs) in monetary penalties (source: FACE's compilation of RBI's own published press releases, `data/raw/penalties/RBI_enforcement_penalty_compilation_FY24-25.pdf`). Banks account for 38% of actions but **82% of the penalty amount** (30 actions, ₹26.8 Cr) — concentration matters more than count for the pitch. NBFCs are 60% of actions but only 18% of the amount (48 actions, ₹5.7 Cr).
+
+**By cause** (classified against all 79 detailed action descriptions in the source annex; primary cause per action, judgment call for the small number of multi-issue entries):
+
+| Cause | Actions | Share |
+|---|---|---|
+| Corporate governance / shareholding / management-change violations | 20 | 25.3% |
+| KYC / customer identification failures (risk categorization, UCIC, ineligible accounts) | 18 | 22.8% |
+| Fair Practices Code / interest-rate & loan-term disclosure | 18 | 22.8% |
+| Outsourcing / vendor oversight (LSP/DLA due diligence) | 6 | 7.6% |
+| Regulatory reporting (CRILC/CIC/LRS/large-exposure breach reporting) | 6 | 7.6% |
+| Digital lending / P2P platform structural violations | 6 | 7.6% |
+| Prudential / deposit-education-fund / other | 3 | 3.8% |
+| AML / fraud-adjacent | 2 | 2.5% |
+
+**This corrects an assumption in an earlier draft of this pitch, not confirms it.** The claim that "a meaningful share [is] fraud/AML-adjacent" doesn't hold against the real FY24-25 data — AML/fraud-adjacent causes are the *smallest* category at 2.5%, not a meaningful share. What the real data actually supports: governance, KYC, and Fair Practices Code failures together account for **71% of all actions** — exactly the category of error Praman's Stage 0 (Signal) and Stage 2 (Assure) are built to catch before a draft return or a compliance gap becomes a public enforcement action, while the AML/fraud-adjacent share, though small by count, is precisely the guardrailed signal-surfacing-only slice `signal-query.SKILL.md` already handles (flag for compliance review, never auto-resolved). State the pitch's impact claim this way — "governance/KYC/disclosure failures are ~71% of real enforcement actions, exactly what Stage 0/2 targets" — rather than the original, uncorroborated "large share reporting, meaningful share fraud" framing.
 
 Adoption path: **shadow mode** for two quarters alongside the existing team, accumulating an accuracy record before anyone relies on it.
 
