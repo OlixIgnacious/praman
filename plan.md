@@ -36,22 +36,23 @@ brand/            logo assets — populated
 - [x] Load `data/synthetic/` output into the Snowflake tables above. **Done** — `sql/load_synthetic_data.sql` (PUT + COPY INTO), row counts verified independently in Snowflake: 605 / 2,064 / 2,206 / 24,540, and gross NPA sums to exactly ₹384,786.7M in-database, matching the source PDF.
 - [x] `sql/rbac/` — roles and grants: `ANALYST_READ`, `GOVERNANCE_WRITE`, `AUDIT_INSERT` (insert-only, no update/delete to any role), `OFFICER_SIGNOFF`. **Written and applied to Snowflake.** `OFFICER_SIGNOFF` records sign-off as a new `AUDIT_LOG` insert (never an `UPDATE`), keeping the table append-only end to end. No grants on `PRAMAN.EVAL` (deliberate). Run order/design in `sql/rbac/README.md`.
 - [x] Ingest `data/raw/circulars/RBI_DoS_2026-27_415_..._Supervisory_Returns_Directions_2026.txt` — chunk with page/section metadata, `CREATE CORTEX SEARCH SERVICE` over `RULE_CORPUS`. **Done.** `ingest/chunk_circular.py` splits the scraped-text circular into RULE_CORPUS rows at RBI's own paragraph numbering (the citable unit — e.g. "para 21"), nested under chapter/subsection via `SECTION_REF`; no PAGE_NO since this source is scraped HTML, not a parsed PDF (see `ingest/README.md` for the full chunking writeup). 30 chunks loaded into `PRAMAN.CORE.RULE_CORPUS` via `sql/load_rule_corpus.sql`; `RULE_CORPUS_SEARCH` Cortex Search Service created over `CHUNK_TEXT` via `sql/create_rule_corpus_search.sql` (warehouse `COMPUTE_WH`), with `ANALYST_READ` granted `USAGE` on it.
-- [ ] Seed `LINE_ITEM_MAP` with approved mappings for the Pillar 3 line items in scope
+- [x] Seed `LINE_ITEM_MAP` for the Pillar 3 line items in scope. **Written and run.** `sql/seed_line_item_map.sql` — 9 rows (industry fund/non-fund exposure, industry gross NPA, industry provisions, 5-way NPA classification split), matching exactly what `generate_synthetic_data.py`'s docstring calls "exactly reconciled." All cite `RULE_CHUNK_ID = 'RBI/DoS/2026-27/415#21'` (RAQ return description — the closest ingested rule text, not the actual Pillar 3 disclosure norms circular, which isn't in `RULE_CORPUS` yet — flagged honestly in the script). `STATUS='proposed'` on every row by design (maker-checker: a seeding script isn't the human governance approval step) — a follow-up `GOVERNANCE_WRITE` approval pass is still needed before Stage 2/3 should treat these as committed.
 
 ## Days 6–9 — Semantic layer, detectors, Skills
 
-- [ ] `sql/semantic_views/` — Cortex Analyst Semantic Views for transactions / positions / exposures (fork `semantic-view-patterns`)
-- [ ] Deterministic detector logic (outlier scoring, structuring/velocity rules) — shared by Stage 0 and Stage 2
-- [ ] `skills/signal-query.SKILL.md`
-- [ ] `skills/circular-interpret.SKILL.md`
-- [ ] `skills/assure-return.SKILL.md`
-- [ ] `skills/narrative-draft.SKILL.md` (thin layer on the bundled governance lineage skill)
+- [~] `sql/semantic_views/` — Cortex Analyst Semantic Views for transactions / positions / exposures (forked `semantic-view-patterns`). **Written, not yet run against Snowflake.** `TRANSACTIONS_SV` (event-level, fully additive, rolling 7-day structuring-signal building blocks), `POSITIONS_SV` (semi-additive `NOTIONAL`, concentration-% metric), `CREDIT_EXPOSURE_SV` (mirrors the Pillar 3 line items in `LINE_ITEM_MAP` — fund/nonfund exposure, gross NPA, provisions, NPA ratio, coverage ratio). Each grants `ANALYST_READ` `USAGE` on itself. Design rationale and pattern sourcing in `sql/semantic_views/README.md`.
+- [~] Deterministic detector logic (outlier scoring, structuring/velocity rules) — shared by Stage 0 and Stage 2. **Written, not yet run against Snowflake.** `sql/detectors/`: `ZSCORE` UDF is the one shared formula; `TRANSACTION_SIGNALS` (Stage 0, per-counterparty daily structuring/velocity z-scores vs. trailing 90-day baseline) and `GL_OUTLIER_SIGNALS` (Stage 2, per-`ACCOUNT_CODE` monthly amount z-scores vs. trailing 6-month baseline, feeding draft-return-vs-filing-history checks) both call it. No near-threshold-clustering heuristic yet (would need a real CTR/reporting-threshold circular ingested first — flagged in `sql/detectors/README.md`, not hidden).
+- [x] `skills/signal-query.SKILL.md` — Stage 0: queries `TRANSACTIONS_SV`/`POSITIONS_SV`/`CREDIT_EXPOSURE_SV`/`TRANSACTION_SIGNALS`; AML-adjacent flags route to compliance queue, never auto-resolve
+- [x] `skills/circular-interpret.SKILL.md` — Stage 1: ingestion-check → retrieve via `RULE_CORPUS_SEARCH` → cross-reference `LINE_ITEM_MAP` → propose (`STATUS='proposed'` only, never self-approves)
+- [x] `skills/assure-return.SKILL.md` — Stage 2: validates only `STATUS='approved'` `LINE_ITEM_MAP` rows (flags explicitly that our current seed is all `proposed`); reuses `GL_OUTLIER_SIGNALS`, the same detector as Stage 0
+- [x] `skills/narrative-draft.SKILL.md` — Stage 3: thin layer over native `cortex lineage`, confirmed working (Day 1 spike) — deliberately does not reimplement lineage tracing
 
 ## Days 9–12 — Backend + review UI
 
-- [ ] `backend/` — Agent SDK host, keypair auth, one endpoint per stage
-- [ ] `ui/` — one screen per stage: ask/answer, findings list, gap analysis, lineage + narrative
-- [ ] Wire every Skill call to write an `AUDIT_LOG` row
+- [ ] **Spike first, blocks everything else here:** create one real Cortex Agent over `TRANSACTIONS_SV`, connect to CoWork, ask it a live question end-to-end. Blocked on the Semantic Views existing in Snowflake (`NOTES.md`). See `architecture.md`'s new platform-capability note — a native Cortex Agent + CoWork may replace most of the custom backend/UI below; not yet live-verified.
+- [ ] If the spike holds: Cortex Agent(s) over the three Semantic Views + `RULE_CORPUS_SEARCH`, connected to CoWork; custom backend scoped down to `AUDIT_LOG` writes + Stage 1/3's bespoke orchestration only
+- [ ] If the spike fails: fall back to the original plan — `backend/` (Agent SDK host, keypair auth, one endpoint per stage) + `ui/` (one screen per stage: ask/answer, findings list, gap analysis, lineage + narrative)
+- [ ] Wire every Skill call to write an `AUDIT_LOG` row (whichever path above)
 
 ## Days 12–15 — Wire the four stages end-to-end
 

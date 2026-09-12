@@ -10,3 +10,4 @@ connections.toml
 .venv/
 venv/
 .claude/
+.cortex/

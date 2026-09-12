@@ -10,3 +10,8 @@ dependencies = [
     "requests>=2.34.2",
     "snowflake-connector-python>=4.7.3",
 ]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]

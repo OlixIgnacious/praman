@@ -1,0 +1,15 @@
+-- ZSCORE — the one formula both TRANSACTION_SIGNALS and GL_OUTLIER_SIGNALS
+-- call. This is the actual "detector" in "one detector, two consumers"
+-- (architecture.md) — the two views are just its two applications.
+
+USE DATABASE PRAMAN;
+USE SCHEMA CORE;
+
+CREATE OR REPLACE FUNCTION ZSCORE(VALUE FLOAT, BASELINE_MEAN FLOAT, BASELINE_STDDEV FLOAT)
+RETURNS FLOAT
+AS
+$$
+  (VALUE - BASELINE_MEAN) / NULLIF(BASELINE_STDDEV, 0)
+$$;
+
+GRANT USAGE ON FUNCTION ZSCORE(FLOAT, FLOAT, FLOAT) TO ROLE ANALYST_READ;
