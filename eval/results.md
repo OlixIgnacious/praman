@@ -1,4 +1,4 @@
-# Eval results — 12/12 cases run, 7/12 correct
+# Eval results — v1: 7/12, v2 (after fixes): 11/12
 
 Per `eval/run_eval.md`, run live against `PRAMAN.CORE.SIGNAL_ASSURE_AGENT`. Reported grouped by `ERROR_TYPE`/`MATCH_STATUS`, never as one blended number, per `architecture.md`'s Evaluation architecture.
 
@@ -42,6 +42,28 @@ ORDER BY ERROR_TYPE, MATCH_STATUS;
 
 None of the five fixes require an architectural change — all are either an orchestration-instruction correction, a `LINE_ITEM_MAP` approval, or a one-column addition to an existing Semantic View.
 
-## Deliberately not fixed yet
+## v2 — after applying the fixes and re-running
 
-Fixing and re-running is real follow-up work, not done as part of this eval pass — this file records the score that direct testing actually produced, not a touched-up one. See `plan.md`'s Days 15–17 entry for the decision on whether/when to apply these fixes before submission.
+Redeployed `CREDIT_EXPOSURE_SV` (row-level dimensions) and `SIGNAL_ASSURE_AGENT` (Stage 2a/2b split, corrected dedup key, outlier caveat — see `plan.md`'s Days 15–17 entry for the exact changes), then re-ran the 4 previously-failing cases, the 1 false positive, and 2 regression checks (7 of the 12 total).
+
+| Case | v1 | v2 | Result |
+|---|---|---|---|
+| `sign` | `false_negative` | `true_positive` | **Fixed** (Stage 2b bypasses the governance gate for integrity checks) |
+| `unit_scale` | `false_negative` | `true_positive` | **Fixed** (same) |
+| `double_counting` | `false_negative` | `true_positive` | **Fixed** (correct dedup key) |
+| `stale_ref` | `false_negative` | `true_positive` | **Fixed** (`POSITION_ID` now exposed) |
+| `correct_but_anomalous` | `false_positive` | `false_positive` | **Not fixed** — see below |
+| `classification` (regression check) | `true_positive` | `true_positive` | No regression — governance gate still holds |
+| `material_divergence` / `BOB_FY19_NPA` (regression check) | `true_positive` | `true_positive` | No regression — still catches the ~7.5% gap |
+
+**Full 12-case picture after v2** (5 unretested cases carried forward from v1, since nothing in the fix touched their path): 10 `true_positive`, 1 `abstained`, 0 `false_negative`, 1 `false_positive` — **11/12 correct**, up from 7/12. 4 of 5 identified fixes landed exactly as intended, with no regressions to the governance gate or value-validation path.
+
+## The one remaining gap — a real calibration issue, not a wording fix
+
+Re-testing `correct_but_anomalous` surfaced a **more precise root cause than the v1 diagnosis**. It isn't (only) an instruction-wording gap — the new Stage 2b scale-anomaly check (added to catch `unit_scale`-style errors, a ~100–1000x deviation from a book-wide baseline) also fires on entry `GL-000322`, a legitimate ~₹8.5T "Consumer Loans" position that's simply large in a concentrated book. The check is doing exactly what it was built to do; it just has no way to distinguish "1000x bigger than the book-wide average" from "1000x bigger than *this counterparty's own typical exposure*."
+
+Two real fixes identified, both beyond a prompt/instruction change:
+- **(a) Per-counterparty baseline for the scale check**, instead of book-wide — the same pattern `sql/detectors/`'s `TRANSACTION_SIGNALS`/`GL_OUTLIER_SIGNALS` already use (trailing-window baseline *per entity*, not a flat account-wide threshold). Would need a new or extended detector view.
+- **(b) Cross-reference against known large-exposure limits** (`CONCENTRATION_GROUP`/`LARGE_EXPOSURE_TOP5PCT` already exist on `COUNTERPARTIES`) — if a large entry belongs to an already-flagged large-exposure counterparty, that's corroborating evidence it's legitimately large, not anomalous.
+
+Not attempted yet — this is real detector/schema work, not a same-session fix, and a genuine decision point on whether it's worth doing before submission (see below).
