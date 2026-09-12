@@ -35,7 +35,7 @@ Full design, RBAC model, eval architecture, and day-by-day build plan: [`archite
 
 ## Status
 
-Current build status, one line per item: [`TRACKER.md`](TRACKER.md). Snowflake changes that are written but not yet executed (this project runs SQL through an interactive session, not headless): [`NOTES.md`](NOTES.md).
+All build phases are done through Days 1–17 (data, RBAC, Semantic Views, the `SIGNAL_ASSURE_AGENT` Cortex Agent, all four stages wired end-to-end, eval at 12/12 with zero regressions) — see `architecture.md`'s Build plan for the full day-by-day detail. Only rehearsal, pitch, and submission remain. (Day-to-day status tracking and pending-manual-run notes are kept locally in gitignored `TRACKER.md`/`NOTES.md`, not part of this repo.)
 
 ## Getting started
 
@@ -80,9 +80,9 @@ Every real document this prototype depends on, with sourcing status, is tracked 
 | File | Purpose |
 |---|---|
 | `regulatory-reporting-problem-statement.md` | The hackathon brief |
-| `architecture.md` | Full design, platform-capability notes, data model, RBAC, eval architecture, day-by-day build plan |
-| `plan.md` | Flat file-level TODO checklist mirroring the build plan |
-| `TRACKER.md` | Quick "what's done vs. not" status |
-| `NOTES.md` | Pending manual Snowflake runs, when any exist |
+| `architecture.md` | Full design, platform-capability notes, data model, RBAC, eval architecture, day-by-day build plan (the source of truth for build status) |
+| `jurisdiction_agnostic_analysis.md` | Code-level audit of what's genuinely jurisdiction-agnostic vs. India/RBI-coupled, plus the checklist for validating a second jurisdiction |
 | `data-sources.md` | Provenance/status of every real sourced document |
 | `CLAUDE.md` | Guidance for Claude Code when working in this repo |
+
+`plan.md`/`TRACKER.md`/`NOTES.md` (day-by-day TODOs, quick status, pending manual Snowflake runs) are gitignored local working files for the build process — not shipped in this repo.

@@ -11,3 +11,10 @@ connections.toml
 venv/
 .claude/
 .cortex/
+
+# Process-tracking docs for the human+Claude build workflow, not part of the
+# hackathon deliverable itself (architecture.md, README.md, eval/results.md,
+# etc. stay tracked).
+plan.md
+TRACKER.md
+NOTES.md
