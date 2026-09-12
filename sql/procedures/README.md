@@ -14,11 +14,15 @@ Run after `sql/rbac/` (the owning role must exist) and `sql/ddl/` (the tables th
 
 This preserves the same "insert-only, no read-back" boundary `sql/rbac/03_audit_insert.sql`'s comment describes — reached through a procedure call instead of a direct table grant, because the caller here is an LLM-orchestrated Cortex Agent tool, not a human-issued statement.
 
+## `RETRIEVED_RULE_CHUNK_IDS` is `VARCHAR`, not `ARRAY` — a real deployment fix
+
+Originally designed with `AUDIT_LOG.RETRIEVED_RULE_CHUNK_IDS`'s native `ARRAY` type carried straight through the procedure signature. Deploying the agent that calls this procedure surfaced two real platform limitations, fixed live rather than in this doc's original design:
+
+- A Cortex Agent `generic` tool's `input_schema` doesn't support `array`-typed properties in practice — so the tool sends chunk IDs as a comma-delimited string, and the parameter here is `VARCHAR`.
+- `ARRAY_CONSTRUCT()`/`SPLIT()` aren't valid inside a plain `INSERT ... VALUES` clause in this context — the procedure builds the row with `INSERT ... SELECT` instead, so `SPLIT(:RETRIEVED_RULE_CHUNK_IDS, ',')` can convert the string back to an `ARRAY` for the actual `AUDIT_LOG` column.
+
+Empty/NULL input is treated as "no chunks cited" (`ARRAY_CONSTRUCT()`), not an error — Stage 0 calls always pass an empty string here since Stage 0's citation type is query + data lineage, not a rule chunk.
+
 ## Run
 
-```sql
--- As SECURITYADMIN or another role with CREATE PROCEDURE on PRAMAN.CORE:
--- (see 01_sp_write_audit_log.sql for the full CREATE + ownership transfer + grant)
-```
-
-Add the exact run command to `NOTES.md` before running — this project's SQL executes in an interactive `cortex` session, not headlessly (non-interactive `cortex exec` auto-denies mutating SQL).
+Deployed. See `NOTES.md`'s "Done" section for what was verified, and `01_sp_write_audit_log.sql`'s header comment for the full ownership-transfer rationale.

@@ -2,7 +2,7 @@
 
 Quick status view across the full build, all phases in one place. Update the checkbox and the phase status line as work lands; `plan.md` still holds the folder layout and file-level detail, `architecture.md` holds the day-by-day rationale — this file is just "what's done vs. not," nothing more.
 
-**Overall:** 6 of 8 phases done, 1 in progress. Currently in **Days 9–12** — spike confirmed, building out the agent(s).
+**Overall:** 7 of 8 phases done. Currently starting **Days 12–15**.
 
 ---
 
@@ -29,11 +29,10 @@ Quick status view across the full build, all phases in one place. Update the che
 - [x] Deterministic detector logic — `ZSCORE` UDF + `TRANSACTION_SIGNALS` + `GL_OUTLIER_SIGNALS` deployed to Snowflake (`sql/detectors/`)
 - [x] All four `SKILL.md` files written: `signal-query`, `circular-interpret`, `assure-return`, `narrative-draft`
 
-## Days 9–12 — Backend + review UI 🔶 IN PROGRESS — spike confirmed, building out
-- [x] **Spike confirmed:** `PRAMAN.CORE.TRANSACTIONS_AGENT` live, CoWork-connected, correct live answers — Cortex Agent + CoWork replaces most of the originally-planned custom backend/UI
-- [x] **Decided:** one combined agent for Stage 0 + Stage 2 (not one per stage) — rationale in `.claude/plans/lets-decide-what-would-rippling-lighthouse.md`
-- [~] `SIGNAL_ASSURE_AGENT` (5 tools, supersedes `TRANSACTIONS_AGENT`) + `SP_WRITE_AUDIT_LOG` written; **not yet deployed** — run commands + verification checklist in `NOTES.md`
-- [ ] Remaining custom backend scoped to Stage 1/3 orchestration only (audit logging now handled via the agent's own procedure tool, pending verification it's reliably called)
+## Days 9–12 — Backend + review UI ✅ DONE
+- [x] `PRAMAN.CORE.SIGNAL_ASSURE_AGENT` — 5 tools, covers Stage 0 + Stage 2, live in CoWork ("Praman Signal + Assure"). 5/5 live test questions passed, `AUDIT_LOG` writing verified via `SP_WRITE_AUDIT_LOG`. `TRANSACTIONS_AGENT` spike dropped and cleaned up.
+- [x] Three real Cortex Agent platform limitations found and fixed live (array-type args unsupported, `SPLIT()`/`ARRAY_CONSTRUCT()` invalid in `VALUES`, agent drops optional args) — see `plan.md` for detail
+- [ ] Remaining: Stage 1/3's custom-backend orchestration (circular ingestion, lineage-to-narrative) — deferred to Days 12–15's Stage 1/3 work
 - [ ] Wire every Skill call to write an `AUDIT_LOG` row
 
 ## Days 12–15 — Wire the four stages end-to-end ⬜ NOT STARTED
