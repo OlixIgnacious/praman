@@ -1,5 +1,7 @@
 """Tests for the synthetic data generator — pure functions and reconciliation."""
 
+from datetime import date
+
 import numpy as np
 import pandas as pd
 import pytest
@@ -15,8 +17,10 @@ from generate_synthetic_data import (
     generate_gl_entries,
     generate_positions,
     generate_transactions,
+    inject_eval_cases,
     rating_for_npa_rate,
     split_pareto,
+    AS_OF,
     CHANNELS,
     CHANNEL_AMOUNT_RANGE,
     MILLION,
@@ -251,3 +255,146 @@ def test_every_counterparty_has_at_least_one_transaction(generated_data, transac
 
 def test_transaction_ids_unique(transactions):
     assert transactions["TXN_ID"].is_unique
+
+
+# --- inject_eval_cases ---
+# The nine INJECTED_CASES.TYPE cases (sql/ddl/05_injected_cases.sql), layered
+# on top of the already-reconciled book. These tests use their own fixture
+# rather than touching `generated_data`/`transactions` above, so the original
+# reconciliation tests keep validating the generator's clean-path functions
+# directly, untouched.
+
+ALL_CASE_IDS = {
+    "INJ-SIGN-01", "INJ-UNIT_SCALE-01", "INJ-DOUBLE_COUNTING-01",
+    "INJ-CLASSIFICATION-01", "INJ-TIMING-01", "INJ-STALE_REF-01",
+    "INJ-DEFENSIBLE_INTERPRETATION-01", "INJ-CORRECT_BUT_ANOMALOUS-01",
+    "INJ-STRUCTURING-01",
+}
+
+
+@pytest.fixture(scope="module")
+def injected_data(generated_data):
+    counterparties, positions, gl_entries = generated_data
+    rng = np.random.default_rng(42)
+    transactions = generate_transactions(counterparties, rng)
+    gl_with_cases, txn_with_cases = inject_eval_cases(gl_entries, transactions, rng)
+    return gl_with_cases, txn_with_cases
+
+
+def _clean(df):
+    return df[df["INJECTED_CASE_ID"] == ""]
+
+
+def _case(df, case_id):
+    rows = df[df["INJECTED_CASE_ID"] == case_id]
+    assert len(rows) >= 1, f"no row found for {case_id}"
+    return rows.iloc[0]
+
+
+def test_injected_case_ids_present_and_unique(injected_data):
+    gl_entries, transactions = injected_data
+    gl_cases = set(gl_entries.loc[gl_entries["INJECTED_CASE_ID"] != "", "INJECTED_CASE_ID"])
+    txn_cases = set(transactions.loc[transactions["INJECTED_CASE_ID"] != "", "INJECTED_CASE_ID"])
+    assert gl_cases | txn_cases == ALL_CASE_IDS
+    # Every case ID appears in exactly one of the two tables, not both.
+    assert gl_cases.isdisjoint(txn_cases)
+
+
+def test_injection_preserves_exact_reconciliation(injected_data):
+    # The core promise: excluding injected rows reproduces today's exact
+    # reconciled totals, byte for byte with the non-injected tests above.
+    gl_entries, _ = injected_data
+    clean = _clean(gl_entries)
+    npa_mask = clean["ACCOUNT_CODE"].str.startswith("NPA_") & (clean["ACCOUNT_CODE"] != "NPA_PROVISION")
+    total_npa = clean.loc[npa_mask, "AMOUNT"].sum() / MILLION
+    expected_npa = sum(row[1] for row in anchors.INDUSTRY_NPA)
+    assert total_npa == pytest.approx(expected_npa, abs=0.1)
+
+    total_prov = -clean.loc[clean["ACCOUNT_CODE"] == "NPA_PROVISION", "AMOUNT"].sum() / MILLION
+    expected_prov = sum(row[2] for row in anchors.INDUSTRY_NPA)
+    assert total_prov == pytest.approx(expected_prov, abs=0.5)
+
+    for label, share in anchors.NPA_CLASSIFICATION_SHARE.items():
+        code = f"NPA_{label}"
+        got = clean.loc[clean["ACCOUNT_CODE"] == code, "AMOUNT"].sum() / MILLION
+        expected = expected_npa * share
+        assert got == pytest.approx(expected, rel=0.01), f"{label}: {got} vs {expected}"
+
+
+def test_sign_case_is_negative_advances_fund(injected_data):
+    gl_entries, _ = injected_data
+    row = _case(gl_entries, "INJ-SIGN-01")
+    assert row["ACCOUNT_CODE"] == "ADVANCES_FUND"
+    assert row["AMOUNT"] < 0
+
+
+def test_unit_scale_case_is_1000x(injected_data):
+    gl_entries, _ = injected_data
+    row = _case(gl_entries, "INJ-UNIT_SCALE-01")
+    assert row["ACCOUNT_CODE"] == "ADVANCES_NONFUND"
+    assert row["AMOUNT"] >= 1_000_000  # a 1000x-scaled small entry lands well above normal position sizes
+
+
+def test_double_counting_case_duplicates_an_existing_entry(injected_data):
+    gl_entries, _ = injected_data
+    dup = _case(gl_entries, "INJ-DOUBLE_COUNTING-01")
+    match = _clean(gl_entries)
+    match = match[
+        (match["ACCOUNT_CODE"] == "ADVANCES_FUND")
+        & (match["COUNTERPARTY_ID"] == dup["COUNTERPARTY_ID"])
+        & (match["POSITION_ID"] == dup["POSITION_ID"])
+        & (match["AMOUNT"] == dup["AMOUNT"])
+    ]
+    assert len(match) >= 1, "duplicate doesn't match any existing clean entry's amount/counterparty/position"
+
+
+def test_classification_case_in_wrong_npa_bucket(injected_data):
+    gl_entries, _ = injected_data
+    row = _case(gl_entries, "INJ-CLASSIFICATION-01")
+    assert row["ACCOUNT_CODE"] == "NPA_DOUBTFUL_1"
+
+
+def test_timing_case_posted_after_as_of_date(injected_data):
+    gl_entries, _ = injected_data
+    row = _case(gl_entries, "INJ-TIMING-01")
+    assert date.fromisoformat(row["POSTING_DATE"]) > AS_OF
+
+
+def test_stale_ref_case_position_not_in_positions(injected_data, generated_data):
+    _, positions, _ = generated_data
+    gl_entries, _ = injected_data
+    row = _case(gl_entries, "INJ-STALE_REF-01")
+    assert row["POSITION_ID"] not in set(positions["POSITION_ID"])
+
+
+def test_defensible_interpretation_case_exists(injected_data):
+    gl_entries, _ = injected_data
+    row = _case(gl_entries, "INJ-DEFENSIBLE_INTERPRETATION-01")
+    assert row["ACCOUNT_CODE"] == "ADVANCES_FUND"
+    assert row["AMOUNT"] > 0
+
+
+def test_correct_but_anomalous_case_is_valid_and_large(injected_data):
+    gl_entries, _ = injected_data
+    row = _case(gl_entries, "INJ-CORRECT_BUT_ANOMALOUS-01")
+    assert row["ACCOUNT_CODE"] == "ADVANCES_FUND"
+    assert row["AMOUNT"] > 0
+
+
+def test_structuring_case_creates_a_daily_spike(injected_data):
+    _, transactions = injected_data
+    inj = transactions[transactions["INJECTED_CASE_ID"] == "INJ-STRUCTURING-01"]
+    assert len(inj) >= 10
+
+    cp = inj["COUNTERPARTY_ID"].iloc[0]
+    baseline = transactions[(transactions["COUNTERPARTY_ID"] == cp) & (transactions["INJECTED_CASE_ID"] == "")].copy()
+    baseline["TXN_DATE"] = pd.to_datetime(baseline["TXN_TIMESTAMP"]).dt.date
+    daily_counts = baseline.groupby("TXN_DATE").size()
+
+    inject_date = pd.to_datetime(inj["TXN_TIMESTAMP"].iloc[0]).date()
+    baseline_days_before = (daily_counts.index < inject_date).sum()
+    assert baseline_days_before >= 30, "not enough baseline history before the injected day for TRANSACTION_SIGNALS to flag it"
+
+    injected_day_total = daily_counts.get(inject_date, 0) + len(inj)
+    avg_daily = daily_counts.mean()
+    assert injected_day_total >= avg_daily * 3, "spike isn't large enough to be a plausible structural proxy for |z| >= 3"

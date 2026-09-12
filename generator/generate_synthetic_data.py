@@ -17,6 +17,13 @@ What's a documented approximation, not a reconciled invariant:
   - TRANSACTIONS — no real anchor exists for transaction-level detail; channel mix
     and amounts are reasoned assumptions, not sourced.
 
+What's deliberately wrong, not approximated: inject_eval_cases() layers nine
+known-bad rows (GL_ENTRIES.INJECTED_CASE_ID / TRANSACTIONS.INJECTED_CASE_ID
+set) on top of the reconciled book above, one per PRAMAN.EVAL.INJECTED_CASES
+type (sql/ddl/05_injected_cases.sql). Purely additive — no clean row is
+modified, so filtering WHERE INJECTED_CASE_ID = '' recovers the exact
+reconciled totals above. See eval/README.md.
+
 Amounts are stored in actual INR (anchors are in ₹ million — multiplied by 1e6),
 so individual position/GL sizes read like a real core-banking ledger, not a
 disclosure summary.
@@ -241,7 +248,7 @@ def generate_gl_entries(
     return pd.DataFrame(entries)
 
 
-def _gl_row(seq, account_code, amount, counterparty_id, position_id, rng, posting_date=None):
+def _gl_row(seq, account_code, amount, counterparty_id, position_id, rng, posting_date=None, injected_case_id=""):
     if posting_date is None:
         offset_days = int(rng.integers(0, 3 * 365))
         posting_date = (AS_OF - timedelta(days=offset_days)).isoformat()
@@ -253,7 +260,7 @@ def _gl_row(seq, account_code, amount, counterparty_id, position_id, rng, postin
         "POSTING_DATE": posting_date,
         "COUNTERPARTY_ID": counterparty_id,
         "POSITION_ID": position_id,
-        "INJECTED_CASE_ID": "",
+        "INJECTED_CASE_ID": injected_case_id,
     }
 
 
@@ -305,6 +312,136 @@ def generate_transactions(counterparties: pd.DataFrame, rng: np.random.Generator
                 }
             )
     return pd.DataFrame(rows)
+
+
+# Fixed catalogue of known-bad rows, one per PRAMAN.EVAL.INJECTED_CASES.TYPE
+# (sql/ddl/05_injected_cases.sql's CHECK constraint — nine types, nine cases,
+# deliberately 1:1). CASE_IDs and their GROUND_TRUTH_LABEL text are mirrored
+# in sql/seed_injected_cases.sql — keep both in sync if either changes, same
+# convention as anchors.py <-> sql/seed_line_item_map.sql. See eval/README.md
+# for what each case represents and why.
+def inject_eval_cases(
+    gl_entries: pd.DataFrame, transactions: pd.DataFrame, rng: np.random.Generator
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Layer nine known-bad rows on top of the already-generated, already-
+    reconciled book. Purely additive -- no existing row is modified, so the
+    clean baseline's reconciliation to anchors.py is untouched by construction.
+    Every injected row carries a real INJECTED_CASE_ID; every clean row keeps
+    INJECTED_CASE_ID == "" -- filter on that to recover the exact reconciled
+    totals (tests/test_generator.py's injected-case tests prove this holds,
+    without touching the original reconciliation tests at all).
+    """
+    gl_entries = gl_entries.copy()
+    transactions = transactions.copy()
+
+    fund_rows = gl_entries[gl_entries["ACCOUNT_CODE"] == "ADVANCES_FUND"]
+    nonfund_rows = gl_entries[gl_entries["ACCOUNT_CODE"] == "ADVANCES_NONFUND"]
+    npa_sub_rows = gl_entries[gl_entries["ACCOUNT_CODE"] == "NPA_SUBSTANDARD"]
+
+    gl_seq = len(gl_entries)
+    new_gl_rows = []
+
+    def next_gl_seq():
+        nonlocal gl_seq
+        gl_seq += 1
+        return gl_seq
+
+    # sign: a fund-based advance recorded with a negative amount. Ledger
+    # amounts for ADVANCES_FUND should never be negative.
+    a = fund_rows.iloc[0]
+    new_gl_rows.append(_gl_row(next_gl_seq(), "ADVANCES_FUND", -abs(a["AMOUNT"]) * 0.01,
+                                a["COUNTERPARTY_ID"], a["POSITION_ID"], rng,
+                                injected_case_id="INJ-SIGN-01"))
+
+    # unit_scale: a non-fund entry booked ~1000x too large -- e.g. entered in
+    # paise/thousands instead of rupees.
+    a = nonfund_rows.iloc[1]
+    new_gl_rows.append(_gl_row(next_gl_seq(), "ADVANCES_NONFUND", a["AMOUNT"] * 1000,
+                                a["COUNTERPARTY_ID"], a["POSITION_ID"], rng,
+                                injected_case_id="INJ-UNIT_SCALE-01"))
+
+    # double_counting: the same economic event (same counterparty, position,
+    # account, amount) posted a second time on a different date.
+    a = fund_rows.iloc[2]
+    new_gl_rows.append(_gl_row(next_gl_seq(), "ADVANCES_FUND", a["AMOUNT"],
+                                a["COUNTERPARTY_ID"], a["POSITION_ID"], rng,
+                                injected_case_id="INJ-DOUBLE_COUNTING-01"))
+
+    # classification: an amount booked to the wrong NPA ageing bucket
+    # (Substandard-sized exposure recorded as Doubtful_1).
+    a = npa_sub_rows.iloc[0]
+    new_gl_rows.append(_gl_row(next_gl_seq(), "NPA_DOUBTFUL_1", a["AMOUNT"] * 0.05,
+                                a["COUNTERPARTY_ID"], a["POSITION_ID"], rng,
+                                injected_case_id="INJ-CLASSIFICATION-01"))
+
+    # timing: entry posted after the AS_OF_DATE reporting cutoff it's being
+    # booked into -- a cut-off error, belongs in next period's ledger.
+    a = fund_rows.iloc[3]
+    new_gl_rows.append(_gl_row(next_gl_seq(), "ADVANCES_FUND", a["AMOUNT"] * 0.02,
+                                a["COUNTERPARTY_ID"], a["POSITION_ID"], rng,
+                                posting_date=(AS_OF + timedelta(days=5)).isoformat(),
+                                injected_case_id="INJ-TIMING-01"))
+
+    # stale_ref: entry referencing a POSITION_ID that does not exist in
+    # POSITIONS -- orphaned/stale reference, e.g. from a closed position.
+    a = fund_rows.iloc[4]
+    new_gl_rows.append(_gl_row(next_gl_seq(), "ADVANCES_FUND", a["AMOUNT"] * 0.01,
+                                a["COUNTERPARTY_ID"], "POS-999999", rng,
+                                injected_case_id="INJ-STALE_REF-01"))
+
+    # defensible_interpretation: a drawn guarantee booked as a fund-based
+    # advance rather than non-fund -- a genuine judgment call, not a clear
+    # error (the bank's interpretation: funded once drawn).
+    a = nonfund_rows.iloc[3]
+    new_gl_rows.append(_gl_row(next_gl_seq(), "ADVANCES_FUND", a["AMOUNT"] * 0.5,
+                                a["COUNTERPARTY_ID"], a["POSITION_ID"], rng,
+                                injected_case_id="INJ-DEFENSIBLE_INTERPRETATION-01"))
+
+    # correct_but_anomalous: a real, correctly-booked one-off large
+    # disbursement -- statistically anomalous, not an error.
+    a = fund_rows.iloc[5]
+    new_gl_rows.append(_gl_row(next_gl_seq(), "ADVANCES_FUND", a["AMOUNT"] * 20,
+                                a["COUNTERPARTY_ID"], a["POSITION_ID"], rng,
+                                injected_case_id="INJ-CORRECT_BUT_ANOMALOUS-01"))
+
+    gl_entries = pd.concat([gl_entries, pd.DataFrame(new_gl_rows)], ignore_index=True)
+
+    # structuring: a burst of same-day transactions for an already-established
+    # counterparty, sized to trip TRANSACTION_SIGNALS' |z| >= 3 threshold.
+    # Injected close to AS_OF (not at the start of the 90-day window) so the
+    # counterparty already has >=30 days of baseline history behind it --
+    # TRANSACTION_SIGNALS never flags a counterparty with < 30 days observed.
+    txn_counts = transactions["COUNTERPARTY_ID"].value_counts()
+    inject_date = AS_OF - timedelta(days=2)
+    target_cp = None
+    for cp in txn_counts.index:
+        cand = transactions[transactions["COUNTERPARTY_ID"] == cp]
+        cand_dates = pd.to_datetime(cand["TXN_TIMESTAMP"]).dt.date
+        if (cand_dates < inject_date).nunique() >= 30:
+            target_cp = cp
+            break
+    if target_cp is None:
+        target_cp = txn_counts.index[0]  # fallback: busiest counterparty regardless
+
+    txn_seq = len(transactions)
+    new_txn_rows = []
+    for _ in range(15):
+        txn_seq += 1
+        offset_seconds = int(rng.integers(0, 86400))
+        new_txn_rows.append(
+            {
+                "TXN_ID": f"TXN-{txn_seq:07d}",
+                "COUNTERPARTY_ID": target_cp,
+                "AMOUNT": round(rng.uniform(180_000, 200_000), 2),
+                "CURRENCY": "INR",
+                "TXN_TIMESTAMP": f"{inject_date.isoformat()}T{offset_seconds // 3600:02d}:{(offset_seconds % 3600) // 60:02d}:{offset_seconds % 60:02d}",
+                "CHANNEL": "branch cash",
+                "INJECTED_CASE_ID": "INJ-STRUCTURING-01",
+            }
+        )
+    transactions = pd.concat([transactions, pd.DataFrame(new_txn_rows)], ignore_index=True)
+
+    return gl_entries, transactions
 
 
 def verify(counterparties: pd.DataFrame, gl_entries: pd.DataFrame) -> None:
@@ -363,6 +500,12 @@ def main() -> None:
     print(f"  {len(transactions)} transactions")
 
     verify(counterparties, gl_entries)
+
+    print("\nInjecting eval catalogue (9 known-bad rows, one per INJECTED_CASES type)...")
+    gl_entries, transactions = inject_eval_cases(gl_entries, transactions, rng)
+    n_injected_gl = (gl_entries["INJECTED_CASE_ID"] != "").sum()
+    n_injected_txn = (transactions["INJECTED_CASE_ID"] != "").sum()
+    print(f"  +{n_injected_gl} injected GL entries, +{n_injected_txn} injected transactions")
 
     counterparties_out = counterparties.drop(columns=["fund_amount", "nonfund_amount"])
     positions_out = positions.drop(columns=["book", "SECTOR"], errors="ignore")

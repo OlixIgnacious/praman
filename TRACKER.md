@@ -2,7 +2,7 @@
 
 Quick status view across the full build, all phases in one place. Update the checkbox and the phase status line as work lands; `plan.md` still holds the folder layout and file-level detail, `architecture.md` holds the day-by-day rationale — this file is just "what's done vs. not," nothing more.
 
-**Overall:** 7 of 8 phases done, 1 in progress. Currently in **Days 12–15** — all four stages demoed live; one small doc cleanup left (commit `LINE_ITEM_MAP_SV`'s DDL).
+**Overall:** 7 of 8 phases done, 1 in progress. Currently in **Days 15–17** — catalogue/data/export all written, none yet run against Snowflake; `EVAL_RESULTS` scoring harness still to build.
 
 ---
 
@@ -33,16 +33,18 @@ Quick status view across the full build, all phases in one place. Update the che
 - [x] `PRAMAN.CORE.SIGNAL_ASSURE_AGENT` — 5 tools, covers Stage 0 + Stage 2, live in CoWork ("Praman Signal + Assure"). 5/5 live test questions passed, `AUDIT_LOG` writing verified via `SP_WRITE_AUDIT_LOG`. `TRANSACTIONS_AGENT` spike dropped and cleaned up.
 - [x] Three real Cortex Agent platform limitations found and fixed live (array-type args unsupported, `SPLIT()`/`ARRAY_CONSTRUCT()` invalid in `VALUES`, agent drops optional args) — see `plan.md` for detail
 
-## Days 12–15 — Wire the four stages end-to-end 🔶 IN PROGRESS
+## Days 12–15 — Wire the four stages end-to-end ✅ DONE
 - [x] Stage 0 live — covered by `SIGNAL_ASSURE_AGENT`'s Days 9–12 verification
 - [x] Stage 2 live — happy path demoed after fixing a real bug: the agent had no tool to query `LINE_ITEM_MAP` at all, so its earlier "refusal" result was a hardcoded default, not a real `STATUS` check. Added `LINE_ITEM_MAP_SV` + `line_item_map_lookup` tool (mandatory first step in Stage 2 now); re-tested — correctly computed approved gross NPA with citation, correctly flagged the still-`proposed` classification sub-items in the same response
 - [x] Stage 1 slice — `demos/stage1_circular_415_gap_analysis.md`: real gap analysis, no changes needed to the 9 seeded rows, real coverage gap named for other returns, one ambiguity flagged for escalation
 - [x] Stage 3 walkthrough — `demos/stage3_lineage_walkthrough.md`: real live lineage trace confirms `GL_ENTRIES` → `CREDIT_EXPOSURE_SV` → `SIGNAL_ASSURE_AGENT` is fully traceable; applied to an explicitly-labeled illustrative scenario since no real injected break exists yet
 
-## Days 15–17 — Eval ⬜ NOT STARTED
-- [ ] `eval/` — `INJECTED_CASES` catalogue, isolated schema, no grant to Skills' runtime role
-- [ ] Eval run against held-out cases → `EVAL_RESULTS`, precision/recall `GROUP BY ERROR_TYPE`
-- [ ] Evidence-pack export from `AUDIT_LOG`
+## Days 15–17 — Eval 🔶 IN PROGRESS
+- [~] `eval/` — `INJECTED_CASES` catalogue written (9 cases, one per `TYPE`, purely additive on top of the exactly-reconciled book — `test_injection_preserves_exact_reconciliation` proves it); **not yet run against Snowflake**
+- [~] Divergence-disclosure ground truth (Bank of Baroda + Central Bank of India, YES Bank excluded for lack of a reliable base pair) written to `sql/load_divergence_disclosures.sql`; **not yet run**
+- [~] Evidence-pack export (`AUDIT_EVIDENCE_PACK` view, citations resolved, granted to `GOVERNANCE_WRITE`) written to `sql/exports/01_audit_evidence_pack.sql`; **not yet run** — surfaced a real RBAC gap (no column links a sign-off row back to its run) as a flagged follow-up, not fixed
+- [ ] `EVAL_RESULTS` scoring harness — actually running Stage 0/2 against the above and writing `MATCH_STATUS`/`GROUP BY ERROR_TYPE` results. Not started; needs the three items above loaded first.
+- **Real bug caught in review, fixed before reaching Snowflake:** `sql/load_synthetic_data.sql` had no `TRUNCATE` before its `COPY INTO`s — re-running it against the regenerated (injected-case-carrying) CSVs would have duplicated every existing row, not just added the new ones. Fixed in the script itself.
 
 ## Days 17–18 — Rehearse & submit ⬜ NOT STARTED
 - [ ] Dry-run the live path (Stage 0 + Stage 2) repeatedly
