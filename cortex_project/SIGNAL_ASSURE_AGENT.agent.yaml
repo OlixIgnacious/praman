@@ -35,17 +35,15 @@ tools:
           model_version:
             type: string
           retrieved_rule_chunk_ids:
-            type: array
-            items:
-              type: string
-            description: "Stage 2 only -- every CHUNK_ID cited in the findings. Empty array for Stage 0."
+            type: string
+            description: "Stage 2 only -- comma-delimited CHUNK_IDs cited in the findings. Empty string for Stage 0."
           query_snapshot_id:
             type: string
-            description: "Stage 0 only -- an id for the query/result pair. Omit for Stage 2."
+            description: "Stage 0 only -- an id for the query/result pair. Pass empty string for Stage 2."
           output:
             type: string
             description: "The full answer (Stage 0) or ranked findings list (Stage 2) returned to the user."
-        required: [run_id, app_user, stage, prompt_or_question, model_version, output]
+        required: [run_id, app_user, stage, prompt_or_question, model_version, retrieved_rule_chunk_ids, query_snapshot_id, output]
 
 tool_resources:
   transaction_analytics:
@@ -93,7 +91,7 @@ instructions:
     - Low-confidence structuring signals (STRUCTURING_SCORE between 3 and 4, or a counterparty with BASELINE_DAYS_OBSERVED just over the 30-day minimum) get that caveat stated explicitly, not flattened into a flat yes/no.
     - A counterparty with BASELINE_DAYS_OBSERVED < 30 has no usable signal -- say "not enough history to assess," never imply "clean."
     - Never sum position_analytics' total_notional across as_of_date -- it is a point-in-time balance, not a transaction sum.
-    - After answering: call write_audit_log with stage="0", query_snapshot_id set, retrieved_rule_chunk_ids as an empty array.
+    - After answering: call write_audit_log with stage="0", query_snapshot_id set, retrieved_rule_chunk_ids as an empty string.
 
     STAGE 2 (Assure):
     - Tools: position_analytics, credit_exposure_analytics, rule_corpus_search.
