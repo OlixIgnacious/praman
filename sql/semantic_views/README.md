@@ -1,12 +1,17 @@
 # Semantic Views — run order and design
 
-Three Cortex Analyst Semantic Views, one per bounded domain (`architecture.md`: "build one Semantic View per bounded domain... rather than one giant model"). Run after `sql/ddl/` and the synthetic data load — each `CREATE OR REPLACE SEMANTIC VIEW` reads live table shapes, and each ends with a `GRANT SELECT ... TO ROLE ANALYST_READ` (which must already exist — see `sql/rbac/`). `SELECT`, not `USAGE` — `USAGE` isn't a valid privilege on a Semantic View, found while actually deploying these.
+Four Cortex Analyst Semantic Views: three per bounded domain (`architecture.md`: "build one Semantic View per bounded domain... rather than one giant model"), plus a fourth added later over `LINE_ITEM_MAP` itself so a Cortex Agent can query it (see below). Run after `sql/ddl/` and the synthetic data load — each `CREATE OR REPLACE SEMANTIC VIEW` reads live table shapes, and each ends with a `GRANT SELECT ... TO ROLE ANALYST_READ` (which must already exist — see `sql/rbac/`). `SELECT`, not `USAGE` — `USAGE` isn't a valid privilege on a Semantic View, found while actually deploying these.
 
 1. `01_transactions_sv.sql` — `TRANSACTIONS_SV`
 2. `02_positions_sv.sql` — `POSITIONS_SV`
 3. `03_credit_exposure_sv.sql` — `CREDIT_EXPOSURE_SV`
+4. `04_line_item_map_sv.sql` — `LINE_ITEM_MAP_SV`
 
 Independent of each other — any order works, listed in dependency-free numeric order for consistency with `sql/ddl/`.
+
+## `LINE_ITEM_MAP_SV` — added after a real bug, not part of the original three
+
+`PRAMAN.CORE.SIGNAL_ASSURE_AGENT` (Days 9–12/12–15) originally had no tool to query `LINE_ITEM_MAP` at all — its Stage 2 "no approved mapping" answers were a hardcoded default, not a real `STATUS` check, and this passed initial testing purely by accident (every seeded row happened to be `proposed`, so the wrong mechanism produced the right-looking answer). `LINE_ITEM_MAP_SV` exists so the agent's `line_item_map_lookup` tool can check `STATUS`/`TRANSFORM_LOGIC`/`RULE_CHUNK_ID` for real, as the mandatory first step of every Stage 2 flow — see `plan.md`'s Days 12–15 entry for the full story and the re-test that confirmed the fix.
 
 ## Forked from `semantic-view-patterns`
 
@@ -17,6 +22,7 @@ Per `architecture.md`'s Build plan ("Fork as starting template, don't author fro
 | `TRANSACTIONS_SV` | `entity_facts` (counterparty as shared dimension), `window_metrics` (trailing-window aggregates) | Transactions are event-level facts — fully additive. Rolling 7-day count/volume are raw structuring-signal building blocks (the actual detector logic is separate — see `plan.md`'s "deterministic detector" item). |
 | `POSITIONS_SV` | `semi_additive_metric` (point-in-time balances), a whole-table `OVER()` ratio for concentration | `NOTIONAL` is a snapshot, not a transaction — additive across counterparties on one `AS_OF_DATE`, not across dates. `pct_of_total_notional` directly supports the Stage 0 "concentration limits" example query. |
 | `CREDIT_EXPOSURE_SV` | `derived_metrics` (ratio metrics referencing other metrics by name), `entity_facts` (CASE-derived categorical dimensions) | Mirrors the Pillar 3 line items seeded into `LINE_ITEM_MAP` (`sql/seed_line_item_map.sql`) — same aggregation logic, expressed as live Cortex Analyst metrics instead of `TRANSFORM_LOGIC` text. Keep both in sync if either changes. |
+| `LINE_ITEM_MAP_SV` | Plain single-table dimensions, one trivial `COUNT` metric — no pattern needed | Exists purely so a Cortex Agent tool can query `LINE_ITEM_MAP.STATUS` before Stage 2 computes anything — added after a real deployment bug, see below, not part of the original three-domain design. |
 
 ## Things that would silently produce wrong numbers if missed
 
